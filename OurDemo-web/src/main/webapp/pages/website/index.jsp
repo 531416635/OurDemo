@@ -22,26 +22,30 @@
 	max-height: 20%;
 	max-width: 30%;
 }
+#example_video_1{
+position: relative;
+}
 </style>
 </head>
 <body>
 	<h1>Hello World! This is OurDemo.</h1>
-http://www.jq22.com/jquery-info404
-	<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
-    <source src="video1.mp4" type="video/mp4">
-    <source src="video1.mp4" type="video/webm">
-    <source src="video1.mp4" type="video/ogg">
-    <track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
-    <!-- Tracks need an ending tag thanks to IE9 -->
-    <track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
-    <!-- Tracks need an ending tag thanks to IE9 -->
-    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-  </video>
+	<h1>http://www.jq22.com/jquery-info404</h1>
+	<!-- <div style="width:100%;height:100%;position: relative;" > -->
+		<video style="width:100%;height:auto"  id="example_video_1" loop="loop" class="video-js vjs-default-skin"  preload="none" autoplay poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+	    	<source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
+	    	<source src="video1.mp4" type="video/webm">
+	    	<source src="video1.mp4" type="video/ogg">
+	    	<track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
+	    	<!-- Tracks need an ending tag thanks to IE9 -->
+	    	<track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
+	    	<!-- Tracks need an ending tag thanks to IE9 -->
+	    	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+	 	</video>
+	<!-- </div> -->
 	<div>
 		<img class="image" src="<%=path%>/img/picture.png" alt="Picture" /> 
 		<img class="image2" src="<%=path%>/img/picture.png" alt="Picture" />
 	</div>
-
 	<div>
 		<ul class="images">
 			<li><img src="<%=path%>/img/picture.png" alt="Picture" /></li>
@@ -49,8 +53,6 @@ http://www.jq22.com/jquery-info404
 			<li><img src="<%=path%>/img/picture.png" alt="Picture" /></li>
 		</ul>
 	</div>
-
-
 	<!-- Scripts -->
 	<script src="<%=path%>/js/jquery-3.0.0.min.js"></script>
 	<script src="<%=path%>/js/viewer.js"></script>
