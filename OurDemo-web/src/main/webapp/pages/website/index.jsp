@@ -30,7 +30,7 @@
 </head>
 <body>
 	<h1>Hello World! This is OurDemo.</h1>
-	<h1>http://www.jq22.com/jquery-info404</h1>
+	<h1>http://www.yyyweb.com/demo/slides-playing/index.html</h1>
 	<div style="width: 100%; height: 100%;">
 		<video style="width:100%;height:auto" controls="controls" id="example_video_1" loop="loop"
 		 class="video-js vjs-default-skin" preload="none" autoplay poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}"> 
