@@ -374,7 +374,7 @@ public class RSAUtils {
 	/**
 	 * （私钥签名——公钥验证签）的验证接口
 	 * 
-	 * @param source 以签名的数据
+	 * @param source 已签名的数据
 	 * @param encodedData 已加密的数据
 	 * @return
 	 * @throws Exception

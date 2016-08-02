@@ -28,6 +28,7 @@
 <body>
 	<h1>Hello World! This is OurDemo.</h1>
 	<h1><a href="web/index.do">web index</a></h1>
+	<h1><a href="web/toRegister.do">web/toRegister.do</a></h1>
 	<h1><a href="admin/index.do">admin index</a></h1>
 </body>
 </html>
