@@ -14,21 +14,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>OurDemo</title>
 <link rel="stylesheet" href="<%=path%>/css/bootstrap.css"  media="screen" />
-<script src="<%=path%>/js/jquery-3.0.0.js"></script>
+<script src="<%=path%>/js/jquery.js"></script>
 <script src="<%=path%>/js/bootstrap.js"></script>
 
-<!-- <script language="javascript" type="text/javascript">
-	function bodyload() {
-		window.location = "/GraduationDesign/web/toIndex.do";
+<script language="javascript" type="text/javascript">
+	function bodyload(){
+	window.location="<%=path%>/web/index.do";
 	}
-</script>
- -->
+  </script>
+
 </head>
-<!-- <body onload="bodyload()"> -->
-<body>
-	<h1>Hello World! This is OurDemo.</h1>
-	<h1><a href="web/index.do">web index</a></h1>
-	<h1><a href="web/toRegister.do">web/toRegister.do</a></h1>
-	<h1><a href="admin/index.do">admin index</a></h1>
+<body onload="bodyload()">
 </body>
 </html>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
@@ -11,25 +11,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- 对移动设备的支持更友好-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>用户注册</title>
-<link rel="stylesheet" href="<%=path%>/css/responsive-nav.css">
+<link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css"  />
 </head>
 <body>
-<div id="nav">
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Projects</a></li>
-			<li><a href="#">Contact</a></li>
-		</ul>
-	</div>
-	<script src="<%=path%>/js/jquery-3.0.0.js"></script>
-	<script src="<%=path%>/js/bootstrap.js"></script>
-	<script src="<%=path%>/js/responsive-nav.js"></script>
-	<script>
-		var navigation = responsiveNav("#nav");
+	<form class="form-inline">
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label>
+			<input type="email" style="width: 200px;" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+	<script type="text/javascript">
+	$(".btn-default").click(function (){
+		
+	}).clear();;
 	</script>
 </body>
 </html>
