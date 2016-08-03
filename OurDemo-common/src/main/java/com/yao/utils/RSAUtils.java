@@ -61,9 +61,9 @@ public class RSAUtils {
 	 * @return
 	 * @throws Exception
 	 */
-	private static Map<String, Object> genKeyPair() throws Exception {
+	public static Map<String, Object> genKeyPair() throws Exception {
 		KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(KEY_ALGORITHM);
-		keyPairGen.initialize(1024);
+		keyPairGen.initialize(512);
 		KeyPair keyPair = keyPairGen.generateKeyPair();
 		RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
 		RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
@@ -270,9 +270,9 @@ public class RSAUtils {
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
-	private static String getPrivateKey(Map<String, Object> keyMap)
+	public static String getPrivateKey(Map<String, Object> keyMap)
 			throws Exception {
-		Key key = (Key) keyMap.get(PRIVATE_KEY);
+		Key key = (Key) keyMap.get("privateKey");
 		return Base64Utils.encode(key.getEncoded());
 	}
 
@@ -284,9 +284,9 @@ public class RSAUtils {
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unused")
-	private static String getPublicKey(Map<String, Object> keyMap)
+	public static String getPublicKey(Map<String, Object> keyMap)
 			throws Exception {
-		Key key = (Key) keyMap.get(PUBLIC_KEY);
+		Key key = (Key) keyMap.get("publicKey");
 		return Base64Utils.encode(key.getEncoded());
 	}
 
@@ -384,4 +384,18 @@ public class RSAUtils {
 		boolean status = RSAUtils.verify(encodedData, PUBLIC_KEY, source);
 		return status;
 	}
+	
+	/**
+	 * 私钥解密接口
+	 * 
+	 * @param source 已加密的数据
+	 * @return
+	 * @throws Exception
+	 */
+	public static String  decryptPrivate(String source) throws Exception {
+		byte[] encryptedData=source.getBytes();
+		String  stat= RSAUtils.decryptByPrivateKey(encryptedData, ConfUtils.getPrivateKey()).toString();
+		return stat;
+	}
+	
 }
