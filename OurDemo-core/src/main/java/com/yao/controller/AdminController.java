@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value="/admin")
-public class CopyOftest {
+public class AdminController {
 
 	@RequestMapping(value="/index")
 	public String testd(){

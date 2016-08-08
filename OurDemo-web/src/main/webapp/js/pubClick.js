@@ -1,4 +1,10 @@
-$("#btn1").click(function() {
+/**
+ * 
+ * 清除RSA加密，改用MD5加密
+ * 
+ * **/
+
+/*$("#btn1").click(function() {
 	var fr = $("#form1").serialize();
 	var url = $("#form1").attr("action");
 	fr = decodeURIComponent(fr, true);
@@ -13,3 +19,4 @@ $("#btn1").click(function() {
 	$("#form2").submit();
 
 });
+*/

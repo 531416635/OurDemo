@@ -15,7 +15,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
  * @createDate 2016年8月2日 下午6:03:09
  */
 public class SpringMailUtils {
-	public String sendMail(String toMailUrl,String regMailUrl) throws MessagingException {
+	public static String sendMail(String toMailUrl,String regMailUrl) throws MessagingException {
 		JavaMailSenderImpl senderImpl = new JavaMailSenderImpl();  
 		  
         // 设定mail server  
@@ -23,11 +23,11 @@ public class SpringMailUtils {
   
         // 建立邮件消息,发送简单邮件和html邮件的区别  
         MimeMessage mailMessage = senderImpl.createMimeMessage();  
-        MimeMessageHelper messageHelper = new MimeMessageHelper(mailMessage);  
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mailMessage,true, "utf-8");  
   
         // 设置收件人，寄件人  
         messageHelper.setTo(toMailUrl);  
-        messageHelper.setFrom("username@163.com");  
+        messageHelper.setFrom("yaoyuxiao1992@163.com");  
         messageHelper.setSubject("测试HTML邮件！");  
         // true 表示启动HTML格式的邮件  
         messageHelper  
@@ -48,16 +48,22 @@ public class SpringMailUtils {
 "用户服务支持：webmaster@csdn.net</pre></body></html>",  
                         true);  
   
-        senderImpl.setUsername("username"); // 根据自己的情况,设置username  
-        senderImpl.setPassword("password"); // 根据自己的情况, 设置password  
+        senderImpl.setUsername("yaoyuxiao1992@163.com"); // 根据自己的情况,设置username  
+        senderImpl.setPassword("19920829ourdemo"); // 根据自己的情况, 设置password  
+        senderImpl.setPort(25);
         Properties prop = new Properties();  
         prop.put("mail.smtp.auth", "true"); // 将这个参数设为true，让服务器进行认证,认证用户名和密码是否正确  
-        prop.put("mail.smtp.timeout", "25000");  
+        prop.put("mail.smtp.timeout", "15000"); 
+        prop.setProperty("mail.smtp.host", "10.191.113.100");
+        prop.setProperty("mail.smtp.port", "8002");
         senderImpl.setJavaMailProperties(prop);  
         // 发送邮件  
         senderImpl.send(mailMessage);  
   
         System.out.println("邮件发送成功..");  
 		return null;
+	}
+	public static void main(String[] args) throws MessagingException {
+		sendMail("531416635@qq.com","32423");
 	}
 }

@@ -15,10 +15,7 @@
 <title>OurDemo1</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" />
 <link href="<%=path%>/css/viewer.css" rel="stylesheet" />
-<link href="http://vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
-<script src="http://vjs.zencdn.net/ie8/1.1.0/videojs-ie8.min.js"></script>
-<script src="http://vjs.zencdn.net/5.0.2/video.js"></script>
-
+<link href="stickup.css" rel="stylesheet"> 
 <style>
 .image, .images img {
 	max-height: 20%;

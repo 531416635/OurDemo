@@ -18,7 +18,7 @@ public class LoginController {
 	public String toRegister(){
 		return "website/toRegister";
 	}
-	@RequestMapping("web/toRegister2")
+	@RequestMapping("web/register")
 	public String toRegister2(String email1,String email2){
 		logger.info(email1);
 		logger.info(email2);
