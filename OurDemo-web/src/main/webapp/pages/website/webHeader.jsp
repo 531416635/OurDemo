@@ -85,6 +85,8 @@
 <script src="<%=path%>/js/encrypt.js"></script>
 	<!-- 中间装饰内容页面 -->
 	<decorator:body />
-	<span>尾部页面</span>
+	<p class="text-center"><small>Copyright©2016 yaoyuxiao All Rights Reserved.</small></p>
+	<p class="text-center"><small>版权所有©yaoyuxiao | 地址：中国●上海●青浦 | QQ：531416635</small></p>
+	
 </body>
 </html>
