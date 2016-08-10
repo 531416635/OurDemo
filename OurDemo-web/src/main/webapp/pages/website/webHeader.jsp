@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css"  />
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -86,7 +86,7 @@
 	<!-- 中间装饰内容页面 -->
 	<decorator:body />
 	<p class="text-center"><small>Copyright©2016 yaoyuxiao All Rights Reserved.</small></p>
-	<p class="text-center"><small>版权所有©yaoyuxiao | 地址：中国●上海●青浦 | QQ：531416635</small></p>
+	<p class="text-center"><small>版权所有©yaoyuxiao | 地址：中国·上海·青浦 | QQ：531416635</small></p>
 	
 </body>
 </html>
