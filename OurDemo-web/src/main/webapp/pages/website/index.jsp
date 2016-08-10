@@ -29,21 +29,20 @@
 </head>
 <body>
 	<h1>Hello World! This is OurDemo.</h1>
-	<h1>http://www.yyyweb.com/demo/slides-playing/index.html</h1>
-	<div style="width: 100%; height: 100%;">
+	<!-- <div style="width: 100%; height: 100%;">
 		<video style="width:100%;height:auto" controls="controls" id="example_video_1" loop="loop"
 		 class="video-js vjs-default-skin" preload="none" autoplay poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}"> 
 			<source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' /> 
 			<source src="video1.mp4" type="video/webm"> <source src="video1.mp4" type="video/ogg"> 
 			<track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
-			<!-- Tracks need an ending tag thanks to IE9 -->
+			Tracks need an ending tag thanks to IE9
 			<track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English"></track> 
-			<!-- Tracks need an ending tag thanks to IE9 -->
+			Tracks need an ending tag thanks to IE9
 			<p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that 
 				<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
 			</p>
 		</video>
-	</div>
+	</div> -->
 	<div>
 		<div>
 			<img class="image" src="<%=path%>/img/picture.png" alt="Picture" />
