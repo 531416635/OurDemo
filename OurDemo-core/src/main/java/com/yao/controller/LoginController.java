@@ -20,8 +20,6 @@ public class LoginController {
 	}
 	@RequestMapping("web/register")
 	public String toRegister2(String email1,String email2){
-		logger.info(email1);
-		logger.info(email2);
 		return "website/toRegister";
 	}
 	

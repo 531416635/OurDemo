@@ -12,10 +12,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
 <title>OurDemo1</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" />
 <link href="<%=path%>/css/viewer.css" rel="stylesheet" />
-<link href="stickup.css" rel="stylesheet"> 
 <style>
 .image, .images img {
 	max-height: 20%;
@@ -25,9 +25,20 @@
 .video-js .vjs-tech {
 	position: inherit;
 }
+
+#slides {
+	display: none;
+}
 </style>
 </head>
 <body>
+	<div  style="margin-top: 50px;"></div>
+	<div id="slides">
+		<img src="<%=path%>/img/example-slide-1.jpg" /> 
+		<img src="<%=path%>/img/example-slide-2.jpg" /> 
+		<img src="<%=path%>/img/example-slide-3.jpg" /> 
+		<img src="<%=path%>/img/example-slide-4.jpg" />
+	</div>
 	<h1>Hello World! This is OurDemo.</h1>
 	<!-- <div style="width: 100%; height: 100%;">
 		<video style="width:100%;height:auto" controls="controls" id="example_video_1" loop="loop"
@@ -46,7 +57,6 @@
 	<div>
 		<div>
 			<img class="image" src="<%=path%>/img/picture.png" alt="Picture" />
-			<img class="image2" src="<%=path%>/img/picture.png" alt="Picture" />
 		</div>
 		<div>
 			<ul class="images">
@@ -60,10 +70,40 @@
 	<script src="<%=path%>/js/jquery-3.0.0.min.js"></script>
 	<script src="<%=path%>/js/viewer.js"></script>
 	<script src="<%=path%>/js/video.js"></script>
+	<script src="<%=path%>/js/jquery.slides.min.js"></script>
 	<script>
 		$('.image').viewer();
 		$('.image2').viewer();
 		$('.images').viewer();
+		
+		/* 首页图片轮播JS函数 */
+		$(function() {
+			$("#slides").slidesjs({
+				width : 500,
+				height : 200,
+				start : 1,//默认首图显示第几张图片
+				play: {
+			          active: false,
+			          auto: true,
+			          interval: 6000,
+			          swap: false
+			        },
+				navigation : false,// 控制上一页/下一页显示
+				effect : {
+					slide : {
+						// Slide effect settings.
+						speed : 3000
+					// [number] Speed in milliseconds of the slide animation.
+					},
+					fade : {
+						speed : 1000,
+						// [number] Speed in milliseconds of the fade animation.
+						crossfade : true
+					// [boolean] Cross-fade the transition.
+					}
+				}
+			});
+		});
 	</script>
 </body>
 </html>

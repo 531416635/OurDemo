@@ -81,8 +81,6 @@
 </nav>
 <script src="<%=path%>/js/jquery.min.js"></script>
 <script src="<%=path%>/js/bootstrap.min.js"></script>
-<script src="<%=path%>/js/jsencrypt.min.js"></script>
-<script src="<%=path%>/js/encrypt.js"></script>
 	<!-- 中间装饰内容页面 -->
 	<decorator:body />
 	<p class="text-center"><small>Copyright©2016 yaoyuxiao All Rights Reserved.</small></p>
