@@ -79,6 +79,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<div  style="margin-top: 50px;"></div>
 <script src="<%=path%>/js/jquery.min.js"></script>
 <script src="<%=path%>/js/bootstrap.min.js"></script>
 	<!-- 中间装饰内容页面 -->

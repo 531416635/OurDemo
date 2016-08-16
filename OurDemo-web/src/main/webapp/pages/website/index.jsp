@@ -28,16 +28,66 @@
 
 #slides {
 	display: none;
+	position: relative;
 }
+.slidesjs-pagination{
+	z-index:20;
+	margin-top: -10px;
+	display:block;
+	position: absolute;
+	right: 0;
+}
+.slidesjs-pagination-item{
+	list-style-type:none;
+	display: inline-block;
+}
+.slidesjs-pagination-item a{
+	list-style-type:none;
+	cursor: pointer;
+    width: 3rem;
+    height: 0.5rem;
+    background: #ECF0F1;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+    float: left;
+    margin: 0 0.3em;
+}
+.active{
+	background: red !important;
+}
+
+
 </style>
 </head>
 <body>
-	<div  style="margin-top: 50px;"></div>
+	
 	<div id="slides">
 		<img src="<%=path%>/img/example-slide-1.jpg" /> 
 		<img src="<%=path%>/img/example-slide-2.jpg" /> 
 		<img src="<%=path%>/img/example-slide-3.jpg" /> 
 		<img src="<%=path%>/img/example-slide-4.jpg" />
+	</div>
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="text-center">青春</h1>
+			<div class="text-center">所有的结局都已写好</div>
+			<div class="text-center">所有的泪水也都已启程</div>
+			<div class="text-center">却忽然忘了是怎么样的一个开始</div>
+			<div class="text-center">在那个古老的不再回来的夏日</div>
+			<div class="text-center">无论我如何的去追索</div>
+			<div class="text-center">年轻的你只如云影掠过</div>
+			<div class="text-center">而你微笑的面容极浅极淡</div>
+			<div class="text-center">逐渐隐没在日落后的群岚</div>
+			<div class="text-center">遂翻开那发黄的扉页</div>
+			<div class="text-center">命运将它装订的极为拙劣</div>
+			<div class="text-center">含着泪 我一读再读</div>
+			<div class="text-center">却不得不承认</div>
+			<div class="text-center">青春 是一本太仓促的书</div>
+			<p>
+				<a class="btn btn-primary btn-lg" href="#" role="button">Learn
+					more</a>
+			</p>
+		</div>
 	</div>
 	<h1>Hello World! This is OurDemo.</h1>
 	<!-- <div style="width: 100%; height: 100%;">
