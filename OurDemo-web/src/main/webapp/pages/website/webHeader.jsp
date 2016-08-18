@@ -102,7 +102,7 @@
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="exampleInputEmail1">注册邮箱：</label>
+							<label for="exampleInputEmail1">邮箱：</label>
 							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入邮箱地址">
 						</div>
 						<div class="form-group">
@@ -112,12 +112,7 @@
 					</form>
 				</div>
 				<div class="text-center modal-footer">
-					<div id="warninglogin" class="alert alert-danger alert-dismissible text-left hide" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<strong>警告！</strong>用户名或密码错误。
-					</div>
+					<div id="warninglogin" ></div>
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 					<button type="button" class="btn btn-primary" id="signin">登录</button>
 				</div>

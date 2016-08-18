@@ -19,11 +19,17 @@ $("#signin").click(function(){
         dataType: "json",
         success: function(data){
         	if(1==data){
+        		var html="<div class=\"alert alert-danger alert-dismissible text-left\" role=\"alert\">"
+				+"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">"
+				+"<span aria-hidden=\"true\">&times;</span>"
+				+"</button>"
+				+"<strong>警告！</strong>用户名或密码错误,请重新输入"
+				+"</div>";
         		$("#exampleInputEmail1").val("");
         		$("#exampleInputPassword1").val("");
-        		$("#warninglogin").removeClass("hide");
+        		$("#warninglogin").append(html);
         	}else if(2==data){
-        		
+        		location.reload();
         	}
         }
     });
