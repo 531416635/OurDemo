@@ -49,13 +49,13 @@ public class SpringMailUtils {
                         true);  
   
         senderImpl.setUsername("yaoyuxiao1992@163.com"); // 根据自己的情况,设置username  
-        senderImpl.setPassword("19920829ourdemo"); // 根据自己的情况, 设置password  
+        senderImpl.setPassword("531416635/yyx"); // 根据自己的情况, 设置password  
         senderImpl.setPort(25);
         Properties prop = new Properties();  
         prop.put("mail.smtp.auth", "true"); // 将这个参数设为true，让服务器进行认证,认证用户名和密码是否正确  
-        prop.put("mail.smtp.timeout", "15000"); 
-        prop.setProperty("mail.smtp.host", "10.191.113.100");
-        prop.setProperty("mail.smtp.port", "8002");
+        prop.put("mail.smtp.timeout", "5000"); 
+        prop.setProperty("mail.smtp.host", "smtp.163.com");
+        prop.setProperty("mail.smtp.port", "25");
         senderImpl.setJavaMailProperties(prop);  
         // 发送邮件  
         senderImpl.send(mailMessage);  
@@ -64,6 +64,6 @@ public class SpringMailUtils {
 		return null;
 	}
 	public static void main(String[] args) throws MessagingException {
-		sendMail("531416635@qq.com","32423");
+		sendMail("531416635@qq.com","");
 	}
 }

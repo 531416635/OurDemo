@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WebController {
 
 	@RequestMapping(value="/index")
-	public String testd(){
+	public String index(){
 		return "website/index";
 	}
+	
 }

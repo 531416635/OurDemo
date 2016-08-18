@@ -20,6 +20,11 @@
 <title><decorator:title default="OurDemo" /></title>
 <decorator:head />
 <link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css"  />
+<style type="text/css">
+.modal-footer{
+	text-align: center;
+}
+</style>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -63,7 +68,10 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-     	<button type="button" class="btn btn-default navbar-btn">登录</button>
+     	<button type="button" class="btn btn-primary btn-lg" id="loginbtn" data-toggle="modal" data-target="#tologin">登录</button>
+     	<!-- <button type="button" class=""
+		>Launch demo modal
+		</button> -->
         <li><a href="#">Link</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -80,8 +88,47 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div  style="margin-top: 50px;"></div>
-<script src="<%=path%>/js/jquery.min.js"></script>
-<script src="<%=path%>/js/bootstrap.min.js"></script>
+
+	<!-- Modal -->
+	<div class="modal fade" id="tologin" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Sign in to OurDemo</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="exampleInputEmail1">注册邮箱：</label>
+							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入邮箱地址">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">密码：</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码">
+						</div>
+					</form>
+				</div>
+				<div class="text-center modal-footer">
+					<div id="warninglogin" class="alert alert-danger alert-dismissible text-left hide" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>警告！</strong>用户名或密码错误。
+					</div>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary" id="signin">登录</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="<%=path%>/js/jquery.min.js"></script>
+	<script src="<%=path%>/js/jquery.md5.js"></script>
+	<script src="<%=path%>/js/bootstrap.min.js"></script>
+	<script src="<%=path%>/js/webHeader.js"></script>
 	<!-- 中间装饰内容页面 -->
 	<decorator:body />
 	<p class="text-center"><small>Copyright©2016 yaoyuxiao All Rights Reserved.</small></p>
