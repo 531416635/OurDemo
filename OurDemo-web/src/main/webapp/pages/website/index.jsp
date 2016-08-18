@@ -30,41 +30,43 @@
 	display: none;
 	position: relative;
 }
-.slidesjs-pagination{
-	z-index:20;
+
+.slidesjs-pagination {
+	z-index: 20;
 	margin-top: -10px;
-	display:block;
+	display: block;
 	position: absolute;
 	right: 0;
 }
-.slidesjs-pagination-item{
-	list-style-type:none;
+
+.slidesjs-pagination-item {
+	list-style-type: none;
 	display: inline-block;
 }
-.slidesjs-pagination-item a{
-	list-style-type:none;
+
+.slidesjs-pagination-item a {
+	list-style-type: none;
 	cursor: pointer;
-    width: 3rem;
-    height: 0.5rem;
-    background: #ECF0F1;
-    opacity: 0.4;
-    filter: alpha(opacity=40);
-    float: left;
-    margin: 0 0.3em;
+	width: 3rem;
+	height: 0.5rem;
+	background: #ECF0F1;
+	opacity: 0.4;
+	filter: alpha(opacity = 40);
+	float: left;
+	margin: 0 0.3em;
 }
-.active{
+
+.active {
 	background: red !important;
 }
-/* .jumbotron{
-	display:inline;
-}
-.jumbotron .pinned{
-	float: right;
-}
-.jumbotron .container{
-	float: left;
-} */
 
+.pack {
+	margin:0;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background: url(../img/book.ico ) no-repeat;
+}
 </style>
 </head>
 <body>
@@ -124,16 +126,15 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="jumbotron">
-		<div class="pinned">
-			青春 是一本太仓促的书青春 是一本太仓促的书青春 是一本太仓促的书青春 是一本太仓促的书
-		</div>
-		<div class="container">
+		<div class="container" style="position: relative;" >
+			<div class="panel-body pack">
+				<h3>青春</h3><small>席慕蓉</small>
+			</div>
 			<h1 class="text-center">青春</h1>
 			<p class="text-center">所有的结局都已写好</p>
 			<p class="text-center">所有的泪水也都已启程</p>
-			<p class="text-center">却忽然忘了是怎么样的一个开始</p>
 			<p class="text-center">在那个古老的不再回来的夏日</p>
 			<p class="text-center">无论我如何的去追索</p>
 			<p class="text-center">年轻的你只如云影掠过</p>
@@ -146,7 +147,7 @@
 			<p class="text-center">青春 是一本太仓促的书</p>
 		</div>
 	</div>
-	
+
 	<%-- <h1>Hello World! This is OurDemo.</h1>
 	<div style="width: 100%; height: 100%;">
 		<video style="width:100%;height:auto" controls="controls" id="example_video_1" loop="loop"
