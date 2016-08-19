@@ -48,15 +48,13 @@
 				<li><a href="<%=path%>/web/toRegister.do">注册</a></li>
 				<li><a href="<%=path%>/admin/index.do">后台</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">班级<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
+						<li><a href="toalbum.do">相册</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">Separated link</a></li>
+						<li><a href="#">视频</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">One more separated link</a></li>
+						<li><a href="#">心情</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -87,6 +85,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${sessionScope.user.email}<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="javascript:void(0);">${sessionScope.user.username}</a></li>
+							<li role="separator" class="divider"></li>
 							<li><a href="javascript:void(0);">个人中心</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="javascript:void(0);">设置</a></li>

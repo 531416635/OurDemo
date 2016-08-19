@@ -68,6 +68,8 @@ public class LoginController {
 	@RequestMapping("web/loginout")
 	public String loginout(HttpServletRequest request){
 		HttpSession session = request.getSession(false);//防止创建Session 
+		User user =(User) session.getAttribute("user");
+		logger.info("退出成功！邮箱:{}，密码:{}",user.getEmail(),user.getPassword());
 		session.removeAttribute("user");
 		return "redirect:index.do";
 	}
