@@ -1,12 +1,8 @@
 package com.yao.controller;
 
-import java.beans.Beans;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +40,13 @@ public class LoginController {
 	public String toRegister2(String email1,String email2){
 		return "website/toRegister";
 	}
-	
+	/**
+	 * 登录（根据注册邮箱验证密码）
+	 * @param email
+	 * @param password
+	 * @param request
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("web/login")
 	public String login(String email,String password,HttpServletRequest request){
@@ -57,5 +59,16 @@ public class LoginController {
 			str="2";
 		}
 		return str;
+	}
+	
+	/**
+	 * 退出操作，清除session中的user值，防止创建session,重定向首页
+	 * @param request
+	 */
+	@RequestMapping("web/loginout")
+	public String loginout(HttpServletRequest request){
+		HttpSession session = request.getSession(false);//防止创建Session 
+		session.removeAttribute("user");
+		return "redirect:index.do";
 	}
 }
