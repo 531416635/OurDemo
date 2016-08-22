@@ -1,5 +1,7 @@
 package com.yao.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yao.model.User;
-import com.yao.service.UserService;
+import com.yao.service.LoginService;
+import com.yao.utils.MD5Utils;
 
 @Controller
 public class LoginController {
@@ -19,7 +22,7 @@ public class LoginController {
 	private static final Logger logger=LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
-	private UserService userService;
+	private LoginService loginService;
 	/**
 	 * 跳转到邮箱注册页面
 	 * 
@@ -30,10 +33,15 @@ public class LoginController {
 		return "website/toRegister";
 	}
 	
-	@RequestMapping(value="/sendRegisterMsg")
-	public String sendRegisterMsg(){
+	@ResponseBody
+	@RequestMapping(value="web/sendRegisterMsg")
+	public String sendRegisterMsg(User user){
+		//生成激活码
+		String activecode=MD5Utils.getMD5(user.getUsername()+user.getEmail()+"yyx");
+		user.setActiveCode(activecode);
+		user.setRegtime((java.sql.Date)new Date());
 		
-		return "website/index";
+		return "website/toRegister";
 	}
 	
 	@RequestMapping("web/register")
@@ -51,7 +59,7 @@ public class LoginController {
 	@RequestMapping("web/login")
 	public String login(String email,String password,HttpServletRequest request){
 		String str ="1";
-		User user=userService.findUserByEmail(email);
+		User user=loginService.findUserByEmail(email);
 		if(user!=null&&user.getPassword().equals(password)){
 			logger.info("登录成功！邮箱:{}，密码:{}",email,password);
 			HttpSession session=request.getSession();
