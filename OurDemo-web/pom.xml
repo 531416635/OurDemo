@@ -67,9 +67,9 @@
 				<version>2.2</version>
 				<configuration>
 					<!-- 添加本机的IP地址之后即可外网访问 -->
-					<hostName>10.233.53.237</hostName>
-					<path>/our</path>
-					<port>8081</port>
+					<hostName>localhost</hostName>
+					<path>/OurDemo</path>
+					<port>8888</port>
 					<uriEncoding>${encoding.version}</uriEncoding>
 					<server>tomcat</server>
 				</configuration>
