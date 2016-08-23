@@ -7,8 +7,8 @@ $("#loginbtn").click(function() {
 });
 
 $("#signin").click(function(){
-	var email=$("#exampleInputEmail1").val().trim();
-	var password=MD5($("#exampleInputPassword1").val().trim());
+	var email=$("#webheaderInputEmail1").val().trim();
+	var password=MD5($("#webheaderInputPassword1").val().trim());
 	$.ajax({
         type: "post",
         url: "login.do",

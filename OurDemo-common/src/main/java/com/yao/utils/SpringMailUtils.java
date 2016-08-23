@@ -5,6 +5,8 @@ import java.util.Properties;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
@@ -15,6 +17,9 @@ import org.springframework.mail.javamail.MimeMessageHelper;
  * @createDate 2016年8月2日 下午6:03:09
  */
 public class SpringMailUtils {
+	
+	private static final Logger logger=LoggerFactory.getLogger(SpringMailUtils.class);
+	
 	/**
 	 * 发送电子邮件工具类
 	 * @param toMailUrl 对方邮箱
@@ -59,8 +64,8 @@ public class SpringMailUtils {
         // 发送邮件  
         senderImpl.send(mailMessage);  
   
-        System.out.println("邮件发送成功..");  
-		return null;
+        logger.info("邮件发送成功..");  
+		return "邮件发送成功..";
 	}
 	public static void main(String[] args) throws MessagingException {
 		sendMail("531416635@qq.com","usernameio","activecodenn");

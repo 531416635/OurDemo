@@ -114,12 +114,12 @@
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="exampleInputEmail1">邮箱：</label>
-							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入邮箱地址">
+							<label>邮箱：</label>
+							<input type="email" class="form-control" id="webheaderInputEmail1" placeholder="请输入邮箱地址">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputPassword1">密码：</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码">
+							<label>密码：</label>
+							<input type="password" class="form-control" id="webheaderInputPassword1" placeholder="请输入密码">
 						</div>
 					</form>
 				</div>

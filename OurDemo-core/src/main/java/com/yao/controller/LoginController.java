@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.yao.model.User;
 import com.yao.service.LoginService;
 import com.yao.utils.MD5Utils;
+import com.yao.utils.SpringMailUtils;
 
 @Controller
 public class LoginController {
@@ -33,14 +34,28 @@ public class LoginController {
 		return "website/toRegister";
 	}
 	
+	/**
+	 * 注册页面发送注册链接
+	 * @param user
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="web/sendRegisterMsg")
 	public String sendRegisterMsg(User user){
 		//生成激活码
 		String activecode=MD5Utils.getMD5(user.getUsername()+user.getEmail()+"yyx");
 		user.setActiveCode(activecode);
-		user.setRegtime((java.sql.Date)new Date());
-		
+		user.setRegtime(new Date());
+		try {
+			String str = loginService.saveRegUser(user);
+			if(str==""){
+				SpringMailUtils.sendMail(user.getEmail(), user.getUsername(), activecode);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.info(e.getMessage());
+		}
 		return "website/toRegister";
 	}
 	
