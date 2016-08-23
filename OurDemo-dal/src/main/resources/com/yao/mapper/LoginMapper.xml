@@ -9,12 +9,20 @@
 	</select>
 	
 	<!--保存注册用户信息 -->
-	<select id="saveRegUser" parameterMap="saveRegUserMap"  statementType="CALLABLE">
-		select
-		id,username,password,email,phone,roleId,regtime,status,isEmailVerify,activeCode
-		from userinfo where email = #{email}
+	<select id="saveRegUser" parameterType="com.yao.model.User"  statementType="CALLABLE" resultType="string">
+		select saveRegUser(
+		#{username, mode=IN, jdbcType=VARCHAR},
+		#{password, mode=IN, jdbcType=VARCHAR},
+		#{email, mode=IN, jdbcType=VARCHAR},
+		#{phone, mode=IN, jdbcType=VARCHAR},
+		#{roleId, mode=IN, jdbcType=INTEGER},
+		#{regtime, mode=IN, jdbcType=DATE},
+		#{status, mode=IN, jdbcType=INTEGER},
+		#{isEmailVerify, mode=IN, jdbcType=INTEGER},
+		#{activeStatus, mode=IN, jdbcType=INTEGER},
+		#{activeCode, mode=IN, jdbcType=VARCHAR});
 	</select>
-     <parameterMap type="com.yao.model.User" id="saveRegUserMap" >
+    <!-- <parameterMap type="com.yao.model.User" id="saveRegUserMap" >
          <parameter property="username" mode="IN" jdbcType="VARCHAR"/>
          <parameter property="password" mode="IN" jdbcType="VARCHAR"/>
          <parameter property="email" mode="IN" jdbcType="VARCHAR"/>
@@ -26,6 +34,6 @@
          <parameter property="activeStatus" mode="IN" jdbcType="INTEGER"/>
          <parameter property="activeCode" mode="IN" jdbcType="VARCHAR"/>
          <parameter property="reslutstr" mode="OUT" jdbcType="VARCHAR"/>
-     </parameterMap>
+    </parameterMap>  -->
 
 </mapper>

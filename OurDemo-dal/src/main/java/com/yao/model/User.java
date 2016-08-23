@@ -1,6 +1,6 @@
 package com.yao.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * 用户信息表userinfo
