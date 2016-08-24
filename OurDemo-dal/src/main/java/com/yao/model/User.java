@@ -12,14 +12,15 @@ public class User {
 	private int id;// 自增长ID
 	private String username;// 用户名
 	private String password;// 密码
+	private int usertype;//用户类型
+	private String userphoto;//用户头像
 	private String email;// 邮箱
 	private String phone;// 电话
-	private int roleId;// 角色ID
+	private int roleid;// 角色ID
 	private Date regtime;// 注册时间
-	private int status;// 账户状态
-	private int isEmailVerify;// 是否是邮箱注册
-	private int activeStatus;// 激活码状态
-	private String activeCode;//激活码
+	private int userstatus;// 账户状态
+	private int activestatus;// 激活码状态
+	private String activecode;//激活码
 	public int getId() {
 		return id;
 	}
@@ -38,6 +39,18 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public int getUsertype() {
+		return usertype;
+	}
+	public void setUsertype(int usertype) {
+		this.usertype = usertype;
+	}
+	public String getUserphoto() {
+		return userphoto;
+	}
+	public void setUserphoto(String userphoto) {
+		this.userphoto = userphoto;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -50,11 +63,11 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getRoleId() {
-		return roleId;
+	public int getRoleid() {
+		return roleid;
 	}
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+	public void setRoleid(int roleid) {
+		this.roleid = roleid;
 	}
 	public Date getRegtime() {
 		return regtime;
@@ -62,39 +75,32 @@ public class User {
 	public void setRegtime(Date regtime) {
 		this.regtime = regtime;
 	}
-	public int getStatus() {
-		return status;
+	public int getUserstatus() {
+		return userstatus;
 	}
-	public void setStatus(int status) {
-		this.status = status;
+	public void setUserstatus(int userstatus) {
+		this.userstatus = userstatus;
 	}
-	public int getIsEmailVerify() {
-		return isEmailVerify;
+	public int getActivestatus() {
+		return activestatus;
 	}
-	public void setIsEmailVerify(int isEmailVerify) {
-		this.isEmailVerify = isEmailVerify;
+	public void setActivestatus(int activestatus) {
+		this.activestatus = activestatus;
 	}
-	public int getActiveStatus() {
-		return activeStatus;
+	public String getActivecode() {
+		return activecode;
 	}
-	public void setActiveStatus(int activeStatus) {
-		this.activeStatus = activeStatus;
-	}
-	public String getActiveCode() {
-		return activeCode;
-	}
-	public void setActiveCode(String activeCode) {
-		this.activeCode = activeCode;
+	public void setActivecode(String activecode) {
+		this.activecode = activecode;
 	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password="
-				+ password + ", email=" + email + ", phone=" + phone
-				+ ", roleId=" + roleId + ", regtime=" + regtime + ", status="
-				+ status + ", isEmailVerify=" + isEmailVerify
-				+ ", activeStatus=" + activeStatus + ", activeCode="
-				+ activeCode + "]";
+				+ password + ", usertype=" + usertype + ", userphoto="
+				+ userphoto + ", email=" + email + ", phone=" + phone
+				+ ", roleid=" + roleid + ", regtime=" + regtime
+				+ ", userstatus=" + userstatus + ", activestatus="
+				+ activestatus + ", activecode=" + activecode + "]";
 	}
-	
 	
 }

@@ -4,7 +4,7 @@
 	<!--根据邮箱地址查询用户名信息 -->
 	<select id="findUserByEmail" parameterType="string" resultType="com.yao.model.User">
 		select
-		id,username,password,email,phone,roleId,regtime,status,isEmailVerify,activeCode
+		id,username,password,usertype,userphoto,email,phone,roleId,regtime,userstatus,activecode
 		from userinfo where email = #{email}
 	</select>
 	
@@ -13,14 +13,15 @@
 		select saveRegUser(
 		#{username, mode=IN, jdbcType=VARCHAR},
 		#{password, mode=IN, jdbcType=VARCHAR},
+		#{usertype, mode=IN, jdbcType=INTEGER},
+		#{userphoto, mode=IN, jdbcType=VARCHAR},
 		#{email, mode=IN, jdbcType=VARCHAR},
 		#{phone, mode=IN, jdbcType=VARCHAR},
-		#{roleId, mode=IN, jdbcType=INTEGER},
-		#{regtime, mode=IN, jdbcType=DATE},
-		#{status, mode=IN, jdbcType=INTEGER},
-		#{isEmailVerify, mode=IN, jdbcType=INTEGER},
-		#{activeStatus, mode=IN, jdbcType=INTEGER},
-		#{activeCode, mode=IN, jdbcType=VARCHAR});
+		#{roleid, mode=IN, jdbcType=INTEGER},
+		#{regtime, mode=IN, jdbcType=TIMESTAMP},
+		#{userstatus, mode=IN, jdbcType=INTEGER},
+		#{activestatus, mode=IN, jdbcType=INTEGER},
+		#{activecode, mode=IN, jdbcType=VARCHAR});
 	</select>
     <!-- <parameterMap type="com.yao.model.User" id="saveRegUserMap" >
          <parameter property="username" mode="IN" jdbcType="VARCHAR"/>

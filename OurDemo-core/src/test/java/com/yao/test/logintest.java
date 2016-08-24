@@ -30,7 +30,7 @@ public class logintest {
 		user.setEmail("5314126263@qq.com");
 		user.setUsername("eee444");
 		user.setRegtime(new Date());
-		user.setStatus(3);
+		user.setUserstatus(3);
 		try {
 			String str=loginService.saveRegUser(user);
 			logger.info(str);

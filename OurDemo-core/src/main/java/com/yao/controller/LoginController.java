@@ -44,8 +44,8 @@ public class LoginController {
 	public String sendRegisterMsg(User user){
 		//生成激活码
 		String activecode=MD5Utils.getMD5(user.getUsername()+user.getEmail()+"yyx");
-		user.setActiveCode(activecode);
-		user.setRegtime(new Date());
+		user.setActivecode(activecode);
+			user.setRegtime(new Date());
 		try {
 			String str = loginService.saveRegUser(user);
 			if(str=="3"){
@@ -62,6 +62,7 @@ public class LoginController {
 	public String toRegister2(String email1,String email2){
 		return "website/toRegister";
 	}
+	
 	/**
 	 * 登录（根据注册邮箱验证密码）
 	 * @param email
