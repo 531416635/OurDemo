@@ -48,15 +48,14 @@ public class LoginController {
 		user.setRegtime(new Date());
 		try {
 			String str = loginService.saveRegUser(user);
-			if(str==""){
+			if(str=="3"){
 				SpringMailUtils.sendMail(user.getEmail(), user.getUsername(), activecode);
 			}
-			
+			return str;
 		} catch (Exception e) {
-			// TODO: handle exception
 			logger.info(e.getMessage());
 		}
-		return "website/toRegister";
+		return "";
 	}
 	
 	@RequestMapping("web/register")

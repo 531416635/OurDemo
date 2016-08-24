@@ -18,7 +18,7 @@
 max-width: 250px;
 }
 .input-danger{
-	border-color: #EBCCD1 !important;
+	border-color: #FC4343 !important;
     outline: 0 !important;
     background-color: #F2DEDE !important;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6) !important;
@@ -39,6 +39,7 @@ max-width: 250px;
 					<label>邮箱：</label>
 					<input id="toregisteremail" type="email" name="email"  class="form-control"  placeholder="请输入邮箱">
 				</div>
+				<div class="form-group" id="msgDIV"></div>
 				<button type="button" id="toregisterbtn" class="btn btn-default">注册</button>
 			</form>
 		</div>
@@ -46,6 +47,9 @@ max-width: 250px;
 	<script type="text/javascript">
 	$("#toregisterusername").focus(function(){
 		$("#toregisterusername").removeClass("input-danger");
+	});
+	$("#toregisteremail").focus(function(){
+		$("#toregisteremail").removeClass("input-danger");
 	});
 	</script>
 	<script src="<%=path%>/js/toRegister.js"></script>

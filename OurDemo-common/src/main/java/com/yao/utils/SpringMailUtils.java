@@ -23,6 +23,8 @@ public class SpringMailUtils {
 	/**
 	 * 发送电子邮件工具类
 	 * @param toMailUrl 对方邮箱
+	 * @param username 注册的用户名
+	 * @param activeCode 生产的激活码
 	 * @return
 	 * @throws MessagingException
 	 */
@@ -39,7 +41,7 @@ public class SpringMailUtils {
         // 设置收件人，寄件人  
         messageHelper.setTo(toMailUrl);  
         messageHelper.setFrom("yaoyuxiao1992@163.com");  
-        messageHelper.setSubject("测试HTML邮件！");  
+        messageHelper.setSubject("欢迎注册OurDemo");  
         // true 表示启动HTML格式的邮件  
         messageHelper  
                 .setText("<html><head></head><body><pre>亲爱的用户"+username+"：您好！"+
