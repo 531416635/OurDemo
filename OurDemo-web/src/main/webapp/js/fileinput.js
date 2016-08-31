@@ -1355,7 +1355,6 @@
                 };
             self._initZoomButton();
             self.$preview.find('.kv-file-remove').each(function () {
-            	alert();
                 var $el = $(this), vUrl = $el.data('url') || self.deleteUrl, vKey = $el.data('key');
                 if (isEmpty(vUrl) || vKey === undefined) {
                     return;
@@ -3110,29 +3109,34 @@
     };
 
     $.fn.fileinput.defaults = {
-        language: 'en',
-        showCaption: true,
-        showBrowse: true,
-        showPreview: true,
-        showRemove: true,
-        showUpload: true,
+        language: 'zh',//默认语言
+        showCaption: true,//input框中的标题和input框是否显示
+        showBrowse: true,//"浏览"按钮是否显示。必须显示，不然怎么浏览选择文件
+        showPreview: true,//是否显示预览框，即缩略图。酷炫效果都靠它了，必须显示
+        showRemove: true,//是否显示全部取消的按钮
+        showUpload: true,//是否显示全部上传的按钮
+        /*boolean whether to display the file upload cancel button. Defaults to true.
+        *This will be only enabled and displayed when an AJAX upload is in process*/
         showCancel: true,
-        showClose: true,
+        showClose: true,//预览框右上角的X符号---“取消”，是否显示
+        /*boolean whether to persist display of the uploaded file thumbnails in the preview window (for ajax uploads) 
+         *until the remove/clear button is pressed.  Defaults to true.
+         *When set to false, a next batch of files selected for upload will clear these thumbnails from preview*/
         showUploadedThumbs: true,
-        browseOnZoneClick: false,
-        autoReplace: false,
-        previewClass: '',
-        captionClass: '',
+        browseOnZoneClick: true,//是否启用在预览区通过“点击”来预览或选择文件。厉害！
+        autoReplace: false,//多次上传（千万不能是单次）超出最大上传文件数量后是否替换掉全部已选择的文件。。。
+        previewClass: '',//给预览框加css样式类
+        captionClass: '',//给input选择框加css样式类
         mainClass: 'file-caption-main',
         mainTemplate: null,
-        purifyHtml: true,
-        fileSizeGetter: null,
-        initialCaption: '',
-        initialPreview: [],
-        initialPreviewDelimiter: '*$$*',
-        initialPreviewAsData: false,
-        initialPreviewFileType: 'image',
-        initialPreviewConfig: [],
+        purifyHtml: true,//没啥用，还需要一个插件。。whether to purify HTML content displayed for HTML content type in preview. Defaults to true. This functionality will need the DomPurify plugin by cure53 to be loaded.
+        fileSizeGetter: null,//友好化文件大小，官网上显示此处可以添加函数function（），['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+        initialCaption: '',//初始化
+        initialPreview: [],//初始化预览框
+        initialPreviewDelimiter: '*$$*',//用于分割初始化预览图内容的分割符。只有在 initialPreview 属性传入的参数是字符串而不是数组时可用
+        initialPreviewAsData: false,//没什么用
+        initialPreviewFileType: 'image',//初始化预览框中文件的类型
+        initialPreviewConfig: [],//初始化配置，请看官网示例http://plugins.krajee.com/file-input
         initialPreviewThumbTags: [],
         previewThumbTags: {},
         initialPreviewShowDelete: true,
@@ -3193,8 +3197,8 @@
         resizePreference: 'width',
         resizeQuality: 0.92,
         resizeDefaultImageType: 'image/jpeg',
-        maxFileSize: 0,
-        maxFilePreviewSize: 25600, // 25 MB
+        maxFileSize: 0,//最大上传文件大小，默认0代表不受限制（单位是kb）
+        maxFilePreviewSize: 25600, // 25 MB，预览框内最大文件的大小（单位是kb）
         minFileCount: 0,
         maxFileCount: 0,
         validateInitialCount: false,
@@ -3273,7 +3277,65 @@
             close: 'Close detailed preview'
         }
     };
-
+    $.fn.fileinputLocales['zh'] = {
+            fileSingle: '文件',
+            filePlural: '多个文件',
+            browseLabel: '选择 &hellip;',
+            removeLabel: '移除',
+            removeTitle: '清除选中文件',
+            cancelLabel: '取消',
+            cancelTitle: '取消进行中的上传',
+            uploadLabel: '上传',
+            uploadTitle: '上传选中文件',
+            msgNo: '没有',
+            msgNoFilesSelected: '',
+            msgCancelled: '取消',
+            msgZoomModalHeading: '详细预览',
+            msgSizeTooLarge: '文件 "{name}" (<b>{size} KB</b>) 超过了允许大小 <b>{maxSize} KB</b>.',
+            msgFilesTooLess: '你必须选择最少 <b>{n}</b> {files} 来上传. ',
+            msgFilesTooMany: '选择的上传文件个数 <b>({n})</b> 超出最大文件的限制个数 <b>{m}</b>.',
+            msgFileNotFound: '文件 "{name}" 未找到!',
+            msgFileSecured: '安全限制，为了防止读取文件 "{name}".',
+            msgFileNotReadable: '文件 "{name}" 不可读.',
+            msgFilePreviewAborted: '取消 "{name}" 的预览.',
+            msgFilePreviewError: '读取 "{name}" 时出现了一个错误.',
+            msgInvalidFileType: '不正确的类型 "{name}". 只支持 "{types}" 类型的文件.',
+            msgInvalidFileExtension: '不正确的文件扩展名 "{name}". 只支持 "{extensions}" 的文件扩展名.',
+            msgUploadAborted: '该文件上传被中止',
+            msgUploadThreshold: 'Processing...',
+            msgValidationError: '验证错误',
+            msgLoading: '加载第 {index} 文件 共 {files} &hellip;',
+            msgProgress: '加载第 {index} 文件 共 {files} - {name} - {percent}% 完成.',
+            msgSelected: '{n} {files} 选中',
+            msgFoldersNotAllowed: '只支持拖拽文件! 跳过 {n} 拖拽的文件夹.',
+            msgImageWidthSmall: '宽度的图像文件的"{name}"的必须是至少{size}像素.',
+            msgImageHeightSmall: '图像文件的"{name}"的高度必须至少为{size}像素.',
+            msgImageWidthLarge: '宽度的图像文件"{name}"不能超过{size}像素.',
+            msgImageHeightLarge: '图像文件"{name}"的高度不能超过{size}像素.',
+            msgImageResizeError: '无法获取的图像尺寸调整。',
+            msgImageResizeException: '错误而调整图像大小。<pre>{errors}</pre>',
+            dropZoneTitle: '拖拽文件到这里 &hellip;',
+            dropZoneClickTitle: '<br>(或通过点击来选择{files})',
+            fileActionSettings: {
+                removeTitle: '删除文件',
+                uploadTitle: '上传文件',
+                zoomTitle: '查看详情',
+                dragTitle: 'Move / Rearrange',
+                indicatorNewTitle: '没有上传',
+                indicatorSuccessTitle: '上传',
+                indicatorErrorTitle: '上传错误',
+                indicatorLoadingTitle: '上传 ...'
+            },
+            previewZoomButtonTitles: {
+                prev: 'View previous file',
+                next: 'View next file',
+                toggleheader: 'Toggle header',
+                fullscreen: 'Toggle full screen',
+                borderless: 'Toggle borderless mode',
+                close: 'Close detailed preview'
+            }
+        };
+    
     $.fn.fileinput.Constructor = FileInput;
 
     /**

@@ -21,22 +21,23 @@
 	<input id="input-700" name="filename" type="file" multiple="true" class="file-loading">
 	
 	<script src="<%=path%>/js/fileinput.js" type="text/javascript"></script>
-	<script src="<%=path%>/js/zh.js" type="text/javascript"></script>
 	<script>
 		$("#input-700").fileinput({
 			language:"zh",
+			/* initialPreview: [
+			                 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg',
+			                 'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg'
+			             ], */
 			uploadUrl : "http://localhost:8888/OurDemo/web/toalbumajax.do", // server upload action
 			uploadAsync: true,
-		    showUpload: true, // hide upload button
-		    showRemove: true, // hide remove button
 		    minFileCount: 1,
-		    maxFileCount: 10,
+		    maxFileCount: 4,
 	        //dropZoneEnabled:false,
 	       // resizeImage: false,
 	        //showCaption: false,
 	        //showPreview: false,
 		}).on("filebatchselected", function(event, files) {
-            $(this).fileinput("upload");
+           // $(this).fileinput("upload");
         });
        /*  .on("fileuploaded", function(event, data,xhr) {
         	        var obj = JSON.parse(data);
