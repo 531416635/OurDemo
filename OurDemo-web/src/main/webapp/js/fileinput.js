@@ -1349,7 +1349,7 @@
                 resetProgress = function () {
                     var hasFiles = self.isUploadable ? previewCache.count(self.id) : self.$element.get(0).files.length;
                     if (self.$preview.find('.kv-file-remove').length === 0 && !hasFiles) {
-                        self.reset();
+                    	self.reset();
                         self.initialCaption = '';
                     }
                 };
@@ -3109,44 +3109,44 @@
     };
 
     $.fn.fileinput.defaults = {
-        language: 'zh',//默认语言
-        showCaption: true,//input框中的标题和input框是否显示
-        showBrowse: true,//"浏览"按钮是否显示。必须显示，不然怎么浏览选择文件
-        showPreview: true,//是否显示预览框，即缩略图。酷炫效果都靠它了，必须显示
-        showRemove: true,//是否显示全部取消的按钮
-        showUpload: true,//是否显示全部上传的按钮
+        language: 'zh',//String ,默认语言
+        showCaption: true,//boolean ,input框中的标题和input框是否显示
+        showBrowse: true,//boolean ,"浏览"按钮是否显示。必须显示，不然怎么浏览选择文件
+        showPreview: true,//boolean ,是否显示预览框，即缩略图。酷炫效果都靠它了，必须显示
+        showRemove: true,//boolean ,是否显示全部取消的按钮
+        showUpload: true,//boolean ,是否显示全部上传的按钮
         /*boolean whether to display the file upload cancel button. Defaults to true.
         *This will be only enabled and displayed when an AJAX upload is in process*/
-        showCancel: true,
-        showClose: true,//预览框右上角的X符号---“取消”，是否显示
+        showCancel: true,//boolean ,
+        showClose: true,//boolean ,预览框右上角的X符号---“取消”，是否显示
         /*boolean whether to persist display of the uploaded file thumbnails in the preview window (for ajax uploads) 
          *until the remove/clear button is pressed.  Defaults to true.
          *When set to false, a next batch of files selected for upload will clear these thumbnails from preview*/
-        showUploadedThumbs: true,
-        browseOnZoneClick: true,//是否启用在预览区通过“点击”来预览或选择文件。厉害！
-        autoReplace: false,//多次上传（千万不能是单次）超出最大上传文件数量后是否替换掉全部已选择的文件。。。
-        previewClass: '',//给预览框加css样式类
-        captionClass: '',//给input选择框加css样式类
-        mainClass: 'file-caption-main',
+        showUploadedThumbs: true,//boolean ,
+        browseOnZoneClick: true,//boolean ,是否启用在预览区通过“点击”来预览或选择文件。厉害！
+        autoReplace: false,//boolean ,多次上传（千万不能是单次）超出最大上传文件数量后是否替换掉全部已选择的文件。。。
+        previewClass: '',//String ,给预览框加css样式类
+        captionClass: '',//String ,给input选择框加css样式类
+        mainClass: 'file-caption-main',//String ,
         mainTemplate: null,
-        purifyHtml: true,//没啥用，还需要一个插件。。whether to purify HTML content displayed for HTML content type in preview. Defaults to true. This functionality will need the DomPurify plugin by cure53 to be loaded.
-        fileSizeGetter: null,//友好化文件大小，官网上显示此处可以添加函数function（），['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-        initialCaption: '',//初始化
-        initialPreview: [],//初始化预览框
-        initialPreviewDelimiter: '*$$*',//用于分割初始化预览图内容的分割符。只有在 initialPreview 属性传入的参数是字符串而不是数组时可用
-        initialPreviewAsData: false,//没什么用
-        initialPreviewFileType: 'image',//初始化预览框中文件的类型
-        initialPreviewConfig: [],//初始化配置，请看官网示例http://plugins.krajee.com/file-input
-        initialPreviewThumbTags: [],
-        previewThumbTags: {},
-        initialPreviewShowDelete: true,
-        removeFromPreviewOnError: false,
-        deleteUrl: '',
-        deleteExtraData: {},
-        overwriteInitial: true,
-        layoutTemplates: defaultLayoutTemplates,
-        previewTemplates: defaultPreviewTemplates,
-        previewZoomSettings: defaultPreviewZoomSettings,
+        purifyHtml: true,//boolean ,没啥用，还需要一个插件。。whether to purify HTML content displayed for HTML content type in preview. Defaults to true. This functionality will need the DomPurify plugin by cure53 to be loaded.
+        fileSizeGetter: null,//boolean ,友好化文件大小，默认为空，代表['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+        initialCaption: '',//String ,初始化展示标题框，如果你没有设值并且initialPreview设置为true，那么这里将默认显示{preview-file-count}字段的意思
+        initialPreview: [],//String | array ,初始化预览框
+        initialPreviewDelimiter: '*$$*',//String ,用于分割初始化预览图内容的分割符。只有在 initialPreview 属性传入的参数是字符串而不是数组时可用
+        initialPreviewAsData: false,//boolean ,没什么用
+        initialPreviewFileType: 'image',//String ,初始化预览框中文件的类型
+        initialPreviewConfig: [],//array ,初始化配置，请看官网示例http://plugins.krajee.com/file-input
+        initialPreviewThumbTags: [],//array ,
+        previewThumbTags: {},//array ,
+        initialPreviewShowDelete: true,//boolean ,是否在initialPreview初始化预览框时，展示删除按钮
+        removeFromPreviewOnError: false,//boolean ,是否应该从错误预览中删除文件缩略图
+        deleteUrl: '',//String ,通过ajax请求，删除初始化预览框中的内容，会被initialPreviewConfig['url']属性覆盖重写
+        deleteExtraData: {},//object | function ,
+        overwriteInitial: true,//boolean ,重写初始化设置
+        layoutTemplates: defaultLayoutTemplates,//object ,可用来重新配置布局中的每一个模板
+        previewTemplates: defaultPreviewTemplates,//object ,预览文件类型模板的配置
+        previewZoomSettings: defaultPreviewZoomSettings,//object ,用来设置HTML元素的一些css属性
         previewZoomButtonIcons: {
             prev: '<i class="glyphicon glyphicon-triangle-left"></i>',
             next: '<i class="glyphicon glyphicon-triangle-right"></i>',
@@ -3163,54 +3163,71 @@
             borderless: 'btn btn-default',
             close: 'btn btn-default'
         },
-        allowedPreviewTypes: defaultPreviewTypes,
-        allowedPreviewMimeTypes: null,
-        allowedFileTypes: null,
-        allowedFileExtensions: null,
-        defaultPreviewContent: null,
-        customLayoutTags: {},
-        customPreviewTags: {},
-        previewSettings: defaultPreviewSettings,
-        fileTypeSettings: defaultFileTypeSettings,
-        previewFileIcon: '<i class="glyphicon glyphicon-file"></i>',
-        previewFileIconClass: 'file-other-icon',
-        previewFileIconSettings: {},
-        previewFileExtSettings: {},
-        buttonLabelClass: 'hidden-xs',
-        browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>&nbsp;',
-        browseClass: 'btn btn-primary',
-        removeIcon: '<i class="glyphicon glyphicon-trash"></i>',
-        removeClass: 'btn btn-default',
-        cancelIcon: '<i class="glyphicon glyphicon-ban-circle"></i>',
-        cancelClass: 'btn btn-default',
-        uploadIcon: '<i class="glyphicon glyphicon-upload"></i>',
-        uploadClass: 'btn btn-default',
-        uploadUrl: null,
-        uploadAsync: true,
-        uploadExtraData: {},
+        allowedPreviewTypes: defaultPreviewTypes,//array ,用来设置预览框中可显示的缩略图的文件类型，默认为['image', 'html', 'text', 'video', 'audio', 'flash', 'object']
+        allowedPreviewMimeTypes: null,//array ,用来设置允许的mime（多用途的网际邮件扩充协议）类型，默认为空，表示允许所有可用的协议类型。全部协议可参考https://www.sitepoint.com/web-foundations/mime-types-complete-list/
+        allowedFileTypes: null,//array ,用来设置上传文件类型，默认为空，代表着支持所有可上传的文件类型。格式要求为['image', 'html', 'text', 'video', 'audio', 'flash', 'object']
+        allowedFileExtensions: null,//array ,设置允许的文件扩展列表，格式为：['jpg', 'gif', 'png', 'txt']
+        defaultPreviewContent: null,//string ,刚开始展示在预览区中的内容，当上传文件后，这个内容会消失，当文件清空之后，这个内容又会显示
+        customLayoutTags: {},//object ,
+        customPreviewTags: {},//object ,
+        previewSettings: defaultPreviewSettings,//object ,预览框默认的上传的预览文件缩略图的宽和高的设置，默认设置为：{image: {width: "auto", height: "160px"},html: {width: "213px", height: "160px"},text: {width: "160px", height: "136px"}, video: {width: "213px", height: "160px"},audio: {width: "213px", height: "80px"},flash: {width: "213px", height: "160px"},object: {width: "213px", height: "160px"},other: {width: "160px", height: "160px"}}
+        fileTypeSettings: defaultFileTypeSettings,//object ,验证和确认文件类型，若类型不匹配，会有回调函数。
+        previewFileIcon: '<i class="glyphicon glyphicon-file"></i>',//string ，当文件类型不匹配时，缩略图标就显示这个图片
+        previewFileIconClass: 'file-other-icon',////string 
+        previewFileIconSettings: {//图标设置
+           // 'doc': '<i class="glyphicon glyphicon-th-list"></i>',
+           // 'xls': '<i class="fa fa-file-excel-o text-success"></i>',
+          //  'ppt': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
+           // 'jpg': '<i class="fa fa-file-photo-o text-warning"></i>',
+           // 'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
+           // 'zip': '<i class="fa fa-file-archive-o text-muted"></i>',
+        },
+        previewFileExtSettings: {//object ,当你设置图标时，通过下面的设置会让doc图标匹配doc和docx文件类型，即可1对多。
+    	    /*'doc': function(ext) {
+    	        return ext.match(/(doc|docx)$/i);
+    	    },
+    	    'xls': function(ext) {
+    	        return ext.match(/(xls|xlsx)$/i);
+    	    },
+    	    'ppt': function(ext) {
+    	        return ext.match(/(ppt|pptx)$/i);
+    	    }*/
+        },
+        buttonLabelClass: 'hidden-xs',//string , 添加css样式
+        browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>&nbsp;',//string ,设置浏览按钮的图标
+        browseClass: 'btn btn-primary',//string ,设置浏览按钮的样式
+        removeIcon: '<i class="glyphicon glyphicon-trash"></i>',//string ,设置删除按钮的图标
+        removeClass: 'btn btn-default',//string ,设置删除按钮的图标
+        cancelIcon: '<i class="glyphicon glyphicon-ban-circle"></i>',//string ,设置取消按钮的图标
+        cancelClass: 'btn btn-default',//string ,设置取消按钮的图标
+        uploadIcon: '<i class="glyphicon glyphicon-upload"></i>',//string ,设置上传按钮的图标
+        uploadClass: 'btn btn-default',//string ,设置上传按钮的图标
+        uploadUrl: null,//string ,ajax请求上传地址
+        uploadAsync: true,//boolean ,是否异步批量上传多个文件！多个文件！多个文件！
+        uploadExtraData: {},//object | function ,
         zoomModalHeight: 480,
-        minImageWidth: null,
-        minImageHeight: null,
-        maxImageWidth: null,
-        maxImageHeight: null,
-        resizeImage: false,
-        resizePreference: 'width',
-        resizeQuality: 0.92,
+        minImageWidth: null,//int ,最小图片宽度,默认单位px
+        minImageHeight: null,//int ,最小图片高度,默认单位px
+        maxImageWidth: null,//int ,最大图片宽度,默认单位px
+        maxImageHeight: null,//int ,最大图片高度,默认单位px
+        resizeImage: false,//boolean ,调整上传图片
+        resizePreference: 'width',//string, 基于宽度和高度重置图片大小，前提是resizeImage为true。
+        resizeQuality: 0.92,//float  重置图片的质量，范围在：0.00到1.00之间
         resizeDefaultImageType: 'image/jpeg',
-        maxFileSize: 0,//最大上传文件大小，默认0代表不受限制（单位是kb）
-        maxFilePreviewSize: 25600, // 25 MB，预览框内最大文件的大小（单位是kb）
-        minFileCount: 0,
-        maxFileCount: 0,
-        validateInitialCount: false,
-        msgValidationErrorClass: 'text-danger',
-        msgValidationErrorIcon: '<i class="glyphicon glyphicon-exclamation-sign"></i> ',
-        msgErrorClass: 'file-error-message',
-        progressThumbClass: "progress-bar progress-bar-success progress-bar-striped active",
-        progressClass: "progress-bar progress-bar-success progress-bar-striped active",
-        progressCompleteClass: "progress-bar progress-bar-success",
-        progressErrorClass: "progress-bar progress-bar-danger",
-        progressUploadThreshold: 99,
-        previewFileType: 'image',
+        maxFileSize: 0,//float ,最大上传文件大小，默认0代表不受限制（单位是kb）
+        maxFilePreviewSize: 25600, //float, 25 MB，预览框内最大文件的大小（单位是kb）
+        minFileCount: 0,//int ,多个文件上传的最小数量限制。0意味着随意可选
+        maxFileCount: 0,//int ,多个文件上传的最大数量限制。0意味着不受限制
+        validateInitialCount: false,//boolean ,在minFileCount和maxFileCount中是否包括初始化的文件数量
+        msgValidationErrorClass: 'text-danger',//string ,
+        msgValidationErrorIcon: '<i class="glyphicon glyphicon-exclamation-sign"></i> ',//string
+        msgErrorClass: 'file-error-message',//string
+        progressThumbClass: "progress-bar progress-bar-success progress-bar-striped active",//string , 上传的进度条
+        progressClass: "progress-bar progress-bar-success progress-bar-striped active",//string , 上传的进度条
+        progressCompleteClass: "progress-bar progress-bar-success",//string , 上传的进度条
+        progressErrorClass: "progress-bar progress-bar-danger",//string , 上传的进度条
+        progressUploadThreshold: 99,//int
+        previewFileType: 'any',//string ,在预览窗口展示文件内容，三个值可选image、text、any
         elCaptionContainer: null,
         elCaptionText: null,
         elPreviewContainer: null,
@@ -3221,7 +3238,9 @@
         slugCallback: null,
         dropZoneEnabled: true,
         dropZoneTitleClass: 'file-drop-zone-title',
-        fileActionSettings: {},
+        fileActionSettings: {//用来设置一些按钮的隐藏和显示、元素的样式等等很多
+        	showZoom:false
+        	},
         otherActionButtons: '',
         textEncoding: 'UTF-8',
         ajaxSettings: {},

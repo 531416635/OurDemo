@@ -32,26 +32,22 @@
 			uploadAsync: true,
 		    minFileCount: 1,
 		    maxFileCount: 4,
+		    deleturl : "http://localhost:8888/OurDemo/web/toalbumajax.do",
 	        //dropZoneEnabled:false,
 	       // resizeImage: false,
 	        //showCaption: false,
 	        //showPreview: false,
 		}).on("filebatchselected", function(event, files) {
-           // $(this).fileinput("upload");
-        });
-       /*  .on("fileuploaded", function(event, data,xhr) {
-        	        var obj = JSON.parse(data);
-			        alert('处理成功');
-    }); */
-		
-		
-		$('#input-700').on('fileuploaded', function(event, data, previewId, index) {
-			console.log(event);
-			console.log(data);
-			console.log(previewId);
-			console.log(index);
+           	$(this).fileinput("upload");
+        }).on('fileuploaded', function(event, data, previewId, index) {
 			var form = data.form, files = data.files, extra = data.extra,
-		        response = data.response, reader = data.reader;
+			response = data.response, reader = data.reader;
+			console.log(form);
+			console.log(files);
+			console.log(extra);
+			console.log(response);
+			console.log(reader);
+			console.log(index);
 		    console.log('File uploaded triggered');
 		}); 
 	</script>
