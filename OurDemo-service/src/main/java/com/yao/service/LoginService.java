@@ -16,5 +16,5 @@ public interface LoginService {
 	 * @param user
 	 * @return
 	 */
-	public String saveRegUser(User user);
+	public int saveRegUser(User user);
 }

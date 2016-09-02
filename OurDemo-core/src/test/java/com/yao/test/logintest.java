@@ -32,8 +32,8 @@ public class logintest {
 		user.setRegtime(new Date());
 		user.setUserstatus(3);
 		try {
-			String str=loginService.saveRegUser(user);
-			logger.info(str);
+			int  str=loginService.saveRegUser(user);
+			logger.info(str+"");
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}

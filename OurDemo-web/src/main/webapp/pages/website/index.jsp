@@ -188,7 +188,7 @@
 		$('.image2').viewer();
 		$('.images').viewer(); */
 
-		 $(".pinned").pin({containerSelector: ".jumbotron", minWidth: 360});
+		 //$(".pinned").pin({containerSelector: ".jumbotron", minWidth: 360});
 		
 		
 		/* 首页图片轮播JS函数 */

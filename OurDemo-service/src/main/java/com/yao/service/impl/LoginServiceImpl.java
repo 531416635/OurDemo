@@ -20,7 +20,7 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public String saveRegUser(User user) {
+	public int saveRegUser(User user) {
 		// TODO Auto-generated method stub
 		return loginDao.saveRegUser(user);
 	}

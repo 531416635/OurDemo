@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yao.dao.ClassDao">
+	<!-- 新增文件信息，并返回刚插入的文件ID -->
+	<insert id="savefile" parameterType="com.yao.model.FileInfo">
+		<selectKey keyProperty="id" resultType="Integer" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into fileinfo (filetype,uploaduser) values
+		(#{filetype},#{uploaduser});
+	</insert>
+	<!-- 根据ID更新文件信息 -->
+	<update id="updatefile" parameterType="com.yao.model.FileInfo">
+		update fileinfo set
+		filename=#{filename},uploadtime=#{uploadtime,jdbcType=TIMESTAMP},filepath=#{filepath},isdefault=#{isdefault} 
+		where id =#{id};
+	</update>
+	<!-- 查询文件信息 -->
+	<select id="selectfile" resultType="com.yao.model.FileInfo">
+		select id,filename,filetype,uploadtime,uploaduser,filepath,isdefault from fileinfo;
+	</select>
+</mapper>

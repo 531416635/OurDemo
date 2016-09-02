@@ -17,5 +17,5 @@ public interface LoginDao {
 	 * @param user
 	 * @return
 	 */
-	public String saveRegUser(User user);
+	int saveRegUser(User user);
 }

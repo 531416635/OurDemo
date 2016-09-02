@@ -1790,7 +1790,9 @@
                     if (isEmpty(data) || isEmpty(data.error)) {
                         if (self.showPreview) {
                             self._setThumbStatus($thumb, 'Success');
+                            //上传成功之后，隐藏图片右下角的上传按钮和删除按钮
                             $btnUpload.hide();
+                            $btnDelete.hide();
                             self._initUploadSuccess(data, $thumb, allFiles);
                         }
                         self._raise('fileuploaded', [outData, pid, i]);

@@ -16,7 +16,11 @@ import com.yao.model.User;
 import com.yao.service.LoginService;
 import com.yao.utils.MD5Utils;
 import com.yao.utils.SpringMailUtils;
-
+/**
+ * 与登录相关的用户操作
+ * @author yaoyuxiao
+ * @date 2016年9月2日 上午9:35:15
+ */
 @Controller
 public class LoginController {
 
@@ -41,21 +45,21 @@ public class LoginController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="web/sendRegisterMsg")
-	public String sendRegisterMsg(User user){
+	public int sendRegisterMsg(User user){
 		//生成激活码
 		String activecode=MD5Utils.getMD5(user.getUsername()+user.getEmail()+"yyx");
 		user.setActivecode(activecode);
 			user.setRegtime(new Date());
 		try {
-			String str = loginService.saveRegUser(user);
-			if(str=="3"){
+			int str = loginService.saveRegUser(user);
+			if(str==3){
 				SpringMailUtils.sendMail(user.getEmail(), user.getUsername(), activecode);
 			}
 			return str;
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
-		return "";
+		return 0;
 	}
 	
 	@RequestMapping("web/register")
