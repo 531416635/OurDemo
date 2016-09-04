@@ -14,7 +14,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>OurDemo1</title>
-<link href="<%=path%>/css/style.css" rel="stylesheet" />
 <link href="<%=path%>/css/viewer.css" rel="stylesheet" />
 <style>
 .image, .images img {

@@ -35,3 +35,4 @@ $("#signin").click(function(){
         }
     });
 });
+$("#midiv").css("margin-top",$("#webheadernavbar").height());

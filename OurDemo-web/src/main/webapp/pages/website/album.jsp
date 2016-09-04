@@ -20,20 +20,48 @@
 	max-height: 10%;
 	max-width: 10%;
 }
-
+ul{
+	list-style-type: none;
+}
 </style>
 </head>
 <body>
-	<input id="input-700" name="filename" type="file" multiple="true" class="file-loading">
+<div class="container">	
+	<button type="button" class="btn btn-primary" id="imagebtn" data-toggle="modal" data-target="#imagefile">上传照片</button>
+					
+	<!-- Modal -->
+	<div class="modal fade bs-example-modal-lg" id="imagefile" tabindex="-1" role="dialog">
+		<div class="modal-dialog  modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">文件上传</h4>
+				</div>
+				<div class="modal-body">
+					<input id="input-700" name="filename" type="file" multiple="true" class="file-loading">
+				</div>
+				<div class="text-center modal-footer">
+					<div id="warninglogin"></div>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary" id="signin">登录</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
 	<div class="container">
 		<ul class="images">
 			<c:forEach  var="fileImage" items="${fileInfos }" varStatus="status">
-				<li><img src="<%=path%>${fileImage.filepath}" alt="Picture" /></li>
-				
+				<c:if test="${fileImage.isdefault==1}">
+					<li><img src="<%=path%>${fileImage.filepath}" alt="Picture" /></li>
+				</c:if>
+				<c:if test="${fileImage.isdefault==0}">
+					<li style="display: none"><img	src="<%=path%>${fileImage.filepath}" alt="Picture" /></li>
+				</c:if>
 			</c:forEach >
-			<li style="display:none"><img src="<%=path%>/img/picture.png" alt="Picture" /></li>
 		</ul>
 	</div>
+</div>
 	<script src="<%=path%>/js/jquery.min.js"></script>
 	<script src="<%=path%>/js/viewer.js"></script>
 	<script src="<%=path%>/js/fileinput.js" type="text/javascript"></script>
