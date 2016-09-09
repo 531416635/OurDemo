@@ -1779,47 +1779,47 @@
   };
 
   Viewer.DEFAULTS = {
-    // Enable inline mode
+    // 启用 inline 模式
     inline: false,
 
-    // Show the button on the top-right of the viewer
+    // 显示右上角关闭按钮（jQuery 版本无效）
     button: true,
 
-    // Show the navbar
+    // 显示缩略图导航
     navbar: true,
 
-    // Show the title
+    // 显示当前图片的标题（现实 alt 属性及图片尺寸）
     title: true,
 
-    // Show the toolbar
+    // 显示工具栏
     toolbar: true,
 
-    // Show the tooltip with image ratio (percentage) when zoom in or zoom out
+    // 显示缩放百分比
     tooltip: true,
 
-    // Enable to move the image
+    // 图片是否可移动
     movable: true,
 
-    // Enable to zoom the image
+    // 图片是否可缩放
     zoomable: true,
 
-    // Enable to rotate the image
+    // 图片是否可旋转
     rotatable: true,
 
-    // Enable to scale the image
+    // 图片是否可翻转
     scalable: true,
 
-    // Enable CSS3 Transition for some special elements
+    // 使用 CSS3 过度
     transition: true,
 
-    // Enable to request fullscreen when play
+    // 播放时是否全屏
     fullscreen: true,
 
-    // Enable keyboard support
+    //是否支持键盘
     keyboard: true,
 
-    // Define interval of each image when playing
-    interval: 5000,
+    // 播放间隔time，单位为毫秒
+    interval: 3000,
 
     // Min width of the viewer in inline mode
     minWidth: 200,
@@ -1827,23 +1827,24 @@
     // Min height of the viewer in inline mode
     minHeight: 100,
 
-    // Define the ratio when zoom the image by wheeling mouse
+    // 鼠标滚动时的缩放比例
     zoomRatio: 0.1,
 
-    // Define the min ratio of the image when zoom out
+    // 最小缩放比例
     minZoomRatio: 0.01,
 
-    // Define the max ratio of the image when zoom in
+    // 最大缩放比例
     maxZoomRatio: 100,
 
-    // Define the CSS `z-index` value of viewer in modal mode.
+    // 设置图片查看器 modal 模式时的 z-index
     zIndex: 2015,
 
-    // Define the CSS `z-index` value of viewer in inline mode.
+    // 设置图片查看器 inline 模式时的 z-index
     zIndexInline: 0,
 
     // Define where to get the original image URL for viewing
     // Type: String (an image attribute) or Function (should return an image URL)
+    //设置大图片的 url
     url: 'src',
 
     // Event shortcuts
