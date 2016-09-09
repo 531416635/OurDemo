@@ -11,7 +11,7 @@ $('.images').viewer();
  * 图片上传插件
  */
 $("#input-700").fileinput({
-	//language:"zh",
+	language:"zh",
 	/* initialPreview: [
 	                 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg',
 	                 'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg'

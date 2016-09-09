@@ -10,6 +10,7 @@ public class FileInfo {
 	private Date uploadtime;//上传时间
 	private int uploaduser;//上传人的id
 	private String filepath;//保存路径
+	private int albumid;//所属相册的ID
 	private int isdefault;//是否为默认首图
 	public int getId() {
 		return id;
@@ -54,12 +55,17 @@ public class FileInfo {
 	public void setIsdefault(int isdefault) {
 		this.isdefault = isdefault;
 	}
+	public int getAlbumid() {
+		return albumid;
+	}
+	public void setAlbumid(int albumid) {
+		this.albumid = albumid;
+	}
 	@Override
 	public String toString() {
 		return "FileInfo [id=" + id + ", filename=" + filename + ", filetype="
 				+ filetype + ", uploadtime=" + uploadtime + ", uploaduser="
-				+ uploaduser + ", filepath=" + filepath + ", isdefault="
-				+ isdefault + "]";
+				+ uploaduser + ", filepath=" + filepath + ", albumid="
+				+ albumid + ", isdefault=" + isdefault + "]";
 	}
-	
 }

@@ -1,17 +1,18 @@
-package com.yao.service;
+package com.yao.dao;
 
 import java.util.List;
 
 import com.yao.model.FileInfo;
+import com.yao.model.PhotoAlbum;
 
-public interface ClassService {
+public interface AlbumDao {
 
 	/**
 	 * 保存文件信息
 	 * @param fileInfo
 	 * @return
 	 */
-	public int savefile(FileInfo fileInfo);
+	int savefile(FileInfo fileInfo);
 	
 	/**
 	 * 更新文件信息
@@ -24,4 +25,10 @@ public interface ClassService {
 	 * @return
 	 */
 	List<FileInfo> selectfile();
+	
+	/**
+	 * 查询相册信息
+	 * @return
+	 */
+	List<PhotoAlbum> selectphotoalbum();
 }

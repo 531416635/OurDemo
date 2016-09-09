@@ -5,32 +5,39 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yao.dao.ClassDao;
+import com.yao.dao.AlbumDao;
 import com.yao.model.FileInfo;
-import com.yao.service.ClassService;
+import com.yao.model.PhotoAlbum;
+import com.yao.service.AlbumService;
 
-@Service("classService")
-public class ClassServiceImpl implements ClassService{
+@Service("albumService")
+public class AlbumServiceImpl implements AlbumService{
 
 	@Autowired
-	private ClassDao classDao;
+	private AlbumDao albumDao;
 	
 	@Override
 	public int savefile(FileInfo fileInfo) {
 		// TODO Auto-generated method stub
-		return classDao.savefile(fileInfo);
+		return albumDao.savefile(fileInfo);
 	}
 
 	@Override
 	public void updatefile(FileInfo fileInfo) {
 		// TODO Auto-generated method stub
-		classDao.updatefile(fileInfo);
+		albumDao.updatefile(fileInfo);
 	}
 
 	@Override
 	public List<FileInfo> selectfile() {
 		// TODO Auto-generated method stub
-		return classDao.selectfile();
+		return albumDao.selectfile();
+	}
+
+	@Override
+	public List<PhotoAlbum> selectphotoalbum() {
+		// TODO Auto-generated method stub
+		return albumDao.selectphotoalbum();
 	}
 
 }

@@ -3346,7 +3346,7 @@
                 uploadTitle: '上传文件',
                 zoomTitle: '查看详情',
                 dragTitle: 'Move / Rearrange',
-                indicatorNewTitle: '没有上传',
+                indicatorNewTitle: '等待上传',
                 indicatorSuccessTitle: '上传',
                 indicatorErrorTitle: '上传错误',
                 indicatorLoadingTitle: '上传 ...'

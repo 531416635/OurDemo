@@ -28,8 +28,9 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yao.model.FileInfo;
+import com.yao.model.PhotoAlbum;
 import com.yao.model.User;
-import com.yao.service.ClassService;
+import com.yao.service.AlbumService;
 
 /**
  * 与班级展示相关的内容
@@ -39,12 +40,12 @@ import com.yao.service.ClassService;
  */
 @Controller
 @RequestMapping("/web")
-public class ClassController {
+public class AlbumController {
 	private static final Logger logger = LoggerFactory
-			.getLogger(ClassController.class);
+			.getLogger(AlbumController.class);
 
 	@Autowired
-	private ClassService classService;
+	private AlbumService albumService;
 
 	/**
 	 * 班级相册
@@ -53,9 +54,8 @@ public class ClassController {
 	 */
 	@RequestMapping(value = "/toalbum")
 	public String toalbum(Model model) {
-		logger.info("toalbum  toalbum  toalbum");
-		List<FileInfo> fileInfos = classService.selectfile();
-		model.addAttribute("fileInfos", fileInfos);
+		List<PhotoAlbum> photoAlbums = albumService.selectphotoalbum();
+		model.addAttribute("photoAlbums", photoAlbums);
 		return "website/album";
 	}
 
@@ -104,7 +104,7 @@ public class ClassController {
 							webrootPath.mkdirs();
 						}
 						fileInfo.setFiletype(houzhuiming);
-						classService.savefile(fileInfo);
+						albumService.savefile(fileInfo);
 						// 重命名上传后的文件名
 						path = webrootPath + "/" + fileInfo.getId()
 								+ houzhuiming;
@@ -114,7 +114,7 @@ public class ClassController {
 								+ fileInfo.getId() + houzhuiming);
 						fileInfo.setUploadtime(new Date());
 						fileInfo.setFilename(fileInfo.getId() + "");
-						classService.updatefile(fileInfo);
+						albumService.updatefile(fileInfo);
 					}
 				}
 			}
@@ -144,4 +144,6 @@ public class ClassController {
 		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),
 				headers, HttpStatus.CREATED);
 	}
+	
+	
 }

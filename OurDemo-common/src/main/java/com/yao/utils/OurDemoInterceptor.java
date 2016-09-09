@@ -30,7 +30,7 @@ public class OurDemoInterceptor extends HandlerInterceptorAdapter {
 			RSAUtils.decryptPrivate(strKey.);
 		}*/
 		String[] uri = requestUrl.split("/");
-		//System.out.println("拦截器设置打印");
+		System.out.println("拦截器设置打印");
 		return super.preHandle(request, response, handler);
 	}
 }
