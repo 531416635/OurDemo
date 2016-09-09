@@ -1144,11 +1144,15 @@
             var self = this, $dialog, modalMain = self._getLayoutTemplate('modalMain'), modalId = '#' + MODAL_ID;
             self.$modal = $(modalId);
             if (!self.$modal || !self.$modal.length) {
-                $dialog = $(document.createElement('div')).html(modalMain).insertAfter(self.$container);
-                self.$modal = $('#' + MODAL_ID).insertBefore($dialog);
+            	$dialog = $(document.createElement('div')).html(modalMain).insertAfter(self.$container);
+                self.$modal =$('#' + MODAL_ID).insertBefore($dialog);
                 $dialog.remove();
             }
-            self.$modal.html(self._getModalContent());
+            console.log(self._getModalContent());
+            //若只有一个遮罩层弹出
+            //self.$modal.html(self._getModalContent());
+            //多个遮罩层弹出，请重新设置一个弹出层
+            $("#othermodal").html(self.$modal);
             self._listenModalEvent('show');
             self._listenModalEvent('shown');
             self._listenModalEvent('hide');

@@ -30,7 +30,7 @@
 </style>
 </head>
 <body>
-<div class="container">	
+<div class="container" id="box">	
 	<button type="button" class="btn btn-primary" id="imagebtn" data-toggle="modal" data-target="#imagefile">上传照片</button>
 	<!-- Modal -->
 	<div class="modal fade bs-example-modal-lg" id="imagefile" tabindex="-1" role="dialog">
@@ -41,15 +41,14 @@
 							<span aria-hidden="true">×</span><span class="sr-only">Close</span>
 						</button>
 						<h4 class="modal-title">文件上传</h4>
-					</div>
+				</div>
 				<div class="modal-body">
 					<input id="input-700" name="filename" type="file" multiple="true" class="file-loading">
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
+	<div id="othermodal"></div>
 	<div class="container content">
 		
 		<ul class="images content-grid">
