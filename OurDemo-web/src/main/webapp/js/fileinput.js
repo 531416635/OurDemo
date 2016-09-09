@@ -1310,7 +1310,7 @@
             self.$modal.html(self._getModalContent());
             $preview = $btn.closest('.file-preview-frame');
             self._setZoomContent($preview);
-           // self.$modal.modal('show');
+            self.$modal.modal('show');
             self._initZoomButtons();
         },
         _zoomSlideShow: function (dir, previewId) {
@@ -3241,10 +3241,10 @@
         dropZoneEnabled: true,
         dropZoneTitleClass: 'file-drop-zone-title',
         fileActionSettings: {//用来设置一些按钮的隐藏和显示、元素的样式等等很多
-        	showZoom:false
+        	showZoom:true	//放大显示的按钮
         	},
         otherActionButtons: '',
-        textEncoding: 'UTF-8',
+        textEncoding: 'GB2312',//默认设置的是UTF-8，经测试若不手动改变TXT的编码格式，则使用GB2312
         ajaxSettings: {},
         ajaxDeleteSettings: {},
         showAjaxErrorDetails: true

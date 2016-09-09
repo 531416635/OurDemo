@@ -73,8 +73,12 @@
 		</ul>
 		
 	</div>
+		<div>
+			<c:forEach var="fileImage" items="${fileInfos }" varStatus="status">
+			<a href="../web/downloadfile.do?path=${fileImage.filepath}&filename=${fileImage.filename}${fileImage.filetype}">${fileImage.filename}</a>	<%-- <img src="<%=path%>${fileImage.filepath}" class="img-thumbnail" /> --%>
+			</c:forEach>
+		</div>
 </div>
-	<script src="<%=path%>/js/jquery.min.js"></script>
 	<script src="<%=path%>/js/viewer.js"></script>
 	<script src="<%=path%>/js/fileinput.js" type="text/javascript"></script>
 	<script src="<%=path%>/js/album.js"></script>

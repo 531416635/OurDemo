@@ -2,7 +2,6 @@ package com.yao.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -11,9 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,20 +31,21 @@ import com.yao.model.FileInfo;
 import com.yao.model.User;
 import com.yao.service.ClassService;
 
-
 /**
  * 与班级展示相关的内容
+ * 
  * @author yaoyuxiao
  * @date 2016年9月2日 上午9:34:33
  */
 @Controller
 @RequestMapping("/web")
 public class ClassController {
-	private static final Logger logger = LoggerFactory.getLogger(ClassController.class);
-	
+	private static final Logger logger = LoggerFactory
+			.getLogger(ClassController.class);
+
 	@Autowired
 	private ClassService classService;
-	
+
 	/**
 	 * 班级相册
 	 * 
@@ -49,7 +54,7 @@ public class ClassController {
 	@RequestMapping(value = "/toalbum")
 	public String toalbum(Model model) {
 		logger.info("toalbum  toalbum  toalbum");
-		List<FileInfo> fileInfos=classService.selectfile();
+		List<FileInfo> fileInfos = classService.selectfile();
 		model.addAttribute("fileInfos", fileInfos);
 		return "website/album";
 	}
@@ -68,8 +73,8 @@ public class ClassController {
 			IOException {
 		logger.info("测试图片ajax上传效果");
 		HttpSession session = request.getSession();
-		User user =(User) session.getAttribute("user");
-		FileInfo fileInfo =new FileInfo();
+		User user = (User) session.getAttribute("user");
+		FileInfo fileInfo = new FileInfo();
 		fileInfo.setUploaduser(user.getId());
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 				request.getSession().getServletContext());
@@ -88,23 +93,27 @@ public class ClassController {
 					// 如果名称不为“”,说明该文件存在，否则说明该文件不存在
 					if (myFileName.trim() != "") {
 						// 获取文件后缀名
-						String houzhuiming = myFileName.substring(myFileName.lastIndexOf(".")).toLowerCase();
+						String houzhuiming = myFileName.substring(
+								myFileName.lastIndexOf(".")).toLowerCase();
 						// 定义上传路径
 						String path = request.getSession().getServletContext()
 								.getRealPath(File.separator);
-						File webrootPath = new File(path +  "/" + user.getId() + "/");
+						File webrootPath = new File(path + "/" + user.getId()
+								+ "/");
 						if (!webrootPath.isDirectory()) {
 							webrootPath.mkdirs();
 						}
 						fileInfo.setFiletype(houzhuiming);
 						classService.savefile(fileInfo);
 						// 重命名上传后的文件名
-						path = webrootPath + "/" +fileInfo.getId()+ houzhuiming;
+						path = webrootPath + "/" + fileInfo.getId()
+								+ houzhuiming;
 						File localFile = new File(path);
 						file.transferTo(localFile);
-						fileInfo.setFilepath("/" + user.getId() + "/" + fileInfo.getId()+houzhuiming);
+						fileInfo.setFilepath("/" + user.getId() + "/"
+								+ fileInfo.getId() + houzhuiming);
 						fileInfo.setUploadtime(new Date());
-						fileInfo.setFilename(fileInfo.getId()+"");
+						fileInfo.setFilename(fileInfo.getId() + "");
 						classService.updatefile(fileInfo);
 					}
 				}
@@ -113,5 +122,26 @@ public class ClassController {
 		}
 		return JSONObject
 				.parseObject("{'event':'1', 'data':'2', 'previewId':'3', 'index':'4'}");
+	}
+	
+	/**
+	 * 系统文件下载操作
+	 * @param path 数据库中存储的文件路径
+	 * @param filename	新命名的文件名称
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/downloadfile")
+	public ResponseEntity<byte[]> downloadfile(String path, String filename,HttpServletRequest request)
+			throws IOException {
+		String path1 = request.getServletContext().getRealPath("");//获取项目动态绝对路径 
+		File file = new File(path1+path);
+		HttpHeaders headers = new HttpHeaders();
+		String fileName = new String(filename.getBytes("UTF-8"), "iso-8859-1");// 为了解决中文名称乱码问题
+		headers.setContentDispositionFormData("attachment", fileName);
+		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),
+				headers, HttpStatus.CREATED);
 	}
 }

@@ -6,7 +6,7 @@
 		<pattern>/admin/*</pattern>
 	</decorator>
 	<!-- <excludes>
-		<pattern>/web/toProductsList.do*</pattern>
+		<pattern>/web/index1.do*</pattern>
 		<pattern>/web/toSaveArguments.do*</pattern>
 	</excludes> -->
 </decorators> 

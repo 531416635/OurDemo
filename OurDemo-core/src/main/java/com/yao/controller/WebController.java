@@ -1,22 +1,9 @@
 package com.yao.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-
-import com.alibaba.fastjson.JSONObject;
 
 /**
  * web页面的主控制器
@@ -37,7 +24,8 @@ public class WebController {
 	 */
 	@RequestMapping(value = "/index")
 	public String index() {
+		logger.info("跳转到首页");
 		return "website/index";
 	}
-
+	
 }
