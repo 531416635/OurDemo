@@ -2,9 +2,12 @@ package com.yao.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +23,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -55,7 +59,18 @@ public class AlbumController {
 	@RequestMapping(value = "/toalbum")
 	public String toalbum(Model model) {
 		List<PhotoAlbum> photoAlbums = albumService.selectphotoalbum();
+		int len=photoAlbums.size();
+		Map<Integer, Object> nameMap =new HashMap<Integer, Object>();
+		if(len>0){
+			for (int i = 0; i < len; i++) {
+				String str=photoAlbums.get(i).getAlbumname();
+				if (!StringUtils.isEmpty(str)) {
+					nameMap.put(photoAlbums.get(i).getId(), str);
+				}
+			}
+		}
 		model.addAttribute("photoAlbums", photoAlbums);
+		model.addAttribute("nameMap", nameMap);
 		return "website/album";
 	}
 

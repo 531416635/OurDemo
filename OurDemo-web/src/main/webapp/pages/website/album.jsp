@@ -14,8 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>我的相册</title>
 <link href="<%=path%>/css/viewer.css" rel="stylesheet" />
-<link href="<%=path%>/css/fileinput.css" media="all" rel="stylesheet"
-	type="text/css" />
+<link href="<%=path%>/css/fileinput.css" media="all" type="text/css" />
 <link href="<%=path%>/css/album.css" rel="stylesheet" />
 </head>
 <body>
@@ -23,6 +22,30 @@
 		<!-- 上传图片的按钮 -->
 		<button type="button" class="btn btn-primary" id="imagebtn"
 			data-toggle="modal" data-target="#imagefile">上传照片</button>
+		<select class="input-sele input-sm">
+			<c:forEach items="${nameMap }" var="namestr">
+				<option value="${namestr.key }">${namestr.value }</option>
+			</c:forEach>
+		</select>
+		<button class="btn btn-link" data-toggle="modal" data-target="#newalbum">新建相册</button>
+		<div class="modal fade bs-example-modal-sm" id="newalbum" tabindex="-1" role="dialog">
+			<div class="modal-dialog  modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">请输入相册名称</h4>
+					</div>
+					<div class="modal-body">
+						<div>
+							<input type="text" class="editnewalbum">
+							<button type="button" class="btn btn-info">确认</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- 上传图片的模态框 bootstrap的Modal -->
 		<div class="modal fade bs-example-modal-lg" id="imagefile"
 			tabindex="-1" role="dialog">
