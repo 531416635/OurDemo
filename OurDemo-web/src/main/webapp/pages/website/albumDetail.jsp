@@ -16,24 +16,32 @@
 <link href="<%=path%>/css/albumdetail.css" rel="stylesheet" />
 </head>
 <body>
-	<div class="container " id="wrap">
-	<ul class="images">
+	<div class="container">
+		<div id="wrap">
+			<ul class="images">
+				<c:forEach var="fileImage" items="${images }" varStatus="status">
+					<li>
+						<div class="box">
+							<div class="info">
+								<div class="pic">
+									<img src="<%=path%>${fileImage.filepath}" alt="Picture"
+										class="img-thumbnail" />
+								</div>
+								<div class="title">
+									<a href="#">This is a title.</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
+	<div style="padding-top: -100px">
 		<c:forEach var="fileImage" items="${images }" varStatus="status">
-			<li>
-			<div class="content-grid box">
-				<div class="info">
-					<div class="pic"><img src="<%=path%>${fileImage.filepath}" alt="Picture"  class="img-thumbnail"/></div>
-					<div class="title"><a href="#">This is a title.</a></div>
-				</div>
-			</div>
-			</li>
+			<a
+				href="../web/downloadfile.do?path=${fileImage.filepath}&filename=${fileImage.filename}${fileImage.filetype}">${fileImage.filename}</a>
 		</c:forEach>
-	</ul>
 	</div>
-	<div>
-		<c:forEach var="fileImage" items="${images }" varStatus="status">
-			<a href="../web/downloadfile.do?path=${fileImage.filepath}&filename=${fileImage.filename}${fileImage.filetype}">${fileImage.filename}</a>
-		</c:forEach>
 	</div>
 	<script src="<%=path%>/js/viewer.js"></script>
 	<script src="<%=path%>/js/albumdetail.js"></script>

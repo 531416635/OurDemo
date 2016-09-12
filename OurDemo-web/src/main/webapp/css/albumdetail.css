@@ -63,7 +63,7 @@ a:hover {
 	to{opacity:1;}
 }
 /* wrap */
-#wrap{width:auto;height:auto;margin:0 auto;position:relative;}
+#wrap{max-width:1170px;height:auto;margin:0 auto;position:relative;}
 #wrap .box{min-width: 120px;max-width: 220px;height:auto;padding:10px;border:none;float:left;}
 #wrap .box .info{min-width: 120px;max-width: 220px;height:auto;border-radius:8px;box-shadow:0 0 11px #666;background:#fff;}
 #wrap .box .info .pic{min-width: 100px;	max-width: 200px;height:auto;margin:0 auto;padding-top:10px;}
