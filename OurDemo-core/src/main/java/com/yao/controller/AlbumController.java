@@ -2,7 +2,6 @@ package com.yao.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -84,9 +83,34 @@ public class AlbumController {
 	@ResponseBody
 	@RequestMapping(value = "/toalbumajax")
 	public JSONObject toalbumajax(HttpServletRequest request,
-			HttpServletResponse response) throws IllegalStateException,
+			HttpServletResponse response,String albumtext,String albumvalue) throws IllegalStateException,
 			IOException {
-		logger.info("测试图片ajax上传效果");
+		/**
+		 * 若上传的为相册图片，则通过下面处理为图片添加所属相册集
+		 */
+		if(!StringUtils.isEmpty(albumtext)){
+			albumtext=new String(albumtext.getBytes("iso-8859-1"), "UTF-8");
+		}
+		if(!StringUtils.isEmpty(albumvalue)){
+			albumvalue=new String(albumvalue.getBytes("iso-8859-1"), "UTF-8");
+		}
+		if(StringUtils.isEmpty(albumvalue)){
+			if(!StringUtils.isEmpty(albumtext)){
+				PhotoAlbum photoalbum1=albumService.selectphotoalbumbyname(albumtext);
+				if (StringUtils.isEmpty(photoalbum1)) {
+					PhotoAlbum photoalbum=new PhotoAlbum();
+					photoalbum.setAlbumname(albumtext);
+					photoalbum.setAlbumtime(new Date());
+					albumService.insertalbum(photoalbum);
+					albumvalue=photoalbum.getId()+"";
+				}else{
+					albumvalue=photoalbum1.getId()+"";
+				}
+			}
+		}
+		/**
+		 * 判断用户是否登录或在线，并以此为文件添加上传人
+		 */
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		FileInfo fileInfo = new FileInfo();
@@ -129,6 +153,14 @@ public class AlbumController {
 								+ fileInfo.getId() + houzhuiming);
 						fileInfo.setUploadtime(new Date());
 						fileInfo.setFilename(fileInfo.getId() + "");
+						if(!StringUtils.isEmpty(albumvalue)){
+							fileInfo.setAlbumid(Integer.parseInt(albumvalue));
+						}
+						PhotoAlbum photoalbums=albumService.selectphotoalbumbyid(Integer.parseInt(albumvalue));
+						if(StringUtils.isEmpty(photoalbums.getAlbumpath())){
+							photoalbums.setAlbumpath(fileInfo.getFilepath());
+							albumService.updatealbum(photoalbums);
+						}
 						albumService.updatefile(fileInfo);
 					}
 				}
@@ -160,5 +192,11 @@ public class AlbumController {
 				headers, HttpStatus.CREATED);
 	}
 	
-	
+	@RequestMapping("/toalbumdetail")
+	public String toAlbumDetail(Model model,String albumid){
+		int albumid1=Integer.parseInt(albumid);
+		List<FileInfo> images=albumService.selectfilebyalbumid(albumid1);
+		model.addAttribute("images", images);
+		return "website/albumDetail";
+	}
 }

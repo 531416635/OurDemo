@@ -12,10 +12,6 @@ $('.images').viewer();
  */
 $("#input-700").fileinput({
 	language:"zh",
-	/* initialPreview: [
-	                 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg',
-	                 'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg'
-	             ], */
 	uploadUrl : "../web/toalbumajax.do", // server upload action
 	uploadAsync: true,
     minFileCount: 1,
@@ -26,16 +22,38 @@ $("#input-700").fileinput({
    // resizeImage: false,
     //showCaption: false,
     //showPreview: false,
-})/*.on("filebatchselected", function(event, files) {
+}).on("filebatchselected", function(event, files) {
    //	$(this).fileinput("upload");
 }).on('fileuploaded', function(event, data, previewId, index) {
 	var form = data.form, files = data.files, extra = data.extra,
 	response = data.response, reader = data.reader;
-	console.log(form);
-	console.log(files);
-	console.log(extra);
-	console.log(response);
-	console.log(reader);
-	console.log(index);
-    console.log('File uploaded triggered');
-})*/; 
+});
+/**
+ * 图片上传按钮点击效果
+ */
+$("#imagebtn").click(function(){
+	var str=$(".input-sele").find("option:selected").text().trim();
+	if(str==''||str==null||str=='undefined'){
+		alert("所选相册名不能为空！");
+		return false;
+	}
+	//用来在点击关闭弹出模态框之后，清空其中的值
+	$(".fileinput-remove").click();
+});
+/**
+ * 新建相册名确认按钮
+ */
+$("#surenewalbum").click(function(){
+	var str=$(".editnewalbum").val().trim();
+	if(str==''||str==null||str=='undefined'){
+		alert("请输入正确的相册名！");
+		$(".editnewalbum").val('')
+		return false;
+	}else{
+		var str="<option value=\"\" selected>"+str+"</option>";
+		$(".input-sele").append(str);
+	}
+	$("#spanclose").click();
+});
+
+

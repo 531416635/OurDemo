@@ -1148,7 +1148,6 @@
                 self.$modal =$('#' + MODAL_ID).insertBefore($dialog);
                 $dialog.remove();
             }
-            console.log(self._getModalContent());
             //若只有一个遮罩层弹出
             //self.$modal.html(self._getModalContent());
             //多个遮罩层弹出，请重新设置一个弹出层
@@ -1607,18 +1606,31 @@
             var self = this, settings;
             self._raise('filepreajax', [previewId, index]);
             self._uploadExtra(previewId, index);
+            /**
+             * 处理图片上传到相册 根据URL做判断
+             */
+            var strtext=$(".input-sele").find("option:selected").text().trim();
+            var strvalue=$(".input-sele").find("option:selected").val().trim();
+            var urlstr="";
+            if(strvalue==''||strvalue==null||strvalue=='undefined'){
+            	if(strtext!=''&&strtext!=null&&strtext!='undefined'){
+            		urlstr="?albumtext="+strtext;
+                 }
+            }else{
+            	urlstr="?albumtext="+strtext+"&albumvalue="+strvalue;
+            }
             settings = $.extend(true, {}, {
                 xhr: function () {
                     var xhrobj = $.ajaxSettings.xhr();
                     return self._initXhr(xhrobj, previewId, self.getFileStack().length);
                 },
-                url: self.uploadUrl,
+                url: self.uploadUrl+urlstr,
                 type: 'POST',
                 dataType: 'json',
                 data: self.formdata,
                 cache: false,
                 processData: false,
-                contentType: false,
+                contentType: false, 
                 beforeSend: fnBefore,
                 success: fnSuccess,
                 complete: fnComplete,

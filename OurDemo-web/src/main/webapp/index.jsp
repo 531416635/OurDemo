@@ -13,7 +13,7 @@
 <!-- 对移动设备的支持更友好-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>OurDemo</title>
-<link rel="stylesheet" href="<%=path%>/css/bootstrap.css"  media="screen" />
+<link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css"  media="screen" />
 <script src="<%=path%>/js/jquery.js"></script>
 <script src="<%=path%>/js/bootstrap.js"></script>
 

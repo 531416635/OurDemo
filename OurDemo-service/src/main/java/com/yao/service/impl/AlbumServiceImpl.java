@@ -40,4 +40,34 @@ public class AlbumServiceImpl implements AlbumService{
 		return albumDao.selectphotoalbum();
 	}
 
+	@Override
+	public int insertalbum(PhotoAlbum photoalbum) {
+		// TODO Auto-generated method stub
+		return albumDao.insertalbum(photoalbum);
+	}
+
+	@Override
+	public void updatealbum(PhotoAlbum photoalbum) {
+		// TODO Auto-generated method stub
+		albumDao.updatealbum(photoalbum);
+	}
+
+	@Override
+	public PhotoAlbum selectphotoalbumbyid(int id) {
+		// TODO Auto-generated method stub
+		return albumDao.selectphotoalbumbyid(id);
+	}
+
+	@Override
+	public PhotoAlbum selectphotoalbumbyname(String albumname) {
+		// TODO Auto-generated method stub
+		return albumDao.selectphotoalbumbyname(albumname);
+	}
+
+	@Override
+	public List<FileInfo> selectfilebyalbumid(int albumid) {
+		// TODO Auto-generated method stub
+		return albumDao.selectfilebyalbumid(albumid);
+	}
+
 }

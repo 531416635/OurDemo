@@ -14,33 +14,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>我的相册</title>
 <link href="<%=path%>/css/viewer.css" rel="stylesheet" />
-<link href="<%=path%>/css/fileinput.css" media="all" type="text/css" />
+<link href="<%=path%>/css/fileinput.css" media="all" rel="stylesheet" />
 <link href="<%=path%>/css/album.css" rel="stylesheet" />
 </head>
 <body>
 	<div class="container" id="box">
 		<!-- 上传图片的按钮 -->
-		<button type="button" class="btn btn-primary" id="imagebtn"
-			data-toggle="modal" data-target="#imagefile">上传照片</button>
+		<button type="button" class="btn btn-primary" id="imagebtn" data-toggle="modal" data-target="#imagefile">上传照片</button>
+		<!-- 相册名字组 -->
 		<select class="input-sele input-sm">
 			<c:forEach items="${nameMap }" var="namestr">
 				<option value="${namestr.key }">${namestr.value }</option>
 			</c:forEach>
 		</select>
+		<!-- 新建相册按钮 -->
 		<button class="btn btn-link" data-toggle="modal" data-target="#newalbum">新建相册</button>
+		<!-- 新建相册弹框 -->
 		<div class="modal fade bs-example-modal-sm" id="newalbum" tabindex="-1" role="dialog">
 			<div class="modal-dialog  modal-sm" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+							<span aria-hidden="true" id="spanclose">×</span><span class="sr-only">Close</span>
 						</button>
-						<h4 class="modal-title">请输入相册名称</h4>
+						<h4 class="modal-title">新建相册</h4>
 					</div>
 					<div class="modal-body">
 						<div>
-							<input type="text" class="editnewalbum">
-							<button type="button" class="btn btn-info">确认</button>
+							<input type="text" class="editnewalbum" placeholder="请输入相册名称">
+							<button type="button" class="btn btn-info" id="surenewalbum">确认</button>
 						</div>
 					</div>
 				</div>
@@ -70,14 +72,8 @@
 		<div class="container center-black">
 			<c:forEach var="photoAlbum" items="${photoAlbums }" varStatus="status">
 				<div class="albums">
-					<a href="javascript:void(0);" class="b-link-stripe b-animate-go  thickbox">
+					<a href="toalbumdetail.do?albumid=${photoAlbum.id}" class="b-link-stripe b-animate-go thickbox">
 					<img src="<%=path%>${photoAlbum.albumpath}" class="img-thumbnail" />
-						<%-- <div >
-							<h2>
-								<span>${photoAlbum.albumname}</span>
-								<p>点击浏览图册</p>
-							</h2>
-						</div> --%>
 					</a>
 				</div>
 			</c:forEach>
