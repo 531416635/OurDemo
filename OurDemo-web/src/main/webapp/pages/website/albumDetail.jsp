@@ -7,57 +7,35 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>我的相册</title>
 <link href="<%=path%>/css/viewer.css" rel="stylesheet" />
-<style type="text/css">
-.images {
-	list-style-type: none;
-	display: inline;
-}
-.images li {
-	display: inline;
-}
-.images img {
-	min-width: 100px;
-	max-width: 200px;
-}
-.item {  
-  width: 150px;  
-  margin: 10px;  
-  float: left;  
-}  
-</style>
+<link href="<%=path%>/css/albumdetail.css" rel="stylesheet" />
 </head>
 <body>
-	<div class="container" id="box">
-		<div class="container content">
-			<ul class="images content-grid" id="containerul">
-				<c:forEach var="fileImage" items="${images }" varStatus="status">
-					<li class="item"><img src="<%=path%>${fileImage.filepath}" alt="Picture"  class="img-thumbnail"/></li>
-				</c:forEach>
-			</ul>
-
-		</div>
-		<div>
-			<c:forEach var="fileImage" items="${images }" varStatus="status">
-				<a href="../web/downloadfile.do?path=${fileImage.filepath}&filename=${fileImage.filename}${fileImage.filetype}">${fileImage.filename}</a>
-			</c:forEach>
-		</div>
+	<div class="container " id="wrap">
+	<ul class="images">
+		<c:forEach var="fileImage" items="${images }" varStatus="status">
+			<li>
+			<div class="content-grid box">
+				<div class="info">
+					<div class="pic"><img src="<%=path%>${fileImage.filepath}" alt="Picture"  class="img-thumbnail"/></div>
+					<div class="title"><a href="#">This is a title.</a></div>
+				</div>
+			</div>
+			</li>
+		</c:forEach>
+	</ul>
 	</div>
-	<script src="<%=path%>/js/masonry.js"></script>
+	<div>
+		<c:forEach var="fileImage" items="${images }" varStatus="status">
+			<a href="../web/downloadfile.do?path=${fileImage.filepath}&filename=${fileImage.filename}${fileImage.filetype}">${fileImage.filename}</a>
+		</c:forEach>
+	</div>
 	<script src="<%=path%>/js/viewer.js"></script>
-	<script type="text/javascript">
-		$(".images").viewer();
-		 $('#containerul').masonry({  
-			    // options  
-			    itemSelector : '.item',  
-			    columnWidth : 150  
-			  });  
-	</script>
+	<script src="<%=path%>/js/albumdetail.js"></script>
 </body>
 </html>
