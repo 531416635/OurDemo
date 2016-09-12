@@ -26,14 +26,19 @@
 	min-width: 100px;
 	max-width: 200px;
 }
+.item {  
+  width: 150px;  
+  margin: 10px;  
+  float: left;  
+}  
 </style>
 </head>
 <body>
 	<div class="container" id="box">
 		<div class="container content">
-			<ul class="images content-grid">
+			<ul class="images content-grid" id="containerul">
 				<c:forEach var="fileImage" items="${images }" varStatus="status">
-					<li><img src="<%=path%>${fileImage.filepath}" alt="Picture"  class="img-thumbnail"/></li>
+					<li class="item"><img src="<%=path%>${fileImage.filepath}" alt="Picture"  class="img-thumbnail"/></li>
 				</c:forEach>
 			</ul>
 
@@ -44,9 +49,15 @@
 			</c:forEach>
 		</div>
 	</div>
+	<script src="<%=path%>/js/masonry.js"></script>
 	<script src="<%=path%>/js/viewer.js"></script>
 	<script type="text/javascript">
 		$(".images").viewer();
+		 $('#containerul').masonry({  
+			    // options  
+			    itemSelector : '.item',  
+			    columnWidth : 150  
+			  });  
 	</script>
 </body>
 </html>
