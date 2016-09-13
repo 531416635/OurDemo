@@ -39,7 +39,7 @@
 	<div style="padding-top: -100px">
 		<c:forEach var="fileImage" items="${images }" varStatus="status">
 			<a
-				href="../web/downloadfile.do?path=${fileImage.filepath}&filename=${fileImage.filename}${fileImage.filetype}">${fileImage.filename}</a>
+				href="../web/downloadfile.html?path=${fileImage.filepath}&filename=${fileImage.filename}${fileImage.filetype}">${fileImage.filename}</a>
 		</c:forEach>
 	</div>
 	</div>

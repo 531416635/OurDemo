@@ -1,8 +1,10 @@
 package com.yao.controller;
 
+import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.yao.model.User;
 import com.yao.service.LoginService;
 import com.yao.utils.MD5Utils;
@@ -75,17 +79,26 @@ public class LoginController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping("web/login")
-	public String login(String email,String password,HttpServletRequest request){
-		String str ="1";
+	@RequestMapping(value="web/login")
+	public void login(String email,String password,HttpServletRequest request,HttpServletResponse response){
+		JSONObject stri=new JSONObject();
+		stri.put("data", "1");
 		User user=loginService.findUserByEmail(email);
 		if(user!=null&&user.getPassword().equals(password)){
 			logger.info("登录成功！邮箱:{}，密码:{}",email,password);
 			HttpSession session=request.getSession();
 			session.setAttribute("user", user);
-			str="2";
+			stri.put("data", "2");
 		}
-		return str;
+		System.out.println(stri.toJSONString());
+		try {
+			response.getWriter().write(stri.toJSONString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		response.setContentType("application/json");
+		return;
 	}
 	
 	/**
@@ -98,6 +111,6 @@ public class LoginController {
 		User user =(User) session.getAttribute("user");
 		logger.info("退出成功！邮箱:{}，密码:{}",user.getEmail(),user.getPassword());
 		session.removeAttribute("user");
-		return "redirect:index.do";
+		return "redirect:index.html";
 	}
 }

@@ -9,7 +9,7 @@ $("#toregisterbtn").click(function(){
 	var email=$("#toregisteremail").val().trim();
 	$.ajax({
 	    type: "post",
-	    url: "sendRegisterMsg.do",
+	    url: "sendRegisterMsg.html",
 	    data: {
 	    	username:username, 
 	    	email:email

@@ -11,14 +11,14 @@ $("#signin").click(function(){
 	var password=MD5($("#webheaderInputPassword1").val().trim());
 	$.ajax({
         type: "post",
-        url: "login.do",
+        url: "login.html",
         data: {
         	email:email, 
         	password:password.toString()
         },
-        dataType: "json",
+        "dataType" : "json",
         success: function(data){
-        	if(1==data){
+        	if(1==data.data){
         		$("#warninglogin").html("");
         		var html="<div class=\"alert alert-danger alert-dismissible text-left\" role=\"alert\">"
 				+"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">"
@@ -29,9 +29,12 @@ $("#signin").click(function(){
         		$("#exampleInputEmail1").val("");
         		$("#exampleInputPassword1").val("");
         		$("#warninglogin").append(html);
-        	}else if(2==data){
+        	}else if(2==data.data){
         		location.reload();
         	}
+        },
+        error: function(e){
+        	alert("出现未知错误");
         }
     });
 });

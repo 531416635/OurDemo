@@ -72,7 +72,7 @@
 		<div class="container center-black">
 			<c:forEach var="photoAlbum" items="${photoAlbums }" varStatus="status">
 				<div class="albums">
-					<a href="toalbumdetail.do?albumid=${photoAlbum.id}" class="b-link-stripe b-animate-go thickbox">
+					<a href="toalbumdetail.html?albumid=${photoAlbum.id}" class="b-link-stripe b-animate-go thickbox">
 					<img src="<%=path%>${photoAlbum.albumpath}" class="img-thumbnail" />
 					</a>
 				</div>
@@ -82,7 +82,7 @@
 		<div>
 			<c:forEach var="fileImage" items="${fileInfos }" varStatus="status">
 				<a
-					href="../web/downloadfile.do?path=${fileImage.filepath}&filename=${fileImage.filename}${fileImage.filetype}">${fileImage.filename}</a>
+					href="../web/downloadfile.html?path=${fileImage.filepath}&filename=${fileImage.filename}${fileImage.filetype}">${fileImage.filename}</a>
 				<%-- <img src="<%=path%>${fileImage.filepath}" class="img-thumbnail" /> --%>
 			</c:forEach>
 		</div>

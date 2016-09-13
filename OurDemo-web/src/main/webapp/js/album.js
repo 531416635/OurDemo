@@ -12,11 +12,11 @@ $('.images').viewer();
  */
 $("#input-700").fileinput({
 	language:"zh",
-	uploadUrl : "../web/toalbumajax.do", // server upload action
+	uploadUrl : "../web/toalbumajax.html", // server upload action
 	uploadAsync: true,
     minFileCount: 1,
     maxFileCount: 10,
-    deleturl : "../web/toalbumajax.do",
+    deleturl : "../web/toalbumajax.html",
     //allowedFileTypes: ['image']
     //dropZoneEnabled:false,
    // resizeImage: false,

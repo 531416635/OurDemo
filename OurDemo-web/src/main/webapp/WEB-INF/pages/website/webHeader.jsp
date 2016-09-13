@@ -49,13 +49,13 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="<%=path%>/web/index.do">首页<span
 						class="sr-only">(current)</span></a></li>
-				<li><a href="<%=path%>/web/toRegister.do">注册</a></li>
-				<li><a href="<%=path%>/admin/index.do">后台</a></li>
+				<li><a href="<%=path%>/web/toRegister.html">注册</a></li>
+				<li><a href="<%=path%>/admin/index.html">后台</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">班级<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="toalbum.do">相册</a></li>
+						<li><a href="toalbum.html">相册</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="#">视频</a></li>
 						<li role="separator" class="divider"></li>
@@ -94,7 +94,7 @@
 							<li role="separator" class="divider"></li>
 							<li><a href="javascript:void(0);">设置</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="../web/loginout.do">退出</a></li>
+							<li><a href="../web/loginout.html">退出</a></li>
 						</ul></li>
 				</c:if>
 				<c:if test="${sessionScope.user==null }">

@@ -19,7 +19,7 @@
 
 <script language="javascript" type="text/javascript">
 	function bodyload(){
-	window.location="<%=path%>/web/index.do";
+	window.location="<%=path%>/web/index.html";
 	}
   </script>
 
