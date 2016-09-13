@@ -30,7 +30,7 @@ $("#signin").click(function(){
         		$("#exampleInputPassword1").val("");
         		$("#warninglogin").append(html);
         	}else if(2==data.data){
-        		location.reload();
+        		//location.reload();
         	}
         },
         error: function(e){

@@ -90,7 +90,6 @@ public class LoginController {
 			session.setAttribute("user", user);
 			stri.put("data", "2");
 		}
-		System.out.println(stri.toJSONString());
 		try {
 			response.getWriter().write(stri.toJSONString());
 		} catch (IOException e) {
