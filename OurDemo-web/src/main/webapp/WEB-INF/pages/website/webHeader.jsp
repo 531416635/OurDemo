@@ -18,8 +18,8 @@
 <!-- 对移动设备的支持更友好-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title><decorator:title default="OurDemo" /></title>
-<decorator:head />
 <link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css" />
+<decorator:head />
 <style type="text/css">
 .modal-footer {
 	text-align: center;
@@ -47,10 +47,11 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="<%=path%>/web/index.do">首页<span
+				<li class="active"><a href="<%=path%>/web/index.html">首页<span
 						class="sr-only">(current)</span></a></li>
 				<li><a href="<%=path%>/web/toRegister.html">注册</a></li>
 				<li><a href="<%=path%>/admin/index.html">后台</a></li>
+				<li><a href="<%=path%>/web/toArticle.html">文章</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">班级<span class="caret"></span></a>
