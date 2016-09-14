@@ -5,9 +5,9 @@
 	<decorator name="adminHeader" page="adminsite/adminHeader.jsp">
 		<pattern>/admin/*</pattern>
 	</decorator>
-	<!-- <excludes>
-		<pattern>/web/index1.do*</pattern>
-		<pattern>/web/toSaveArguments.do*</pattern>
-	</excludes> -->
+	<excludes>
+		<pattern>*.do*</pattern>
+		<!-- <pattern>/web/toSaveArguments.do*</pattern> -->
+	</excludes>
 </decorators> 
 

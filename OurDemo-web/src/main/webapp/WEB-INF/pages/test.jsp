@@ -22,8 +22,9 @@
         	var name="yaoyuxiao";
             $.ajax({
                 type : 'POST', 
-                url  : 'tojsontest.html',
-              //  dataType:'json',
+                url  : 'tojsontest.do',
+                dataType:"text",
+              	contentType : "text/html;charset=UTF-8",
                 data : {
                 	name:name
                 },
@@ -31,8 +32,36 @@
                 success : function(obj) {
                     console.log("测试成功！！！！！");
                     console.log(obj);
+                    console.log(obj.data);
                 },
                 error:function(e){
+                	console.log("测试失败！！！！！");
+                    console.log(e) ;  
+                }
+            }); 
+        });
+    });
+	</script><br/><br/><br/>
+	<input type="button" value="click2" id="click1" />
+	<script type="text/javascript">
+	$(function(){
+        $('#click1').click(function(){
+        	var name="yaoyuxiao";
+            $.ajax({
+                type : 'POST', 
+                url  : 'tojsontest1.do',
+                dataType:"json",
+              	contentType : "application/json;charset=UTF-8",
+                data : {
+                	name:name
+                },
+                success : function(obj) {
+                    console.log("测试成功！！！！！");
+                    console.log(obj);
+                    console.log(obj.data);
+                },
+                error:function(e){
+                	console.log("测试失败！！！！！");
                     console.log(e) ;  
                 }
             }); 

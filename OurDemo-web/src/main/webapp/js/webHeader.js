@@ -11,12 +11,12 @@ $("#signin").click(function(){
 	var password=MD5($("#webheaderInputPassword1").val().trim());
 	$.ajax({
         type: "post",
-        url: "login.html",
+        url: "login.do",
+        dataType:"json",
         data: {
-        	email:email, 
-        	password:password.toString()
-        },
-        "dataType" : "json",
+        	email:email,
+        	password:password
+        } ,
         success: function(data){
         	if(1==data.data){
         		$("#warninglogin").html("");
@@ -30,7 +30,7 @@ $("#signin").click(function(){
         		$("#exampleInputPassword1").val("");
         		$("#warninglogin").append(html);
         	}else if(2==data.data){
-        		//location.reload();
+        		location.reload();
         	}
         },
         error: function(e){

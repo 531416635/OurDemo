@@ -40,25 +40,4 @@ public class WebController {
 		logger.info("跳转到首页");
 		return "website/index";
 	}
-	/**
-	 * 
-	 * PC页面拦截
-	 * 
-	 * @param request
-	 * @param pagename
-	 * @return
-	 */
-	@RequestMapping(value = "/test.html", method = RequestMethod.GET)
-	public String pagename(HttpServletRequest request) {
-		return "test";
-	}
-	
-	@RequestMapping(value="/tojsontest")
-	@ResponseBody
-	public String getJson(HttpServletResponse response){
-		Map<String, Object> map =new HashMap<String, Object>();
-		map.put("12", "33");
-		System.out.println(JSON.toJSONString(map));
-		return JSON.toJSONString(map);
-	}
 }

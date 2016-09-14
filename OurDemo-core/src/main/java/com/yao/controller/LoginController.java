@@ -1,10 +1,8 @@
 package com.yao.controller;
 
-import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,9 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.yao.model.User;
 import com.yao.service.LoginService;
@@ -79,8 +77,8 @@ public class LoginController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="web/login")
-	public void login(String email,String password,HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value="web/login",produces = "application/json;charset=UTF-8")
+	public Object login(String email,String password,HttpServletRequest request){
 		JSONObject stri=new JSONObject();
 		stri.put("data", "1");
 		User user=loginService.findUserByEmail(email);
@@ -90,14 +88,8 @@ public class LoginController {
 			session.setAttribute("user", user);
 			stri.put("data", "2");
 		}
-		try {
-			response.getWriter().write(stri.toJSONString());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		response.setContentType("application/json");
-		return;
+		
+		return stri;
 	}
 	
 	/**
