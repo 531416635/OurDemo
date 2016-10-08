@@ -14,7 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>OurDemo1</title>
-<link href="<%=path%>/css/viewer.css" rel="stylesheet" />
+<link href="<%=path%>/css/plugin/viewer.css" rel="stylesheet" />
 <style>
 .image, .images img {
 	max-height: 20%;
@@ -177,19 +177,11 @@
 		</div>
 	</div> --%>
 	<!-- Scripts -->
-	<script src="<%=path%>/js/jquery.min.js"></script>
-	<script src="<%=path%>/js/viewer.js"></script>
-	<script src="<%=path%>/js/video.js"></script>
-	<script src="<%=path%>/js/jquery.slides.min.js"></script>
-	<script src="<%=path%>/js/jquery.pin.js"></script>
+	<script src="<%=path%>/js/plugin/jquery.min.js"></script>
+	<script src="<%=path%>/js/plugin/viewer.js"></script>
+	<script src="<%=path%>/js/plugin/video.js"></script>
+	<script src="<%=path%>/js/plugin/jquery.slides.min.js"></script>
 	<script>
-	/* 	$('.image').viewer();
-		$('.image2').viewer();
-		$('.images').viewer(); */
-
-		 //$(".pinned").pin({containerSelector: ".jumbotron", minWidth: 360});
-		
-		
 		/* 首页图片轮播JS函数 */
 		$(function() {
 			$("#slides").slidesjs({

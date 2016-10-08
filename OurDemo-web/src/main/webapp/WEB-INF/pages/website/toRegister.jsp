@@ -50,7 +50,7 @@
 	line-height: 1.6rem;
 }
 </style>
-<link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css"  />
+<link rel="stylesheet" href="<%=path%>/css/plugin/bootstrap.css"  />
 </head>
 <body>
 	<div class="panel panel-default">
@@ -84,15 +84,6 @@
 
 	<div class="col-lg-5">
 	</div>
-
-
-
-
-
-
-
-
-
 
 
 	<script type="text/javascript">

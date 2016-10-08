@@ -12,7 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>我的相册</title>
-<link href="<%=path%>/css/viewer.css" rel="stylesheet" />
+<link href="<%=path%>/css/plugin/viewer.css" rel="stylesheet" />
 <link href="<%=path%>/css/albumdetail.css" rel="stylesheet" />
 </head>
 <body>
@@ -43,7 +43,7 @@
 		</c:forEach>
 	</div>
 	</div>
-	<script src="<%=path%>/js/viewer.js"></script>
+	<script src="<%=path%>/js/plugin/viewer.js"></script>
 	<script src="<%=path%>/js/albumdetail.js"></script>
 </body>
 </html>

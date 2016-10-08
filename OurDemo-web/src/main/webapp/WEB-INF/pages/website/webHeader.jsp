@@ -18,7 +18,7 @@
 <!-- 对移动设备的支持更友好-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title><decorator:title default="OurDemo" /></title>
-<link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=path%>/css/plugin/bootstrap.css" />
 <decorator:head />
 <style type="text/css">
 .modal-footer {
@@ -143,9 +143,9 @@
 		</div>
 	</div>
 
-	<script src="<%=path%>/js/jquery.min.js"></script>
-	<script src="<%=path%>/js/jquery.md5.js"></script>
-	<script src="<%=path%>/js/bootstrap.min.js"></script>
+	<script src="<%=path%>/js/plugin/jquery.min.js"></script>
+	<script src="<%=path%>/js/plugin/jquery.md5.js"></script>
+	<script src="<%=path%>/js/plugin/bootstrap.js"></script>
 	<script src="<%=path%>/js/webHeader.js"></script>
 	<!-- 中间装饰内容页面 -->
 	<decorator:body />
