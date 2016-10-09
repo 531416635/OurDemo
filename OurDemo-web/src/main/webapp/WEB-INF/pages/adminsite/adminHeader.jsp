@@ -12,14 +12,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><decorator:title default="OurDemo" /></title>
-<%-- <link rel="stylesheet" href="<%=path%>/css/redcss/detail.css"
-	type="text/css" /> --%>
-<%-- <script type="text/javascript" src="<%=path%>/js/redjs/jquery.min.2.js"></script> --%>
+<link rel="stylesheet" href="<%=path%>/css/plugin/easyui.css" />
 <!-- head装饰页面 -->
 <decorator:head />
 </head>
 <body>
 	<span>导航头部页面</span>
+	
+	<script src="<%=path%>/js/plugin/jquery.min.js"></script>
+	<script src="<%=path%>/js/plugin/jquery.easyui.min.js"></script>
 	<!-- 中间装饰内容页面 -->
 	<decorator:body />
 	<span>尾部页面</span>
