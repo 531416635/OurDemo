@@ -16,7 +16,7 @@
 <!-- head装饰页面 -->
 <decorator:head />
 </head>
-<body>
+<body style="margin: 0px;">
 	<span>导航头部页面</span>
 	
 	<script src="<%=path%>/js/plugin/jquery.min.js"></script>

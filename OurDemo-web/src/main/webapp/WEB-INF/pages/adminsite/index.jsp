@@ -14,18 +14,31 @@
 <title>OurDemo1</title>
 </head>
 <body>
-	<div class="easyui-layout" style="width: 400px; height: 200px;">
-		<div region="west" split="true" title="Navigator"
-			style="width: 150px;">
-			<p style="padding: 5px; margin: 0;">Select language:</p>
+	<div id="indexlayout" class="easyui-layout"
+		style="width: 100%; min-height: 500px;">
+		<div data-options="region:'east',title:'East',split:true"
+			style="width: 10%;"></div>
+		<div data-options="region:'west',title:'West',split:true"
+			style="width: 10%;">
+			<div id="aa" class="easyui-accordion"
+				style="width: 100%; ">
+				<div title="Title1" data-options="iconCls:'icon-save'"
+					style="overflow: auto; padding: 10px;">
+					<h3 style="color: #0099FF;">Accordion for jQuery</h3>
+					<p>Accordion is a part of easyui framework for jQuery. It lets
+						you define your accordion component on web page more easily.</p>
+				</div>
+				<div title="Title2"
+					data-options="iconCls:'icon-reload',selected:true"
+					style="padding: 10px;">content2</div>
+				<div title="Title3">content3</div>
+			</div>
 
 		</div>
-		<div  region="center" title="Language" style="padding: 5px;width:100%;"></div>
-		<div region="east" split="true" title="Navigator"
-			style="width: 150px;">
-			<p style="padding: 5px; margin: 0;">Select language:</p>
-
-		</div>
+		<div data-options="region:'center',title:'center title'"
+			style="padding: 5px; background: #eee;"></div>
 	</div>
+
+	<script src="<%=path%>/js/admin/index.js"></script>
 </body>
 </html>
