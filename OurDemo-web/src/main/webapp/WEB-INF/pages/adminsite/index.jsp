@@ -12,6 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>OurDemo1</title>
+<link rel="stylesheet" href="<%=path%>/css/admin/index.css" />
 </head>
 <body>
 	<div id="indexlayout" class="easyui-layout"
@@ -19,24 +20,27 @@
 		<div data-options="region:'east',title:'East',split:true"
 			style="width: 10%;"></div>
 		<div data-options="region:'west',title:'West',split:true"
-			style="width: 10%;">
+			style="width: 10%;overflow:hidden">
 			<div id="aa" class="easyui-accordion"
-				style="width: 100%; ">
-				<div title="Title1" data-options="iconCls:'icon-save'"
-					style="overflow: auto; padding: 10px;">
-					<h3 style="color: #0099FF;">Accordion for jQuery</h3>
-					<p>Accordion is a part of easyui framework for jQuery. It lets
-						you define your accordion component on web page more easily.</p>
+				style="width: 100%;height: 100%; ">
+				<div title="一级管理" data-options="iconCls:'icon-save',selected:true"
+					style="overflow: auto; width: 100%;">
+					<div id="menu1" class="menudiv">用户管理</div>
+					<div class="menudiv">File 12</div>
+					<div class="menudiv">File 13</div>
 				</div>
-				<div title="Title2"
-					data-options="iconCls:'icon-reload',selected:true"
-					style="padding: 10px;">content2</div>
-				<div title="Title3">content3</div>
+				<div title="二级管理" data-options="iconCls:'icon-reload'" 
+					style="overflow: auto; width: 100%;">content2</div>
+				<div title="三级管理" data-options="iconCls:'icon-reload'" 
+					style="overflow: auto; width: 100%;">content3</div>
 			</div>
 
 		</div>
 		<div data-options="region:'center',title:'center title'"
-			style="padding: 5px; background: #eee;"></div>
+			style="padding: 5px; background: #eee;">
+			<div id="tt" class="easyui-tabs" style="width: 100%; height: 100%;">
+			</div>
+		</div>
 	</div>
 
 	<script src="<%=path%>/js/admin/index.js"></script>
