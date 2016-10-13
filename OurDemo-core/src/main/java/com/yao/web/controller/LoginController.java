@@ -1,4 +1,4 @@
-package com.yao.controller;
+package com.yao.web.controller;
 
 import java.util.Date;
 

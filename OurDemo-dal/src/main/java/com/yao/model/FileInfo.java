@@ -3,69 +3,83 @@ package com.yao.model;
 import java.util.Date;
 
 public class FileInfo {
-	
-	private int id;//文件id
-	private String filename;//文件名
-	private String filetype;//文件类型
-	private Date uploadtime;//上传时间
-	private int uploaduser;//上传人的id
-	private String filepath;//保存路径
-	private int albumid;//所属相册的ID
-	private int isdefault;//是否为默认首图
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getFilename() {
-		return filename;
-	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
-	public String getFiletype() {
-		return filetype;
-	}
-	public void setFiletype(String filetype) {
-		this.filetype = filetype;
-	}
-	public Date getUploadtime() {
-		return uploadtime;
-	}
-	public void setUploadtime(Date uploadtime) {
-		this.uploadtime = uploadtime;
-	}
-	
-	public int getUploaduser() {
-		return uploaduser;
-	}
-	public void setUploaduser(int uploaduser) {
-		this.uploaduser = uploaduser;
-	}
-	public String getFilepath() {
-		return filepath;
-	}
-	public void setFilepath(String filepath) {
-		this.filepath = filepath;
-	}
-	public int getIsdefault() {
-		return isdefault;
-	}
-	public void setIsdefault(int isdefault) {
-		this.isdefault = isdefault;
-	}
-	public int getAlbumid() {
-		return albumid;
-	}
-	public void setAlbumid(int albumid) {
-		this.albumid = albumid;
-	}
-	@Override
-	public String toString() {
-		return "FileInfo [id=" + id + ", filename=" + filename + ", filetype="
-				+ filetype + ", uploadtime=" + uploadtime + ", uploaduser="
-				+ uploaduser + ", filepath=" + filepath + ", albumid="
-				+ albumid + ", isdefault=" + isdefault + "]";
-	}
+    private Integer id;
+
+    private String filename;
+
+    private String filetype;
+
+    private Date uploadtime;
+
+    private Integer uploaduser;
+
+    private String filepath;
+
+    private Integer albumid;
+
+    private Integer isdefault;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename == null ? null : filename.trim();
+    }
+
+    public String getFiletype() {
+        return filetype;
+    }
+
+    public void setFiletype(String filetype) {
+        this.filetype = filetype == null ? null : filetype.trim();
+    }
+
+    public Date getUploadtime() {
+        return uploadtime;
+    }
+
+    public void setUploadtime(Date uploadtime) {
+        this.uploadtime = uploadtime;
+    }
+
+    public Integer getUploaduser() {
+        return uploaduser;
+    }
+
+    public void setUploaduser(Integer uploaduser) {
+        this.uploaduser = uploaduser;
+    }
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath == null ? null : filepath.trim();
+    }
+
+    public Integer getAlbumid() {
+        return albumid;
+    }
+
+    public void setAlbumid(Integer albumid) {
+        this.albumid = albumid;
+    }
+
+    public Integer getIsdefault() {
+        return isdefault;
+    }
+
+    public void setIsdefault(Integer isdefault) {
+        this.isdefault = isdefault;
+    }
 }

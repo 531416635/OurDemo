@@ -1,4 +1,4 @@
-package com.yao.controller;
+package com.yao.web.controller;
 
 import java.io.File;
 import java.io.IOException;
