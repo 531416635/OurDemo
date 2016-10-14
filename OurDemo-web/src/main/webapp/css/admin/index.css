@@ -4,8 +4,25 @@
 	cursor: pointer;
 	text-align: center;
 }
+
 .menudiv:hover {
 	background-color: #F4F4F4;
-	font-size: 110%;
+	font-size: 120%;
 	font-weight: bold;
+}
+
+.datagridtable {
+	width: 100%;
+}
+.datagridtable tr:nth-child(odd){
+	background-color: #F4F4F4;
+}
+.datagridtable tr:nth-child(even){
+	background-color: #FFFFFF;
+}
+.datagridtable tr:HOVER{
+	background-color: #eaf2ff;
+}
+.datagridtable tr td {
+	width: 100px;
 }

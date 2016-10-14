@@ -122,4 +122,16 @@ public class User {
     public void setActivecode(String activecode) {
         this.activecode = activecode == null ? null : activecode.trim();
     }
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password="
+				+ password + ", usertype=" + usertype + ", userphoto="
+				+ userphoto + ", email=" + email + ", phone=" + phone
+				+ ", roleid=" + roleid + ", regtime=" + regtime
+				+ ", userstatus=" + userstatus + ", activestatus="
+				+ activestatus + ", activecode=" + activecode + "]";
+	}
+    
+    
 }

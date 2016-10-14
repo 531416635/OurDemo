@@ -13,14 +13,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><decorator:title default="OurDemo" /></title>
 <link rel="stylesheet" href="<%=path%>/css/plugin/easyui.css" />
+<link rel="stylesheet" href="<%=path%>/css/plugin/icon.css" />
 <!-- head装饰页面 -->
 <decorator:head />
 </head>
-<body style="margin: 0px;">
+<body style="margin: 0px;min-width: 1500px;">
 	<span>导航头部页面</span>
 	
 	<script src="<%=path%>/js/plugin/jquery.min.js"></script>
 	<script src="<%=path%>/js/plugin/jquery.easyui.min.js"></script>
+	<script src="<%=path%>/js/plugin/easyui-lang-zh_CN.js"></script>
+	<script src="<%=path%>/js/plugin/datagrid-detailview.js"></script>
 	<!-- 中间装饰内容页面 -->
 	<decorator:body />
 	<span>尾部页面</span>

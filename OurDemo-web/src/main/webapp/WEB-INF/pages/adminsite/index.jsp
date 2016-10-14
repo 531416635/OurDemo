@@ -20,24 +20,25 @@
 		<div data-options="region:'east',title:'East',split:true"
 			style="width: 10%;"></div>
 		<div data-options="region:'west',title:'West',split:true"
-			style="width: 10%;overflow:hidden">
+			style="width: 10%; overflow: hidden">
 			<div id="aa" class="easyui-accordion"
-				style="width: 100%;height: 100%; ">
-				<div title="一级管理" data-options="iconCls:'icon-save',selected:true"
+				style="width: 100%; height: 100%;">
+				<div title="一级管理" data-options="iconCls:'icon-reload',selected:true"
 					style="overflow: auto; width: 100%;">
 					<div id="menu1" class="menudiv">用户管理</div>
 					<div class="menudiv">File 12</div>
 					<div class="menudiv">File 13</div>
 				</div>
-				<div title="二级管理" data-options="iconCls:'icon-reload'" 
+				<div title="二级管理" data-options="iconCls:'icon-reload'"
 					style="overflow: auto; width: 100%;">content2</div>
-				<div title="三级管理" data-options="iconCls:'icon-reload'" 
+				<div title="三级管理" data-options="iconCls:'icon-reload'"
 					style="overflow: auto; width: 100%;">content3</div>
 			</div>
-
 		</div>
+		
 		<div data-options="region:'center',title:'center title'"
 			style="padding: 5px; background: #eee;">
+			<!-- tab标签页 -->
 			<div id="tt" class="easyui-tabs" style="width: 100%; height: 100%;">
 			</div>
 		</div>

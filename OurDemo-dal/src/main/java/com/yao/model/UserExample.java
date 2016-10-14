@@ -4,14 +4,38 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.yao.vo.EasyUIParamVO;
+import com.yao.vo.PageVO;
+
 public class UserExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
+    
+    protected PageVO page;
+    
+    protected EasyUIParamVO  easyUIParam;
+    
 
-    public UserExample() {
+	public PageVO getPage() {
+		return page;
+	}
+
+	public void setPage(PageVO page) {
+		this.page = page;
+	}
+
+	public EasyUIParamVO getEasyUIParam() {
+		return easyUIParam;
+	}
+
+	public void setEasyUIParam(EasyUIParamVO easyUIParam) {
+		this.easyUIParam = easyUIParam;
+	}
+
+	public UserExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

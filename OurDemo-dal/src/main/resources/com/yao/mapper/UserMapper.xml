@@ -91,6 +91,12 @@
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
+	<if test="easyUIParam != null">
+		ORDER BY ${easyUIParam.sort} ${easyUIParam.order} 
+	</if>
+	<if test="page != null">
+		limit ${page.startPage}, ${page.endPage}
+	</if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
