@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
@@ -36,7 +37,7 @@ public class UserController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/getAllUser")
+	@RequestMapping(value = "/getAllUser", method = RequestMethod.POST)
 	public JSONObject getAllUser(User user, PageVO page,
 			EasyUIParamVO easyUIParam) {
 		JSONObject json = new JSONObject();

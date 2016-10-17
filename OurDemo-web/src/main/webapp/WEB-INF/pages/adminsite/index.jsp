@@ -25,8 +25,8 @@
 				style="width: 100%; height: 100%;">
 				<div title="一级管理" data-options="iconCls:'icon-reload',selected:true"
 					style="overflow: auto; width: 100%;">
-					<div id="menu1" class="menudiv">用户管理</div>
-					<div class="menudiv">File 12</div>
+					<div id="usermanager" class="menudiv">用户管理</div>
+					<div id="articlemanager" class="menudiv">文章管理</div>
 					<div class="menudiv">File 13</div>
 				</div>
 				<div title="二级管理" data-options="iconCls:'icon-reload'"
