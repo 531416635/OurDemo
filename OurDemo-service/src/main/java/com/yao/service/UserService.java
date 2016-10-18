@@ -27,4 +27,11 @@ public interface UserService {
 	 * @return
 	 */
 	public User selectByPrimaryKey(Integer id);
+	
+	/**
+	 * 根据主键 有选择 的更新用户信息
+	 * @param record
+	 * @return
+	 */
+	public int updateByPrimaryKeySelective(User record);
 }

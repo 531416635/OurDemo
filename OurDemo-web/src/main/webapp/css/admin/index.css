@@ -23,6 +23,25 @@
 .datagridtable tr:HOVER{
 	background-color: #eaf2ff;
 }
-.datagridtable tr td {
-	width: 100px;
+
+/*********yong hu guan li 用户管理******start*******/
+#editUserForm{
+	max-width: 470px;
+	float: left;
 }
+#editUserForm div{
+	margin: 10px;
+}
+#editUserForm div label{
+	min-width: 100px;
+	display: inline-block;
+	text-align: right;
+}
+#editUserForm div input{
+	border: none;
+    border-radius: 8px;
+    min-width: 300px;
+    height: 25px;
+}
+
+/*********yong hu guan li 用户管理******end*******/

@@ -1,5 +1,9 @@
-var path = "/OurDemo/admin";
+//请求URL的路径
+var path = "/OurDemo/admin/";
+//加载JS静态文件的路径
 var JSpath = "/OurDemo/js/admin/";
+//图片显示的路径
+var IMGpath = "/OurDemo";
 // 页面加载js时，初始化方法
 $(function() {
 	initlayout();

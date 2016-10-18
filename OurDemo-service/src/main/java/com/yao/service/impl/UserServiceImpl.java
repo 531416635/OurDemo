@@ -28,6 +28,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User selectByPrimaryKey(Integer id) {
 		return dao.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public int updateByPrimaryKeySelective(User record) {
+		// TODO Auto-generated method stub
+		return dao.updateByPrimaryKeySelective(record);
 	};
 	
 	

@@ -167,7 +167,6 @@ public class AlbumController {
 			}
 
 		}
-		logger.info("---------");
 		return JSONObject
 				.parseObject("{'event':'1', 'data':'2', 'previewId':'3', 'index':'4'}");
 	}
