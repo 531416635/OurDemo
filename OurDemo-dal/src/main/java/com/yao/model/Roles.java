@@ -1,15 +1,19 @@
 package com.yao.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Roles {
-    private Integer id;
+public class Roles implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2997101939423121729L;
+
+	private Integer id;
 
     private String rolename;
 
     private String rolecode;
-
-    private String rightid;
 
     private Integer status;
 
@@ -37,14 +41,6 @@ public class Roles {
 
     public void setRolecode(String rolecode) {
         this.rolecode = rolecode == null ? null : rolecode.trim();
-    }
-
-    public String getRightid() {
-        return rightid;
-    }
-
-    public void setRightid(String rightid) {
-        this.rightid = rightid == null ? null : rightid.trim();
     }
 
     public Integer getStatus() {

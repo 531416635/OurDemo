@@ -3,27 +3,25 @@ package com.yao.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import com.yao.dao.UserModelMapper;
-import com.yao.model.UserModel;
-import com.yao.model.UserModelExample;
-import com.yao.service.UserService;
+import com.yao.dao.RolesMapper;
+import com.yao.model.Roles;
+import com.yao.model.RolesExample;
+import com.yao.service.RolesService;
 
-@Service
-public class UserServiceImpl implements UserService {
+public class RolesServiceImpl implements RolesService{
 
 	@Autowired
-	private UserModelMapper dao;
-
+	private RolesMapper dao;
+	
 	@Override
-	public long countByExample(UserModelExample example) {
+	public long countByExample(RolesExample example) {
 		// TODO Auto-generated method stub
 		return dao.countByExample(example);
 	}
 
 	@Override
-	public int deleteByExample(UserModelExample example) {
+	public int deleteByExample(RolesExample example) {
 		// TODO Auto-generated method stub
 		return dao.deleteByExample(example);
 	}
@@ -35,50 +33,49 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int insert(UserModel record) {
+	public int insert(Roles record) {
 		// TODO Auto-generated method stub
 		return dao.insert(record);
 	}
 
 	@Override
-	public int insertSelective(UserModel record) {
+	public int insertSelective(Roles record) {
 		// TODO Auto-generated method stub
 		return dao.insertSelective(record);
 	}
 
 	@Override
-	public List<UserModel> selectByExample(UserModelExample example) {
+	public List<Roles> selectByExample(RolesExample example) {
 		// TODO Auto-generated method stub
 		return dao.selectByExample(example);
 	}
 
 	@Override
-	public UserModel selectByPrimaryKey(Integer id) {
+	public Roles selectByPrimaryKey(Integer id) {
 		// TODO Auto-generated method stub
 		return dao.selectByPrimaryKey(id);
 	}
 
 	@Override
-	public int updateByExampleSelective(UserModel record,
-			UserModelExample example) {
+	public int updateByExampleSelective(Roles record, RolesExample example) {
 		// TODO Auto-generated method stub
 		return dao.updateByExampleSelective(record, example);
 	}
 
 	@Override
-	public int updateByExample(UserModel record, UserModelExample example) {
+	public int updateByExample(Roles record, RolesExample example) {
 		// TODO Auto-generated method stub
 		return dao.updateByExample(record, example);
 	}
 
 	@Override
-	public int updateByPrimaryKeySelective(UserModel record) {
+	public int updateByPrimaryKeySelective(Roles record) {
 		// TODO Auto-generated method stub
 		return dao.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
-	public int updateByPrimaryKey(UserModel record) {
+	public int updateByPrimaryKey(Roles record) {
 		// TODO Auto-generated method stub
 		return dao.updateByPrimaryKey(record);
 	}

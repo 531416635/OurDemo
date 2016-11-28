@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yao.model.User;
+import com.yao.model.UserModel;
 import com.yao.service.LoginService;
 import com.yao.utils.MD5Utils;
 import com.yao.utils.SpringMailUtils;
@@ -46,7 +46,7 @@ public class LoginController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="web/sendRegisterMsg")
-	public int sendRegisterMsg(User user){
+	public int sendRegisterMsg(UserModel user){
 		//生成激活码
 		String activecode=MD5Utils.getMD5(user.getUsername()+user.getEmail()+"yyx");
 		user.setActivecode(activecode);
@@ -80,7 +80,7 @@ public class LoginController {
 	public Object login(String email,String password,HttpServletRequest request){
 		JSONObject stri=new JSONObject();
 		stri.put("data", "1");
-		User user=loginService.findUserByEmail(email);
+		UserModel user=loginService.findUserByEmail(email);
 		if(user!=null&&user.getPassword().equals(password)){
 			logger.info("登录成功！邮箱:{}，密码:{}",email,password);
 			HttpSession session=request.getSession();
@@ -98,7 +98,7 @@ public class LoginController {
 	@RequestMapping("web/loginout")
 	public String loginout(HttpServletRequest request){
 		HttpSession session = request.getSession(false);//防止创建Session 
-		User user =(User) session.getAttribute("user");
+		UserModel user =(UserModel) session.getAttribute("user");
 		logger.info("退出成功！邮箱:{}，密码:{}",user.getEmail(),user.getPassword());
 		session.removeAttribute("user");
 		return "redirect:index.html";

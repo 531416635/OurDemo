@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,10 +21,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yao.model.PhotoAlbum;
-import com.yao.model.User;
-import com.yao.model.UserExample;
-import com.yao.model.UserExample.Criteria;
+import com.yao.model.UserModel;
+import com.yao.model.UserModelExample;
 import com.yao.service.UserService;
 import com.yao.vo.EasyUIParamVO;
 import com.yao.vo.PageVO;
@@ -47,18 +44,18 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getAllUser", method = RequestMethod.POST)
-	public JSONObject getAllUser(User user, PageVO page,
+	public JSONObject getAllUser(UserModel user, PageVO page,
 			EasyUIParamVO easyUIParam) {
 		JSONObject json = new JSONObject();
 		json.put("errorID", 0);
 		try {
 			Map<String, Object> result = new HashMap<String, Object>();
-			UserExample example = new UserExample();
-			int totalCount = (int) service.getCountByExample(example);
+			UserModelExample example = new UserModelExample();
+			int totalCount = (int) service.countByExample(example);
 			page.setTotalRow(totalCount);
 			example.setPage(page);
 			example.setEasyUIParam(easyUIParam);
-			List<User> users = service.selectByExample(example);
+			List<UserModel> users = service.selectByExample(example);
 			result.put("users", users);
 			result.put("totalCount", totalCount);
 			json.put("result", result);
@@ -78,7 +75,7 @@ public class UserController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/updateUserInfo", method = RequestMethod.POST)
-	public JSONObject updateUserInfo(HttpServletRequest request,User user) {
+	public JSONObject updateUserInfo(HttpServletRequest request,UserModel user) {
 		JSONObject json = new JSONObject();
 		json.put("errorID", 0);
 		try {

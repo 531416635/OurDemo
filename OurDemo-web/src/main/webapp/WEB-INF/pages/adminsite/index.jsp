@@ -15,11 +15,12 @@
 <link rel="stylesheet" href="<%=path%>/css/admin/index.css" />
 </head>
 <body>
-	<div id="indexlayout" class="easyui-layout"
-		style="width: 100%; min-height: 500px;">
-		<div data-options="region:'east',title:'East',split:true"
-			style="width: 10%;"></div>
-		<div data-options="region:'west',title:'West',split:true"
+	<div id="indexlayout" class="easyui-layout" data-options="fit:true"
+		style="width: 100%;">
+		<div data-options="region:'north'" style="height:75px">
+                <table id="part1">头部页面</table>
+            </div>
+		<div data-options="region:'west',title:'West',split:true,"
 			style="width: 10%; overflow: hidden">
 			<div id="aa" class="easyui-accordion"
 				style="width: 100%; height: 100%;">
@@ -27,7 +28,7 @@
 					style="overflow: auto; width: 100%;">
 					<div id="usermanager" class="menudiv">用户管理</div>
 					<div id="articlemanager" class="menudiv">文章管理</div>
-					<div class="menudiv">File 13</div>
+					<div id="menumanager" class="menudiv">菜单管理</div>
 				</div>
 				<div title="二级管理" data-options="iconCls:'icon-reload'"
 					style="overflow: auto; width: 100%;">content2</div>
@@ -43,7 +44,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script src="<%=path%>/js/admin/index.js"></script>
 </body>
 </html>

@@ -32,7 +32,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import com.alibaba.fastjson.JSONObject;
 import com.yao.model.FileInfo;
 import com.yao.model.PhotoAlbum;
-import com.yao.model.User;
+import com.yao.model.UserModel;
 import com.yao.service.AlbumService;
 
 /**
@@ -112,7 +112,7 @@ public class AlbumController {
 		 * 判断用户是否登录或在线，并以此为文件添加上传人
 		 */
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
+		UserModel user = (UserModel) session.getAttribute("user");
 		FileInfo fileInfo = new FileInfo();
 		fileInfo.setUploaduser(user.getId());
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(

@@ -1,6 +1,6 @@
 package com.yao.service;
 
-import com.yao.model.User;
+import com.yao.model.UserModel;
 
 public interface LoginService {
 
@@ -9,12 +9,12 @@ public interface LoginService {
 	 * @param email
 	 * @return
 	 */
-	public User findUserByEmail(String email);
+	public UserModel findUserByEmail(String email);
 	
 	/**
 	 * 将注册页面填写的用户信息（邮箱，用户名）存入数据库
 	 * @param user
 	 * @return
 	 */
-	public int saveRegUser(User user);
+	public int saveRegUser(UserModel user);
 }

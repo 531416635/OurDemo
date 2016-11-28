@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.yao.model.User;
+import com.yao.model.UserModel;
 import com.yao.service.LoginService;
 
 
@@ -26,7 +26,7 @@ public class logintest {
 	
 	@Test
 	public void testRegister(){
-		User user =new User();
+		UserModel user =new UserModel();
 		user.setEmail("5314126263@qq.com");
 		user.setUsername("eee444");
 		user.setRegtime(new Date());

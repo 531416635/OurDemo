@@ -2,36 +2,34 @@ package com.yao.service;
 
 import java.util.List;
 
-import com.yao.model.User;
-import com.yao.model.UserExample;
+import org.apache.ibatis.annotations.Param;
+
+import com.yao.model.UserModel;
+import com.yao.model.UserModelExample;
 
 public interface UserService {
-	
-	/**
-	 * 获取总数，根据传入的参数的字段获取对应的总数
-	 * @param example
-	 * @return
-	 */
-	public long getCountByExample(UserExample example);
-	
-	/**
-	 * 获取用户列表，根据传入的参数获取用户列表
-	 * @param example
-	 * @return
-	 */
-	public List<User> selectByExample(UserExample example);
 
-	/**
-	 * 根据主键ID获取用户
-	 * @param id
-	 * @return
-	 */
-	public User selectByPrimaryKey(Integer id);
-	
-	/**
-	 * 根据主键 有选择 的更新用户信息
-	 * @param record
-	 * @return
-	 */
-	public int updateByPrimaryKeySelective(User record);
+	long countByExample(UserModelExample example);
+
+	int deleteByExample(UserModelExample example);
+
+	int deleteByPrimaryKey(Integer id);
+
+	int insert(UserModel record);
+
+	int insertSelective(UserModel record);
+
+	List<UserModel> selectByExample(UserModelExample example);
+
+	UserModel selectByPrimaryKey(Integer id);
+
+	int updateByExampleSelective(@Param("record") UserModel record,
+			@Param("example") UserModelExample example);
+
+	int updateByExample(@Param("record") UserModel record,
+			@Param("example") UserModelExample example);
+
+	int updateByPrimaryKeySelective(UserModel record);
+
+	int updateByPrimaryKey(UserModel record);
 }

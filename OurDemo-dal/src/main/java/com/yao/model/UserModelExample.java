@@ -7,35 +7,18 @@ import java.util.List;
 import com.yao.vo.EasyUIParamVO;
 import com.yao.vo.PageVO;
 
-public class UserExample {
+public class UserModelExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
     
+    protected EasyUIParamVO easyUIParam;
+    
     protected PageVO page;
-    
-    protected EasyUIParamVO  easyUIParam;
-    
 
-	public PageVO getPage() {
-		return page;
-	}
-
-	public void setPage(PageVO page) {
-		this.page = page;
-	}
-
-	public EasyUIParamVO getEasyUIParam() {
-		return easyUIParam;
-	}
-
-	public void setEasyUIParam(EasyUIParamVO easyUIParam) {
-		this.easyUIParam = easyUIParam;
-	}
-
-	public UserExample() {
+    public UserModelExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -1001,5 +984,23 @@ public class UserExample {
         protected Criterion(String condition, Object value, Object secondValue) {
             this(condition, value, secondValue, null);
         }
+        
     }
+
+	public EasyUIParamVO getEasyUIParam() {
+		return easyUIParam;
+	}
+
+	public void setEasyUIParam(EasyUIParamVO easyUIParam) {
+		this.easyUIParam = easyUIParam;
+	}
+
+	public PageVO getPage() {
+		return page;
+	}
+
+	public void setPage(PageVO page) {
+		this.page = page;
+	}
+    
 }

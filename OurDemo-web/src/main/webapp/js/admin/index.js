@@ -5,7 +5,7 @@ var JSpath = "/OurDemo/js/admin/";
 //图片显示的路径
 var IMGpath = "/OurDemo";
 // 页面加载js时，初始化方法
-$(function() {
+jQuery(function($){ 
 	initlayout();
 });
 
@@ -24,4 +24,17 @@ $('#usermanager').click(function() {
 //文章管理
 $('#articlemanager').click(function() {
 	$.getScript(JSpath + 'articlemanager.js')
+});
+$('#menumanager').click(function() {
+	var title = '菜单管理';
+	if ($('#tt').tabs('exists', title)) {
+		$('#tt').tabs('select', title);
+	} else {
+		$('#tt').tabs('add', {
+			title : title,
+			selected : true,
+			content : '<iframe id="B" frameborder="0" src="menu/menuManager.html" style="width: 100%; height: 100%;"></iframe>',
+			closable : true
+		});
+	}
 });
