@@ -1,6 +1,6 @@
 $(function(){
 	$('#tt').treegrid({
-	    url:'menu/getMenuList',
+	    url:'getMenuList.html',
 	    idField:'id',
 	    treeField:'name',
 	    columns:[[

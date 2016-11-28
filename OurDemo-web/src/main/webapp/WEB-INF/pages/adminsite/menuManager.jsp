@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>菜单</title>
-<script src="<%=path%>/js/admin/index.js"></script>
+<script src="<%=path%>/js/admin/menumanager.js"></script>
 </head>
 <body>
 <table id="tt" style="width:600px;height:400px"></table>

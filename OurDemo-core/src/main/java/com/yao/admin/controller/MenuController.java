@@ -1,6 +1,5 @@
 package com.yao.admin.controller;
 
-import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yao.model.Menu;
@@ -35,6 +35,7 @@ public class MenuController {
 		return "adminsite/menuManager";
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "/getMenuList", method = RequestMethod.POST)
 	public JSONObject getMenuList() {
 		JSONObject json = new JSONObject();

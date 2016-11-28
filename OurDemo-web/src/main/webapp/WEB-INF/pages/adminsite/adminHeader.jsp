@@ -17,15 +17,15 @@
 <title><decorator:title default="OurDemo" /></title>
 <link rel="stylesheet" href="<%=path%>/css/plugin/easyui.css" />
 <link rel="stylesheet" href="<%=path%>/css/plugin/icon.css" />
+<script src="<%=path%>/js/plugin/jquery.min.js"></script>
+<script src="<%=path%>/js/plugin/jquery.easyui.min.js"></script>
+<script src="<%=path%>/js/plugin/easyui-lang-zh_CN.js"></script>
+<script src="<%=path%>/js/plugin/datagrid-detailview.js"></script>
+<script src="<%=path%>/js/plugin/dateFormat.js"></script>
 <!-- head装饰页面 -->
 <decorator:head />
 </head>
 <body style="margin: 0px;">
-	<script src="<%=path%>/js/plugin/jquery.min.js"></script>
-	<script src="<%=path%>/js/plugin/jquery.easyui.min.js"></script>
-	<script src="<%=path%>/js/plugin/easyui-lang-zh_CN.js"></script>
-	<script src="<%=path%>/js/plugin/datagrid-detailview.js"></script>
-	<script src="<%=path%>/js/plugin/dateFormat.js"></script>
 	<!-- 中间装饰内容页面 -->
 	<decorator:body />
 
