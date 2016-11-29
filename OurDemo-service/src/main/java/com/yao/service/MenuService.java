@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.yao.model.Menu;
 import com.yao.model.MenuExample;
+import com.yao.vo.TreeNode;
 
 public interface MenuService {
 
@@ -30,4 +31,6 @@ public interface MenuService {
     int updateByPrimaryKeySelective(Menu record);
 
     int updateByPrimaryKey(Menu record);
+    
+    List<TreeNode> selectTreeNode(MenuExample example);
 }

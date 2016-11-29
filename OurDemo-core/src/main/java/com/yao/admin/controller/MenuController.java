@@ -18,6 +18,7 @@ import com.yao.model.Menu;
 import com.yao.model.MenuExample;
 import com.yao.service.MenuService;
 import com.yao.utils.EhcacheUtils;
+import com.yao.vo.TreeNode;
 
 @Controller
 @RequestMapping(value = "/admin/menu")
@@ -28,6 +29,11 @@ public class MenuController {
 	@Autowired
 	private MenuService service;
 
+	/**
+	 * iframe跳转到菜单管理页面
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping("/menuManager.html")
 	public String initMenu(HttpServletResponse response) {
 		logger.debug("进入菜单管理页面");
@@ -35,6 +41,10 @@ public class MenuController {
 		return "adminsite/menuManager";
 	}
 
+	/**
+	 * 获取菜单列表
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/getMenuList", method = RequestMethod.POST)
 	public JSONObject getMenuList() {
@@ -44,10 +54,23 @@ public class MenuController {
 		List<Menu> menuList = (List<Menu>) EhcacheUtils.getCache("menuList");
 		if (CollectionUtils.isEmpty(menuList)) {
 			menuList = service.selectByExample(new MenuExample());
-			json.put("result", menuList);
-		} else {
-			json.put("result", menuList);
-		}
+		} 
+		json.put("result", menuList);
+		logger.debug(json.toJSONString());
+		return json;
+	}
+	
+	/**
+	 * 获取Combotree菜单列表
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/getCombotreeMenu", method = RequestMethod.POST)
+	public JSONObject getCombotreeMenu() {
+		JSONObject json = new JSONObject();
+		json.put("errorID", 0);
+		List<TreeNode> menuList = service.selectTreeNode(new MenuExample());
+		json.put("result", menuList);
 		logger.debug(json.toJSONString());
 		return json;
 	}

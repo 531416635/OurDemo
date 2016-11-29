@@ -23,6 +23,7 @@ $(function(){
 	    url:'getMenuList.do',
 	    idField:'id',
 	    treeField:'menuname',
+	    fit:true,
 	    columns:[[
 			{title:'菜单名称',field:'menuname'},
 			{title:'菜单路径',field:'menupath'},
@@ -30,15 +31,14 @@ $(function(){
 	    ]],
 	    toolbar:toolbar,
 	    loadFilter : function(data,parentId) {
-	    	console.log(parentId);
-	    	console.log(data);
 			var returnData;
 			if (data.errorID == 0) {
 				returnData = {
 					rows : data.result,
 					errorID:data.errorID 
 				};
-				$.each(returnData.rows, function(i) {  
+				$.each(returnData.rows, function(i) { 
+					returnData.rows[i].createtime = new Date(returnData.rows[i].createtime).Format("yyyy-MM-dd hh:mm:ss");
                     var parentId = returnData.rows[i].pid; 
                     if(parentId != "0"){  
                     	returnData.rows[i]._parentId = parentId;  
@@ -61,5 +61,19 @@ function newData(){
 	    height:400,
 	    modal:true
 	});
+	$('#cc').combotree({
+	    url: 'getCombotreeMenu.do',
+		method : 'POST',
+		width : 250,
+		panelHeight : 250,
+		panelWidth : 250,
+		loadFilter : function(data) {
+			if (data.errorID == 0) {
+				data = data.result;
+			}
+			return data;
+		}
+	});
+	
 	$('#insertMenu').window('open'); 
 }

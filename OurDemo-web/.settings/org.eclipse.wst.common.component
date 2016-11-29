@@ -7,13 +7,13 @@
         <dependent-module archiveName="OurDemo-core-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/OurDemo-core/OurDemo-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="OurDemo-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/OurDemo-common/OurDemo-common">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="OurDemo-service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/OurDemo-service/OurDemo-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="OurDemo-dal-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/OurDemo-dal/OurDemo-dal">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="OurDemo-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/OurDemo-common/OurDemo-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/OurDemo-web/target/classes"/>

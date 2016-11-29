@@ -1,13 +1,19 @@
 package com.yao.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 
 import com.yao.dao.MenuMapper;
 import com.yao.model.Menu;
 import com.yao.model.MenuExample;
 import com.yao.service.MenuService;
+import com.yao.utils.EhcacheUtils;
+import com.yao.vo.TreeNode;
 
 public class MenuServiceImpl implements MenuService{
 
@@ -78,6 +84,51 @@ public class MenuServiceImpl implements MenuService{
 	public int updateByPrimaryKey(Menu record) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<TreeNode> selectTreeNode(MenuExample example) {
+		// TODO Auto-generated method stub
+		@SuppressWarnings("unchecked")
+		List<Menu> menuList = (List<Menu>) EhcacheUtils.getCache("menuList");
+		if (CollectionUtils.isEmpty(menuList)) {
+			menuList = dao.selectByExample(example);
+		} 
+		Map<Integer,List<Menu>> map = trunkMap(menuList);
+		List<Menu> list2 = map.get(0); //此处的0不是只map中的第一个元素，而是指key为0，表示取出树中的一级菜单元素。
+		List<TreeNode> treeNodeList = trunkChildren(list2,map);
+		return treeNodeList;
+	}
+	private Map<Integer, List<Menu>> trunkMap(List<Menu> list) {
+		Map<Integer,List<Menu>> map = new HashMap<Integer, List<Menu>>();
+		for(Menu o : list){
+			if(map.containsKey(o.getPid())){
+				map.get(o.getPid()).add(o);
+			}else{
+				map.put(o.getPid(), new ArrayList<Menu>());
+				map.get(o.getPid()).add(o);
+			}
+		}
+		return map;
+	}
+
+	private List<TreeNode> trunkChildren(List<Menu> list2,
+			Map<Integer, List<Menu>> map) {
+		List<TreeNode> rst = new ArrayList<TreeNode>();
+		TreeNode node = null ;
+		for(Menu o : list2){
+			node = new TreeNode();
+			node.setId(String.valueOf(o.getId()));
+			node.setText(o.getMenuname());
+			node.setPid(o.getPid().toString());
+			rst.add(node);
+			if(!CollectionUtils.isEmpty(map.get(o.getId()))){
+				node.setChildren(trunkChildren(map.get(o.getId()),map));
+			}else{
+				node.setState("open");
+			}
+		}
+		return rst ;
 	}
 
 }
