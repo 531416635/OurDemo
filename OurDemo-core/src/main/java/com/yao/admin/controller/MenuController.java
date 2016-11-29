@@ -48,6 +48,7 @@ public class MenuController {
 		} else {
 			json.put("result", menuList);
 		}
+		logger.debug(json.toJSONString());
 		return json;
 	}
 }
