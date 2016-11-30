@@ -11,11 +11,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>菜单</title>
-<script src="<%=path%>/js/admin/menumanager.js"></script>
+<script src="<%=path%>/js/admin/rolemanager.js"></script>
 </head>
 <body>
 	<!-- 菜单列表展示 --- 树形数据网格 -->
-	<table id="tt" style=""></table>
+	<table id="dg" style=""></table>
 	<!-- 新增菜单 -->
 	<div id="insertMenu" style="display: none">
 		<div>

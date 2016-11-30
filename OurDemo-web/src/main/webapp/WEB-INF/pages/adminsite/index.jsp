@@ -29,6 +29,7 @@
 					<div id="usermanager" class="menudiv">用户管理</div>
 					<div id="articlemanager" class="menudiv">文章管理</div>
 					<div id="menumanager" class="menudiv">菜单管理</div>
+					<div id="rolemanager" class="menudiv">角色管理</div>
 				</div>
 				<div title="二级管理" data-options="iconCls:'icon-reload'"
 					style="overflow: auto; width: 100%;">content2</div>

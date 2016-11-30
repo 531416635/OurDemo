@@ -38,3 +38,16 @@ $('#menumanager').click(function() {
 		});
 	}
 });
+$('#rolemanager').click(function() {
+	var title = '角色管理';
+	if ($('#tt').tabs('exists', title)) {
+		$('#tt').tabs('select', title);
+	} else {
+		$('#tt').tabs('add', {
+			title : title,
+			selected : true,
+			content : '<iframe id="B" frameborder="0" src="role/roleManager.html" style="width: 100%; height: 100%;"></iframe>',
+			closable : true
+		});
+	}
+});

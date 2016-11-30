@@ -41,7 +41,12 @@ public class MenuServiceImpl implements MenuService{
 	@Override
 	public int insert(Menu record) {
 		// TODO Auto-generated method stub
-		return dao.insert(record);
+		int t = dao.insert(record);
+		if(t>0){
+			List<Menu> menuList = dao.selectByExample(new MenuExample());
+			EhcacheUtils.putCache("menuList", menuList);
+		}
+		return t;
 	}
 
 	@Override

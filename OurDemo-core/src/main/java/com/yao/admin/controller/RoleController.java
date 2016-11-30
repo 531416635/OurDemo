@@ -17,29 +17,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.yao.model.Menu;
 import com.yao.model.MenuExample;
-import com.yao.service.MenuService;
+import com.yao.model.Roles;
+import com.yao.model.RolesExample;
+import com.yao.service.RolesService;
 import com.yao.utils.EhcacheUtils;
 import com.yao.vo.TreeNode;
 
 @Controller
-@RequestMapping(value = "/admin/menu")
-public class MenuController {
+@RequestMapping(value = "/admin/role")
+public class RoleController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private MenuService service;
+	private RolesService service;
 
 	/**
 	 * iframe跳转到菜单管理页面
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping("/menuManager.html")
-	public String initMenu(HttpServletResponse response) {
-		logger.debug("进入菜单管理页面");
+	@RequestMapping("/roleManager.html")
+	public String initRole(HttpServletResponse response) {
+		logger.debug("进入角色管理页面");
 		response.setHeader("X-Frame-Options", "SAMEORIGIN");
-		return "adminsite/menuManager";
+		return "adminsite/roleManager";
 	}
 
 	/**
@@ -47,16 +49,16 @@ public class MenuController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/getMenuList", method = RequestMethod.POST)
-	public JSONObject getMenuList() {
+	@RequestMapping(value = "/getRoleList", method = RequestMethod.POST)
+	public JSONObject getRoleList() {
 		JSONObject json = new JSONObject();
 		json.put("errorID", 0);
 		@SuppressWarnings("unchecked")
-		List<Menu> menuList = (List<Menu>) EhcacheUtils.getCache("menuList");
-		if (CollectionUtils.isEmpty(menuList)) {
-			menuList = service.selectByExample(new MenuExample());
+		List<Roles> roleList = (List<Roles>) EhcacheUtils.getCache("roleList");
+		if (CollectionUtils.isEmpty(roleList)) {
+			roleList = service.selectByExample(new RolesExample());
 		} 
-		json.put("result", menuList);
+		json.put("result", roleList);
 		logger.debug(json.toJSONString());
 		return json;
 	}
@@ -65,25 +67,25 @@ public class MenuController {
 	 * 获取Combotree菜单列表
 	 * @return
 	 */
-	@ResponseBody
-	@RequestMapping(value = "/getCombotreeMenu", method = RequestMethod.POST)
-	public JSONObject getCombotreeMenu() {
+	//@ResponseBody
+	//@RequestMapping(value = "/getCombotreeMenu", method = RequestMethod.POST)
+	/*public JSONObject getCombotreeMenu() {
 		JSONObject json = new JSONObject();
 		json.put("errorID", 0);
 		List<TreeNode> menuList = service.selectTreeNode(new MenuExample());
 		json.put("result", menuList);
 		logger.debug(json.toJSONString());
 		return json;
-	}
+	}*/
 	
 	/**
 	 * 保存新增的菜单信息
 	 * @param menu
 	 * @return
 	 */
-	@ResponseBody
-	@RequestMapping(value = "/saveMenu", method = RequestMethod.POST)
-	public JSONObject saveMenu(Menu menu) {
+	//@ResponseBody
+	//@RequestMapping(value = "/saveMenu", method = RequestMethod.POST)
+	/*public JSONObject saveMenu(Menu menu) {
 		JSONObject json = new JSONObject();
 		json.put("errorID", 0);
 		menu.setCreatetime(new Date());
@@ -91,5 +93,5 @@ public class MenuController {
 		json.put("result", result);
 		logger.debug(json.toJSONString());
 		return json;
-	}
+	}*/
 }

@@ -21,15 +21,16 @@ var toolbar = [ {
  * 菜单管理初始化
  */
 $(function(){
-	$('#tt').treegrid({
-	    url:'getMenuList.do',
+	$('#dg').datagrid({
+	    url:'getRoleList.do',
 	    idField:'id',
-	    treeField:'menuname',
+	    treeField:'rolename',
 	    fit:true,
 	    columns:[[
-			{title:'菜单名称',field:'menuname'},
-			{title:'菜单路径',field:'menupath'},
-			{title:'创建时间',field:'createtime'},
+			{title:'角色名称',field:'rolename'},
+			{title:'角色编码',field:'rolecode'},
+			{title:'角色时间',field:'status'},
+			{title:'创建时间',field:'createtime'}
 	    ]],
 	    toolbar:toolbar,
 	    loadFilter : function(data,parentId) {
@@ -41,10 +42,6 @@ $(function(){
 				};
 				$.each(returnData.rows, function(i) { 
 					returnData.rows[i].createtime = new Date(returnData.rows[i].createtime).Format("yyyy-MM-dd hh:mm:ss");
-                    var parentId = returnData.rows[i].pid; 
-                    if(parentId != "0"){  
-                    	returnData.rows[i]._parentId = parentId;  
-                    }  
                 }); 
 			} else {
 				returnData = {
