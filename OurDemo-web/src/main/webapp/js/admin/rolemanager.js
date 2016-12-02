@@ -16,6 +16,12 @@ var toolbar = [ {
 	handler : function() {
 		delData();
 	}
+}, '-', {
+	text : '分配权限',
+	iconCls : 'icon-lock',
+	handler : function() {
+		newRoleMenu();
+	}
 }];
 /**
  * 菜单管理初始化
@@ -26,10 +32,13 @@ $(function(){
 	    idField:'id',
 	    treeField:'rolename',
 	    fit:true,
+	    rownumbers :true,
+		singleSelect : true,
+		fitColumns : true,
 	    columns:[[
 			{title:'角色名称',field:'rolename'},
 			{title:'角色编码',field:'rolecode'},
-			{title:'角色时间',field:'status'},
+			{title:'角色状态',field:'status'},
 			{title:'创建时间',field:'createtime'}
 	    ]],
 	    toolbar:toolbar,
@@ -42,7 +51,15 @@ $(function(){
 				};
 				$.each(returnData.rows, function(i) { 
 					returnData.rows[i].createtime = new Date(returnData.rows[i].createtime).Format("yyyy-MM-dd hh:mm:ss");
-                }); 
+					if(0==returnData.rows[i].status){//1:已启用 0:未启用 2:已禁用
+						returnData.rows[i].status = "未启用";
+					}else if(1==returnData.rows[i].status){
+						returnData.rows[i].status = "已启用";
+					}else if(2==returnData.rows[i].status){
+						returnData.rows[i].status = "已禁用";
+					}
+					
+				}); 
 			} else {
 				returnData = {
 					total : 0,
@@ -56,6 +73,38 @@ $(function(){
 	
 });
 
+function newRoleMenu(){
+	var row = $('#dg').datagrid('getSelected');
+	$('#insertRoleMenu').window({
+	    width:600,
+	    height:400,
+	    modal:true
+	});
+	if (row) {
+		$("#role_menu_id").val(row.id);
+		$('#tt').html("");
+		$('#tt').tree({
+			url : 'getRoleMenu.do',
+			checkbox : true,
+			animate : true,
+			lines :true,
+			queryParams : {
+				roleid : row.id
+			},
+			method : 'POST',
+			loadFilter : function(data,parent) {
+				var result = data.result;
+				if (data.errorID == 0) {
+					data = result;
+				}
+				return data;
+			},
+		});
+		$('#insertRoleMenu').window('open');
+	} else {
+		$.messager.alert('警告','请先选择修改项');
+	}
+}
 /**
  * 弹出新增菜单窗口
  */

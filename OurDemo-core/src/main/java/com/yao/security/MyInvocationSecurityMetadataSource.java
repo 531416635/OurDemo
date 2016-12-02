@@ -57,6 +57,7 @@ public class MyInvocationSecurityMetadataSource implements
 		List<RoleMenu> roleMenuList = roleMenuService.selectByExample(new RoleMenuExample());
 		EhcacheUtils.putCache("roleMenuList", roleMenuList);
 
+		//
 		for (Roles role : rolesList) {
 			Collection<ConfigAttribute> atts = new ArrayList<ConfigAttribute>();
 			ConfigAttribute ca = new SecurityConfig(role.getRolecode());
