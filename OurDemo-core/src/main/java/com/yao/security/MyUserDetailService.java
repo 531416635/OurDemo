@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 
 import com.yao.model.UserModel;
 import com.yao.model.UserModelExample;
@@ -21,7 +20,6 @@ import com.yao.model.UserModelExample.Criteria;
 import com.yao.service.UserService;
 import com.yao.utils.EhcacheUtils;
 
-@Component
 public class MyUserDetailService implements UserDetailsService {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());

@@ -3,12 +3,14 @@ package com.yao.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.yao.dao.RoleMenuMapper;
 import com.yao.model.RoleMenu;
 import com.yao.model.RoleMenuExample;
 import com.yao.service.RoleMenuService;
 
+@Service
 public class RoleMenuServiceImpl implements RoleMenuService{
 
 	@Autowired

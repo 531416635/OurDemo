@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.yao.dao.MenuMapper;
@@ -15,6 +16,7 @@ import com.yao.service.MenuService;
 import com.yao.utils.EhcacheUtils;
 import com.yao.vo.TreeNode;
 
+@Service
 public class MenuServiceImpl implements MenuService{
 
 	@Autowired

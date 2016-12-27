@@ -27,4 +27,10 @@ public class WebController {
 		logger.info("跳转到首页");
 		return "website/index";
 	}
+	
+	@RequestMapping(value="/login")
+	public String login(){
+		logger.info("跳转到首页");
+		return "website/login";
+	}
 }
