@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yao.model.UserModel;
@@ -20,7 +19,7 @@ import com.yao.service.LoginService;
  */
 @Controller("adminLoginController")
 @RequestMapping(value="/admin")
-public class LoginController {
+public class LoginController{
 
 	private static final Logger logger=LoggerFactory.getLogger(LoginController.class);
 	
@@ -34,9 +33,8 @@ public class LoginController {
 	 * @param request
 	 * @return
 	 */
-	@ResponseBody
-	@RequestMapping(value="login",produces = "application/json;charset=UTF-8")
-	public Object login(String email,String password,HttpServletRequest request){
+	@RequestMapping(value="tologin")
+	public void login(String login_error,String email,String password,HttpServletRequest request){
 		JSONObject stri=new JSONObject();
 		stri.put("data", "1");
 		UserModel user=loginService.findUserByEmail(email);
@@ -46,8 +44,8 @@ public class LoginController {
 			session.setAttribute("user", user);
 			stri.put("data", "2");
 		}
+		logger.info("login_error的值为：..........",login_error);
 		
-		return stri;
 	}
 	
 	/**

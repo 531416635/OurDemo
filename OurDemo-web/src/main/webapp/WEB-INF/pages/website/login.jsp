@@ -21,7 +21,7 @@
 <body>
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<form class="bs-example bs-example-form  center-block" action="<%=path%>/web/login.html" method="post">
+			<form class="bs-example bs-example-form  center-block" action="<%=path%>/web/tologin.html" method="post">
 				<div class="form-group">
 					<label>用户名：</label>
 					<div class="form-trname">

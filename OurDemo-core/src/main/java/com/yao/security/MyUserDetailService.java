@@ -2,6 +2,7 @@ package com.yao.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import com.yao.model.Roles;
 import com.yao.model.UserModel;
 import com.yao.model.UserModelExample;
 import com.yao.model.UserModelExample.Criteria;
@@ -40,20 +42,17 @@ public class MyUserDetailService implements UserDetailsService {
 			criteria.andUsernameEqualTo(username);
 			UserModel domainUser = userService.selectByExample(example).get(0);
 			logger.debug("从数据库中取出{},对应的值{}", username, domainUser);
+			
+			@SuppressWarnings({ "unchecked" })
+			List<Roles> rolesList = (List<Roles>) EhcacheUtils.getCache("rolesList");
 			Collection<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-			GrantedAuthority auth2 = new SimpleGrantedAuthority("ROLE_ADMIN");
-			GrantedAuthority auth3 = new SimpleGrantedAuthority(
-					"ROLE_ANONYMOUS");
-			GrantedAuthority auth1 = new SimpleGrantedAuthority("ROLE_USER");
-
-			if (username.equals("yao")) {
-				auths = new ArrayList<GrantedAuthority>();
-				auths.add(auth1);
-				auths.add(auth2);
-				auths.add(auth3);
+			for (int i = 0; i < rolesList.size(); i++) {
+				if (rolesList.get(i).getId().equals(domainUser.getRoleid())) {
+					GrantedAuthority auth = new SimpleGrantedAuthority(rolesList.get(i).getRolecode());
+					auths.add(auth);
+				}
 			}
-			user = new User(username, domainUser.getPassword(), true, true,
-					true, true, auths);
+			user = new User(username, domainUser.getPassword(), true, true,true, true, auths);
 			EhcacheUtils.putCache(username, user);
 		}
 		return user;

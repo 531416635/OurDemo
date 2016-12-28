@@ -12,7 +12,7 @@ public class AdminController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
-	@RequestMapping(value="/index")
+	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public String index(){
 		logger.info("跳转到首页");
 		return "adminsite/index";

@@ -23,6 +23,7 @@ import com.yao.utils.SpringMailUtils;
  * @date 2016年9月2日 上午9:35:15
  */
 @Controller
+@RequestMapping(value="/web")
 public class LoginController {
 
 	private static final Logger logger=LoggerFactory.getLogger(LoginController.class);
@@ -34,7 +35,7 @@ public class LoginController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("web/toRegister")
+	@RequestMapping("toRegister")
 	public String toRegister(){
 		return "website/toRegister";
 	}
@@ -45,7 +46,7 @@ public class LoginController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="web/sendRegisterMsg")
+	@RequestMapping(value="sendRegisterMsg")
 	public int sendRegisterMsg(UserModel user){
 		//生成激活码
 		String activecode=MD5Utils.getMD5(user.getUsername()+user.getEmail()+"yyx");
@@ -63,7 +64,7 @@ public class LoginController {
 		return 0;
 	}
 	
-	@RequestMapping("web/register")
+	@RequestMapping("register")
 	public String toRegister2(String email1,String email2){
 		return "website/toRegister";
 	}
@@ -76,7 +77,7 @@ public class LoginController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="web/login",produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="tologin",produces = "application/json;charset=UTF-8")
 	public Object login(String email,String password,HttpServletRequest request){
 		JSONObject stri=new JSONObject();
 		stri.put("data", "1");
@@ -95,7 +96,7 @@ public class LoginController {
 	 * 退出操作，清除session中的user值，防止创建session,重定向首页
 	 * @param request
 	 */
-	@RequestMapping("web/loginout")
+	@RequestMapping("loginout")
 	public String loginout(HttpServletRequest request){
 		HttpSession session = request.getSession(false);//防止创建Session 
 		UserModel user =(UserModel) session.getAttribute("user");
