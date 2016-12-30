@@ -18,9 +18,4 @@ public class AdminController {
 		return "adminsite/index";
 	}
 	
-	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public String login(){
-		logger.info("跳转到登录页");
-		return "adminsite/login";
-	}
 }

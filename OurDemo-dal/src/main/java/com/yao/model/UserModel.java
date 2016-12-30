@@ -1,9 +1,16 @@
 package com.yao.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserModel {
-    private Integer id;
+public class UserModel implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4917825731552015433L;
+
+	private Integer id;
 
     private String username;
 

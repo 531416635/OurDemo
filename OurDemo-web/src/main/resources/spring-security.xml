@@ -35,7 +35,7 @@
 	</http>
 	<!-- 登录过滤器，验证前台用户 -->   
       <beans:bean id="webLoginFilter"      
-            class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">  
+            class="com.yao.security.WebAuthenticationFilter">  
            <beans:property name="authenticationManager" ref="authenticationManager"/>  
            <beans:property name="authenticationFailureHandler" ref="failureHandler"/>  
            <beans:property name="authenticationSuccessHandler" ref="successHandler"/>  
@@ -55,7 +55,7 @@
          
        <!-- 登录过滤器，验证后台用户 -->   
        <beans:bean id="adminLoginFilter"  
-               class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">  
+               class="com.yao.security.AdminAuthenticationFilter">  
                <beans:property name="authenticationManager" ref="authenticationManager"/>  
                <beans:property name="authenticationFailureHandler" ref="adminFailureHandler"/>  
                <beans:property name="authenticationSuccessHandler" ref="adminSuccessHandler"/>  

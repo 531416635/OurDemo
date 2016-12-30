@@ -33,28 +33,27 @@ public class MyUserDetailService implements UserDetailsService {
 	// 并返回User放到spring的全局缓存SecurityContextHolder中，以供授权器使用
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException, DataAccessException {
-		User user =  (User) EhcacheUtils.getCache(username);
-		logger.debug("从缓存中取出{},对应的值{}", username, user);
-		if (user == null) {
+		UserModel domainUser =  (UserModel) EhcacheUtils.getCache(username);
+		logger.debug("从缓存中取出username为{},对应的domainUser值{}", username, domainUser);
+		if (domainUser == null) {
 			System.out.println(username + "============UserDetailsService");
 			UserModelExample example = new UserModelExample();
 			Criteria criteria = example.createCriteria();
 			criteria.andUsernameEqualTo(username);
-			UserModel domainUser = userService.selectByExample(example).get(0);
-			logger.debug("从数据库中取出{},对应的值{}", username, domainUser);
-			
-			@SuppressWarnings({ "unchecked" })
-			List<Roles> rolesList = (List<Roles>) EhcacheUtils.getCache("rolesList");
-			Collection<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-			for (int i = 0; i < rolesList.size(); i++) {
-				if (rolesList.get(i).getId().equals(domainUser.getRoleid())) {
-					GrantedAuthority auth = new SimpleGrantedAuthority(rolesList.get(i).getRolecode());
-					auths.add(auth);
-				}
-			}
-			user = new User(username, domainUser.getPassword(), true, true,true, true, auths);
-			EhcacheUtils.putCache(username, user);
+			 domainUser = userService.selectByExample(example).get(0);
+			EhcacheUtils.putCache(username, domainUser);
+			logger.debug("从数据库中取出username为{},对应的domainUser值{}", username, domainUser);
 		}
+		@SuppressWarnings({ "unchecked" })
+		List<Roles> rolesList = (List<Roles>) EhcacheUtils.getCache("rolesList");
+		Collection<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
+		for (int i = 0; i < rolesList.size(); i++) {
+			if (rolesList.get(i).getId().equals(domainUser.getRoleid())) {
+				GrantedAuthority auth = new SimpleGrantedAuthority(rolesList.get(i).getRolecode());
+				auths.add(auth);
+			}
+		}
+		User user = new User(username, domainUser.getPassword().toString(), true, true,true, true, auths);
 		return user;
 	}
 

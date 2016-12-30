@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yao.model.UserModel;
@@ -26,6 +27,12 @@ public class LoginController{
 	@Autowired
 	private LoginService loginService;
 	
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String login(){
+		logger.info("跳转到登录页");
+		return "adminsite/login";
+	}
+	
 	/**
 	 * 登录（根据注册邮箱验证密码）
 	 * @param email
@@ -37,15 +44,6 @@ public class LoginController{
 	public void login(String login_error,String email,String password,HttpServletRequest request){
 		JSONObject stri=new JSONObject();
 		stri.put("data", "1");
-		UserModel user=loginService.findUserByEmail(email);
-		if(user!=null&&user.getPassword().equals(password)){
-			logger.info("登录成功！邮箱:{}，密码:{}",email,password);
-			HttpSession session=request.getSession();
-			session.setAttribute("user", user);
-			stri.put("data", "2");
-		}
-		logger.info("login_error的值为：..........",login_error);
-		
 	}
 	
 	/**
