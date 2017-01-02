@@ -74,7 +74,7 @@
 					<!-- 添加本机的IP地址之后即可外网访问 -->
 					<hostName>localhost</hostName>
 					<path>/OurDemo</path>
-					<port>8888</port>
+					<port>80</port>
 					<uriEncoding>${encoding.version}</uriEncoding>
 					<server>tomcat</server>
 				</configuration>

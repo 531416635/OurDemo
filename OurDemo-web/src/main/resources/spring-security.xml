@@ -64,7 +64,7 @@
   
         <beans:bean id="adminFailureHandler"   
                 class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">  
-               <beans:property name="defaultFailureUrl" value="/admin/tologin.html?login_error=1" />  
+               <beans:property name="defaultFailureUrl" value="/admin/login.html?error=true" />  
         </beans:bean>  
   
         <beans:bean id="adminSuccessHandler"   
