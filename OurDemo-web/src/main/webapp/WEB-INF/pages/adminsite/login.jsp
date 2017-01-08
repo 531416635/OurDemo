@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix='security ' uri='http://www.springframework.org/security/tags' %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -35,6 +36,11 @@
 						<input id="toregisteremail" type="password" name="password"
 							oninput="if(this.value.length>25){this.value=this.value.slice(2,25)}"
 							class="form-control" placeholder="请输入密码"> 
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="form-tremail">
+						${sessionScope.loginException} 
 					</div>
 				</div>
 				<button type="submit" id="toLogin" class="btn btn-default disabled">登录</button>

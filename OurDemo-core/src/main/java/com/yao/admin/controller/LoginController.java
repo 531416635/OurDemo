@@ -1,20 +1,22 @@
 package com.yao.admin.controller;
 
+import javax.security.auth.login.CredentialExpiredException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.authentication.AccountExpiredException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.authentication.LockedException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.yao.model.UserModel;
 import com.yao.service.LoginService;
@@ -36,22 +38,30 @@ public class LoginController {
 	private LoginService loginService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(String error,HttpServletRequest request) {
+	public String login(String error, HttpServletRequest request) {
 		if ("true".equals(error)) {
+
+			HttpSession session = request.getSession();
+			Object object = session.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
 			
-		HttpSession session  =	request .getSession();
-		Object object = session.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
-			// Object str =
-			// SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			// System.out.println(JSONObject.toJSONString(str));
-			SecurityContext ser =SecurityContextHolder.getContext();
-			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			if (principal instanceof UserDetails) {
-				String username = ((UserDetails) principal).getUsername();
-			} else {
-				String username = principal.toString();
+			if (object != null && object instanceof InternalAuthenticationServiceException) {
+				session.setAttribute("loginException", "用户名或密码错误，请重新登录");
+			}else if (object != null && object instanceof UsernameNotFoundException) {
+				session.setAttribute("loginException", "用户名或密码错误，请重新登录");
+			}else if (object != null && object instanceof BadCredentialsException) {
+				session.setAttribute("loginException", "用户名或密码错误，请重新登录");
+			}else if (object != null && object instanceof LockedException) {
+				session.setAttribute("loginException", "帐户被锁定，请联系管理员");
+			}else if (object != null && object instanceof DisabledException) {
+				session.setAttribute("loginException", "帐户未启动，请联系管理员");
+			}else if (object != null && object instanceof CredentialExpiredException) {
+				session.setAttribute("loginException", "密码已过期，请联系管理员");
+			}else if (object != null && object instanceof AccountExpiredException) {
+				session.setAttribute("loginException", "用户已过期，请联系管理员");
+			}else{
+				session.setAttribute("loginException", "发生未知错误");
 			}
+			// 页面可直接使用  ${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message} 获取登录异常信息
 		}
 		logger.info("跳转到登录页");
 		return "adminsite/login";

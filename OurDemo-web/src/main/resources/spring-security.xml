@@ -5,7 +5,16 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<debug />
+	<!-- <debug /> -->
+	
+	<!-- 国际化 -->
+	<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<!-- value值表示引用spring-security-core-XXX.jar中的messages_zh_CN.properties文件 -->
+		<beans:property name="basename" value="classpath:org/springframework/security/messages_zh_CN" />  
+    </beans:bean>  
+    <beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver"/>
+	
+	
 	<!-- 权限控制的规则 -->
 	<http pattern="/css/**" security="none" />
 	<http pattern="/admin/login.html" security="none" />
@@ -93,7 +102,7 @@
                 <beans:bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" />  
             </beans:list>  
         </beans:constructor-arg>  
-        <beans:property name="filterProcessesUrl" value="/admin/j_spring_security_logout" />  
+        <beans:property name="filterProcessesUrl" value="/j_spring_security_logout" />  
     </beans:bean>  
 
 	<!--一个自定义的filter，必须包含 authenticationManager,accessDecisionManager,securityMetadataSource三个属性， 
@@ -111,7 +120,8 @@
 	<!--验证配置，认证管理器，实现用户认证的入口，主要实现UserDetailsService接口即可 -->
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider user-service-ref="myUserDetailService">
-			<!--如果用户的密码采用加密的话 <password-encoder hash="md5" /> -->
+			<!--如果用户的密码采用加密的话 -->
+			 <password-encoder hash="md5" />
 		</authentication-provider>
 	</authentication-manager>
 

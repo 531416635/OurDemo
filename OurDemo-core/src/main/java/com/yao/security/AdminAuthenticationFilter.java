@@ -18,8 +18,6 @@ public class AdminAuthenticationFilter extends UsernamePasswordAuthenticationFil
 	public static final String SPRING_SECURITY_FORM_USERNAME_KEY = "username";
 	public static final String SPRING_SECURITY_FORM_PASSWORD_KEY = "password";
 
-	private String usernameParameter = SPRING_SECURITY_FORM_USERNAME_KEY;
-	private String passwordParameter = SPRING_SECURITY_FORM_PASSWORD_KEY;
 	private boolean postOnly = true;
 	
 	public Authentication attemptAuthentication(HttpServletRequest request,    
@@ -51,13 +49,10 @@ public class AdminAuthenticationFilter extends UsernamePasswordAuthenticationFil
 		if (username == null) {
 			username = "";
 		}
-
 		if (password == null) {
 			password = "";
 		}
-
 		username = username.trim();
-
 		UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(
 				username, password);
 
