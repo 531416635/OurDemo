@@ -1,5 +1,7 @@
 package com.yao.service;
 
+import java.util.List;
+
 import com.yao.model.UserModel;
 
 public interface LoginService {
@@ -16,5 +18,12 @@ public interface LoginService {
 	 * @param user
 	 * @return
 	 */
-	public int saveRegUser(UserModel user);
+	public String saveRegUser(UserModel user);
+
+	/**
+	 * 点击激活链接，激活用户
+	 * @param user
+	 * @return
+	 */
+	public int regUser(UserModel user);
 }

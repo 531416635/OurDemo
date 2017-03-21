@@ -27,7 +27,7 @@ public class LoginEntryPoint implements AuthenticationEntryPoint {
             targetUrl = "/admin/login.html";
         }else{
             //未登录而访问前台受控资源时，跳转到前台登录页面
-            targetUrl = "/web/login.html";
+            targetUrl = "/web/index.html";
         }
    
         targetUrl = request.getContextPath() + targetUrl;

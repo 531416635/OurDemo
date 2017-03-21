@@ -23,6 +23,22 @@
 		#{activestatus, mode=IN, jdbcType=INTEGER},
 		#{activecode, mode=IN, jdbcType=VARCHAR});
 	</select>
+	
+	<!--保存注册用户信息 -->
+	<select id="regUser" parameterType="com.yao.model.UserModel"  statementType="CALLABLE" resultType="int">
+		select regUser(
+		#{username, mode=IN, jdbcType=VARCHAR},
+		#{password, mode=IN, jdbcType=VARCHAR},
+		#{usertype, mode=IN, jdbcType=INTEGER},
+		#{userphoto, mode=IN, jdbcType=VARCHAR},
+		#{email, mode=IN, jdbcType=VARCHAR},
+		#{phone, mode=IN, jdbcType=VARCHAR},
+		#{roleid, mode=IN, jdbcType=INTEGER},
+		#{regtime, mode=IN, jdbcType=TIMESTAMP},
+		#{userstatus, mode=IN, jdbcType=INTEGER},
+		#{activestatus, mode=IN, jdbcType=INTEGER},
+		#{activecode, mode=IN, jdbcType=VARCHAR});
+	</select>
     <!-- <parameterMap type="com.yao.model.User" id="saveRegUserMap" >
          <parameter property="username" mode="IN" jdbcType="VARCHAR"/>
          <parameter property="password" mode="IN" jdbcType="VARCHAR"/>

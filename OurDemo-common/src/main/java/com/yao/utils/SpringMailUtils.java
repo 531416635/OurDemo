@@ -37,7 +37,7 @@ public class SpringMailUtils {
         // 建立邮件消息,发送简单邮件和html邮件的区别  
         MimeMessage mailMessage = senderImpl.createMimeMessage();  
         MimeMessageHelper messageHelper = new MimeMessageHelper(mailMessage,true, "utf-8");  
-  
+
         // 设置收件人，寄件人  
         messageHelper.setTo(toMailUrl);  
         messageHelper.setFrom("yaoyuxiao1992@163.com");  
@@ -46,11 +46,11 @@ public class SpringMailUtils {
         messageHelper  
                 .setText("<html><head></head><body><pre>亲爱的用户"+username+"：您好！"+
                 		"<br/>感谢您注册ourdemo，您只需要点击下面链接，激活您的帐户，您便可以享受ourdemo各项服务。"+
-                		"<br/><a href='http://localhost:8888/OurDemo/register.html?username="+username+"&amp;activeCode="+activeCode+"'>"+
-                		"http://localhost:8888/OurDemo/register.html?username="+username+"&amp;activeCode="+activeCode+"</a>"+
+                		"<br/><a href='"+ConfUtils.getProjectUrl()+"/register.html?username="+username+"&amp;activeCode="+activeCode+"'>"+
+                		ConfUtils.getProjectUrl()+"/register.html?username="+username+"&amp;activeCode="+activeCode+"</a>"+
                 		"<br/>(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。该链接使用后将立即失效。)"+
                 		"<br/>注意:重复发送激活码，则历史激活码失效。请您在收到邮件24小时(2016-08-03 10:43:04前)进行激活，否则该激活码将会失效。7天后您的帐户将会失效。"+
-                		"<br/>重新发送激活码：http://localhost:8888/OurDemo/toregister.html?action=resendActiveEmail&amp;username="+username+
+                		"<br/>重新发送激活码："+ConfUtils.getProjectUrl()+"/toregister.html?action=resendActiveEmail&amp;username="+username+
                 		"</pre></body></html>",  
                         true);  
   

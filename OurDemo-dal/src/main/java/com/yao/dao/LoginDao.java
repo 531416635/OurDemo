@@ -17,5 +17,12 @@ public interface LoginDao {
 	 * @param user
 	 * @return
 	 */
-	int saveRegUser(UserModel user);
+	String saveRegUser(UserModel user);
+
+	/**
+	 * 点击激活链接，激活用户
+	 * @param user
+	 * @return
+	 */
+	int regUser(UserModel user);
 }

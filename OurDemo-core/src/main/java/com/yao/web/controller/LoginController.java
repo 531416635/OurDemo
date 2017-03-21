@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -30,6 +31,7 @@ public class LoginController {
 	
 	@Autowired
 	private LoginService loginService;
+	
 	/**
 	 * 跳转到邮箱注册页面
 	 * 
@@ -47,26 +49,40 @@ public class LoginController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="sendRegisterMsg")
-	public int sendRegisterMsg(UserModel user){
+	public String sendRegisterMsg(UserModel user){
 		//生成激活码
 		String activecode=MD5Utils.getMD5(user.getUsername()+user.getEmail()+"yyx");
 		user.setActivecode(activecode);
-			user.setRegtime(new Date());
+		user.setRegtime(new Date());
+		user.setUsertype(1);//外部用户
+		user.setUserstatus(0);//不可用
+		user.setActivestatus(0);//未激活
 		try {
-			int str = loginService.saveRegUser(user);
-			if(str==3){
+			String str = loginService.saveRegUser(user);
+			if("3".equals(str)){
 				SpringMailUtils.sendMail(user.getEmail(), user.getUsername(), activecode);
 			}
 			return str;
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
-		return 0;
+		return "0";
 	}
 	
+	/**
+	 * 点击激活链接，激活邮箱
+	 * @param username
+	 * @param activeCode
+	 * @return
+	 */
 	@RequestMapping("register")
-	public String toRegister2(String email1,String email2){
-		return "website/toRegister";
+	public String register(UserModel user,Model model){
+		 int result = loginService.regUser(user);;
+		if (result > 0) {
+			model.addAttribute("userModel",user);
+		}
+		model.addAttribute("result",result);
+		return "website/register";
 	}
 	
 	/**

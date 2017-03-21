@@ -17,8 +17,13 @@
 	
 	<!-- 权限控制的规则 -->
 	<http pattern="/css/**" security="none" />
+	<http pattern="/fonts/**" security="none" />
+	<http pattern="/img/**" security="none" />
 	<http pattern="/admin/login.html" security="none" />
 	<http pattern="/web/login.html" security="none" />
+	<http pattern="/web/index.html" security="none" />
+	<http pattern="/web/sendRegisterMsg.*" security="none" />
+	<http pattern="/web/register.*" security="none" />
 	<http pattern="/login_failure.jsp" security="none" />
 	<http pattern="/index.jsp" security="none" />
 

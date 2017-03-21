@@ -32,7 +32,7 @@ $(function() {
 					field : 'usertype',
 					title : '用户类型',
 					align : "center",
-					width : 200,
+					width : 200/*,
 					formatter: function(value,row,index){
 						if(value==0){
 							return "超级管理员";
@@ -44,7 +44,7 @@ $(function() {
 							return "未知用户类型";
 						}
 						
-					}
+					}*/
 				}, {
 					field : 'email',
 					title : '邮箱',

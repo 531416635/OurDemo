@@ -21,4 +21,11 @@ public class ConfUtils {
 		return privateKey;
 	}
 
+	//项目网址
+	private static String projectUrl = "http://localhost/OurDemo";
+
+	public static String getProjectUrl() {
+		return projectUrl;
+	}
+
 }

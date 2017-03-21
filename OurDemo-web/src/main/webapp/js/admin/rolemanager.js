@@ -75,11 +75,7 @@ $(function(){
 
 function newRoleMenu(){
 	var row = $('#dg').datagrid('getSelected');
-	$('#insertRoleMenu').window({
-	    width:600,
-	    height:400,
-	    modal:true
-	});
+	
 	if (row) {
 		$("#role_menu_id").val(row.id);
 		$('#tt').html("");
@@ -99,6 +95,11 @@ function newRoleMenu(){
 				}
 				return data;
 			},
+		});
+		$('#insertRoleMenu').window({
+		    width:600,
+		    height:400,
+		    modal:true
 		});
 		$('#insertRoleMenu').window('open');
 	} else {
@@ -133,9 +134,12 @@ function newData(){
  * 保存菜单信息
  */
 function saveMenuButton(){
-	var  menuname= $("#savemenuname").val().trim();
-	var  menupath= $("#savemenupath").val().trim();
-	var  pid= $("#cc").combotree('getValue').trim();
+	//var  menuname= $("#savemenuname").val().trim();
+	//var  menupath= $("#savemenupath").val().trim();
+	var  meunList= $("#tt").tree('getChecked');
+	$.each(meunList, function(idx, obj) {
+	    alert(obj.tagName);
+	});
 	if( pid == null || pid == '' ){
 		pid = 0;
 	}

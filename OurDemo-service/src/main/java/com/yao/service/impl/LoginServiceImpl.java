@@ -20,9 +20,15 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public int saveRegUser(UserModel user) {
+	public String saveRegUser(UserModel user) {
 		// TODO Auto-generated method stub
 		return loginDao.saveRegUser(user);
+	}
+
+	@Override
+	public int regUser(UserModel user) {
+		// TODO Auto-generated method stub
+		return loginDao.regUser(user);
 	}
 
 }

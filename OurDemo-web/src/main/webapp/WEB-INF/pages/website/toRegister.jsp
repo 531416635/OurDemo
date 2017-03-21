@@ -80,20 +80,9 @@
 		</div>
 	</div>
 
-
-
 	<div class="col-lg-5">
 	</div>
 
-
-	<script type="text/javascript">
-	$("#toregisterusername").focus(function(){
-		$("#toregisterusername").removeClass("input-danger");
-	});
-	$("#toregisteremail").focus(function(){
-		$("#toregisteremail").removeClass("input-danger");
-	});
-	</script>
 	<script src="<%=path%>/js/toRegister.js"></script>
 </body>
 </html>
